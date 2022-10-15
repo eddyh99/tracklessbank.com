@@ -1,37 +1,21 @@
-<!-- <nav class="navbar bg-black">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="<?= base_url(); ?>assets/images/tc-mail-new.png">
-        </a>
-        <a href="https://tracklessproject.com" class="bg-trackless me-5" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-            <svg width="57" height="53" viewBox="0 0 57 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M26.908 1.37204C27.8784 0.750986 29.1214 0.750986 30.0918 1.37204L54.7011 17.122C56.0749 18.0012 56.4758 19.8276 55.5966 21.2013C54.7174 22.575 52.8911 22.9759 51.5174 22.0967L49.1717 20.5955V44.2188C49.1717 48.568 45.646 52.0938 41.2967 52.0938H15.703C11.3538 52.0938 7.828 48.568 7.828 44.2188V20.5955L5.48239 22.0967C4.10868 22.9759 2.28235 22.575 1.40317 21.2013C0.523991 19.8276 0.924893 18.0012 2.29861 17.122L26.908 1.37204ZM19.1483 24.0391C18.3328 24.0391 17.6717 24.7001 17.6717 25.5156C17.6717 26.3311 18.3328 26.9922 19.1483 26.9922H37.8514C38.6669 26.9922 39.328 26.3311 39.328 25.5156C39.328 24.7001 38.6669 24.0391 37.8514 24.0391H19.1483ZM17.6717 31.4219C17.6717 30.6064 18.3328 29.9453 19.1483 29.9453H27.0233C27.8388 29.9453 28.4999 30.6064 28.4999 31.4219C28.4999 32.2374 27.8388 32.8984 27.0233 32.8984H19.1483C18.3328 32.8984 17.6717 32.2374 17.6717 31.4219ZM19.1483 35.8516C18.3328 35.8516 17.6717 36.5126 17.6717 37.3281C17.6717 38.1436 18.3328 38.8047 19.1483 38.8047H30.9608C31.7763 38.8047 32.4374 38.1436 32.4374 37.3281C32.4374 36.5126 31.7763 35.8516 30.9608 35.8516H19.1483Z"
-                    fill="#00DD9C" />
-            </svg>
-        </a>
-    </div>
-</nav> -->
-<!-- Mashead header-->
 <header class="slider bg-slider-bank">
     <nav class="navbar navbar-expand-lg bg-transparent" id="mainNav">
-        <div class="container-fluid px-5">
+        <div class="container-fluid ps-0 pe-5">
             <a class="navbar-brand fw-bold" href="#page-top">
                 <img src="<?= base_url(); ?>assets/images/tc-bank-new.png">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler toggler-trackless" type="button" data-bs-toggle="offcanvas"
+                data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 Menu
                 <i class="bi-list"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#features">Service</a>
+                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#">Service</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#features">Price</a>
+                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#">Price</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#features">Technology</a>
+                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#">Technology</a>
                     </li>
                     <li class="nav-item">
                         <a href="https://tracklessproject.com" class="bg-trackless nav-link me-lg-3"
@@ -47,83 +31,113 @@
                     </li>
                 </ul>
             </div>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close close-trackless" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 text-center">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Service</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Price</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Technology</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://tracklessproject.com">
+                                <svg width="57" height="53" viewBox="0 0 57 53" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M26.908 1.37204C27.8784 0.750986 29.1214 0.750986 30.0918 1.37204L54.7011 17.122C56.0749 18.0012 56.4758 19.8276 55.5966 21.2013C54.7174 22.575 52.8911 22.9759 51.5174 22.0967L49.1717 20.5955V44.2188C49.1717 48.568 45.646 52.0938 41.2967 52.0938H15.703C11.3538 52.0938 7.828 48.568 7.828 44.2188V20.5955L5.48239 22.0967C4.10868 22.9759 2.28235 22.575 1.40317 21.2013C0.523991 19.8276 0.924893 18.0012 2.29861 17.122L26.908 1.37204ZM19.1483 24.0391C18.3328 24.0391 17.6717 24.7001 17.6717 25.5156C17.6717 26.3311 18.3328 26.9922 19.1483 26.9922H37.8514C38.6669 26.9922 39.328 26.3311 39.328 25.5156C39.328 24.7001 38.6669 24.0391 37.8514 24.0391H19.1483ZM17.6717 31.4219C17.6717 30.6064 18.3328 29.9453 19.1483 29.9453H27.0233C27.8388 29.9453 28.4999 30.6064 28.4999 31.4219C28.4999 32.2374 27.8388 32.8984 27.0233 32.8984H19.1483C18.3328 32.8984 17.6717 32.2374 17.6717 31.4219ZM19.1483 35.8516C18.3328 35.8516 17.6717 36.5126 17.6717 37.3281C17.6717 38.1436 18.3328 38.8047 19.1483 38.8047H30.9608C31.7763 38.8047 32.4374 38.1436 32.4374 37.3281C32.4374 36.5126 31.7763 35.8516 30.9608 35.8516H19.1483Z"
+                                        fill="#00DD9C" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </nav>
     <div class="container px-5 py-5">
         <div class="row gx-5 align-items-center">
             <div class="col-lg-7">
                 <!-- Mashead text and app badges-->
-                <div class="mb-5 mb-lg-0 text-center text-lg-start">
-                    <h1 class="f-dmsans text-white display-2 lh-md mb-3">Open your own
+                <div class="mb-5 mb-lg-0 text-start">
+                    <h1 class="f-dmsans text-white mb-3">Open your own
                         Online Bank for
                         FREE
-                        <svg width="231" height="10" viewBox="0 0 231 10" fill="none"
+                        <svg class="line" width="231" height="10" viewBox="0 0 231 10" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M1.99998 7.28623C44.4229 3.94673 149.19 -0.964693 228.874 6.1057" stroke="#1AA37A"
                                 stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </h1>
-                    <p class="text-trackless lead fw-normal mt-5 mb-3">With us you don’t have to worry about :</p>
-                </div>
-                <div class="row text-trackless list-slider">
-                    <div class="col-md-4">
-                        <!-- Feature item-->
-                        <div class="">
-                            <p class="mb-2">
-                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="26" height="26" rx="13" fill="#55FAB8" />
-                                    <path
-                                        d="M11.5001 15.3791L18.3941 8.48438L19.4553 9.54488L11.5001 17.5001L6.72705 12.7271L7.78755 11.6666L11.5001 15.3791Z"
-                                        fill="black" />
-                                </svg>
-                                License
-                            </p>
+                    <p class="text-trackless lead fw-normal mt-3 mb-3">With us you don’t have to worry about :</p>
+                    <div class="row text-trackless list-slider">
+                        <div class="col-md-4">
+                            <!-- Feature item-->
+                            <div class="">
+                                <p class="mb-2">
+                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="26" height="26" rx="13" fill="#55FAB8" />
+                                        <path
+                                            d="M11.5001 15.3791L18.3941 8.48438L19.4553 9.54488L11.5001 17.5001L6.72705 12.7271L7.78755 11.6666L11.5001 15.3791Z"
+                                            fill="black" />
+                                    </svg>
+                                    License
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-8">
-                        <!-- Feature item-->
-                        <div class="">
-                            <p class="mb-2">
-                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="26" height="26" rx="13" fill="#55FAB8" />
-                                    <path
-                                        d="M11.5001 15.3791L18.3941 8.48438L19.4553 9.54488L11.5001 17.5001L6.72705 12.7271L7.78755 11.6666L11.5001 15.3791Z"
-                                        fill="black" />
-                                </svg>
-                                Safety and security
-                            </p>
+                        <div class="col-md-8">
+                            <!-- Feature item-->
+                            <div class="">
+                                <p class="mb-2">
+                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="26" height="26" rx="13" fill="#55FAB8" />
+                                        <path
+                                            d="M11.5001 15.3791L18.3941 8.48438L19.4553 9.54488L11.5001 17.5001L6.72705 12.7271L7.78755 11.6666L11.5001 15.3791Z"
+                                            fill="black" />
+                                    </svg>
+                                    Safety and security
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <!-- Feature item-->
-                        <div class="">
-                            <p class="mb-2">
-                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="26" height="26" rx="13" fill="#55FAB8" />
-                                    <path
-                                        d="M11.5001 15.3791L18.3941 8.48438L19.4553 9.54488L11.5001 17.5001L6.72705 12.7271L7.78755 11.6666L11.5001 15.3791Z"
-                                        fill="black" />
-                                </svg>
-                                Liquidity
-                            </p>
+                        <div class="col-md-4">
+                            <!-- Feature item-->
+                            <div class="">
+                                <p class="mb-2">
+                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="26" height="26" rx="13" fill="#55FAB8" />
+                                        <path
+                                            d="M11.5001 15.3791L18.3941 8.48438L19.4553 9.54488L11.5001 17.5001L6.72705 12.7271L7.78755 11.6666L11.5001 15.3791Z"
+                                            fill="black" />
+                                    </svg>
+                                    Liquidity
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-8">
-                        <!-- Feature item-->
-                        <div class="">
-                            <p class="mb-2">
-                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="26" height="26" rx="13" fill="#55FAB8" />
-                                    <path
-                                        d="M11.5001 15.3791L18.3941 8.48438L19.4553 9.54488L11.5001 17.5001L6.72705 12.7271L7.78755 11.6666L11.5001 15.3791Z"
-                                        fill="black" />
-                                </svg>
-                                Complicated KYC & AML procedures
-                            </p>
+                        <div class="col-md-8">
+                            <!-- Feature item-->
+                            <div class="">
+                                <p class="mb-2">
+                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="26" height="26" rx="13" fill="#55FAB8" />
+                                        <path
+                                            d="M11.5001 15.3791L18.3941 8.48438L19.4553 9.54488L11.5001 17.5001L6.72705 12.7271L7.78755 11.6666L11.5001 15.3791Z"
+                                            fill="black" />
+                                    </svg>
+                                    Complicated KYC & AML procedures
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -154,7 +168,7 @@
                     clients ?
                 </h2>
                 <div class="row">
-                    <div class="col-6 p-2">
+                    <div class="col-12 col-sm-6 col-lg-6 p-2">
                         <div class="box-service">
                             <div class="text-center">
                                 <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
@@ -164,12 +178,12 @@
                                         d="M16.8333 14.5V33.1667H35.5V35.5H14.5V14.5H16.8333ZM34.6752 18.3418L36.3248 19.9915L29.6667 26.6497L26.1667 23.1508L21.1582 28.1582L19.5085 26.5085L26.1667 19.8503L29.6667 23.3492L34.6752 18.3418V18.3418Z"
                                         fill="black" />
                                 </svg>
-                                <p class="mb-0 mt-lg-4">Anonymous multicurrencies current accounts
+                                <p class="mb-0 mt-3 mt-lg-4">Anonymous multicurrencies current accounts
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 p-2">
+                    <div class="col-12 col-sm-6 col-lg-6 p-2">
                         <div class="box-service">
                             <div class="text-center">
                                 <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
@@ -180,12 +194,12 @@
                                         fill="black" />
                                 </svg>
 
-                                <p class="mb-0 mt-lg-4">Anonymous and free custody of funds in over 50 currencies
+                                <p class="mb-0 mt-3 mt-lg-4">Anonymous and free custody of funds in over 50 currencies
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 p-2">
+                    <div class="col-12 col-sm-6 col-lg-6 p-2">
                         <div class="box-service">
                             <div class="text-center">
                                 <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
@@ -202,13 +216,13 @@
                                         fill="black" />
                                 </svg>
 
-                                <p class="mb-0 mt-lg-4">Receive in 10 currencies & convert and send in over 50
+                                <p class="mb-0 mt-3 mt-lg-4">Receive in 10 currencies & convert and send in over 50
                                     currencies
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 p-2">
+                    <div class="col-12 col-sm-6 col-lg-6 p-2">
                         <div class="box-service">
                             <div class="text-center">
                                 <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
@@ -219,12 +233,12 @@
                                         fill="black" />
                                 </svg>
 
-                                <p class="mb-0 mt-lg-4">Low fees and fast transactions
+                                <p class="mb-0 mt-3 mt-lg-4">Low fees and fast transactions
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 p-2">
+                    <div class="col-12 col-sm-6 col-lg-6 p-2">
                         <div class="box-service">
                             <div class="text-center">
                                 <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
@@ -235,12 +249,12 @@
                                         fill="black" />
                                 </svg>
 
-                                <p class="mb-0 mt-lg-4">Virtual debit cards & physical debit card
+                                <p class="mb-0 mt-3 mt-lg-4">Virtual debit cards & physical debit card
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 p-2">
+                    <div class="col-12 col-sm-6 col-lg-6 p-2">
                         <div class="box-service">
                             <div class="text-center">
                                 <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
@@ -251,7 +265,7 @@
                                         fill="black" />
                                 </svg>
 
-                                <p class="mb-0 mt-lg-4">Clients can connect wallet of your online bank, powered by
+                                <p class="mb-0 mt-3 mt-lg-4">Clients can connect wallet of your online bank, powered by
                                     TracklessMoney, to a truly anonymous chat TracklessChat
                                 </p>
                             </div>
@@ -266,7 +280,7 @@
 <section class="bg-footer-trackless border-0">
     <div class="container px-5 refferal-slide">
         <div class="row gx-5 justify-content-center">
-            <div class="col-xl-8" style="position: relative;">
+            <div class="col-12 col-lg-8 col-xl-8" style="position: relative;">
                 <svg class="circle-1" width="155" height="155" viewBox="0 0 155 155" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <circle cx="77.5" cy="77.5" r="77.5" fill="#00DD9C" />
@@ -294,13 +308,14 @@
         <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
             <div class="col-12 col-lg-8 clr-price">
                 <div>
-                    <h2 class="text-green f-poppins m-0">Clear & transparent prices</h2>
+                    <h2 class="text-green f-poppins my-3 my-lg-3 m-lg-0">Clear & transparent prices</h2>
                     <p class="text-white m-0 f-poppins mb-2">We provide to our clients clear and transparent prices.</p>
                     <a href="#" class="btn btn-learn text-green f-poppins">Learn more</a>
                 </div>
                 <div class="my-4">
                     <p class="text-white f-poppins">
-                        <span class="text-green fw-bold">How the platform manager can have his own profit?</span><br>
+                        <span class="text-green fw-bold">How the platform manager can have his own
+                            profit?</span><br>
                         The platform manager will decide fees
                         & commissions for his own clients in order to have his own profit. In addiction he will decide
                         if activate or not the Referral link affiliate campaign
@@ -308,12 +323,12 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="px-5 px-sm-0">
+                <div class="px-5 px-sm-0 d-none d-sm-none d-lg-inline">
                     <img class="img-fluid" src="<?= base_url() ?>assets/images/money.png" alt="..." />
                 </div>
             </div>
-            <div class="col-lg-12 my-5">
-                <div class="col-8 domain-text text-white">
+            <div class="col-12 col-lg-12 my-5">
+                <div class="col-12 col-lg-8 domain-text text-white">
                     <h2 class="f-baij my-3">
                         Hot deals for you
                         <svg width="25" height="38" viewBox="0 0 25 38" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -355,23 +370,23 @@
                         you just need to choose your own domain.</p>
                     <a href="#" class="btn btn-learn text-white">Click here to generate your domain</a>
                 </div>
-                <div class="col-12 my-5 powered">
+                <div class="col-12 mt-5 mb-3 my-lg-5 powered">
                     <span class="text-white f-monserat">Powered by</span>&nbsp;
                     <img src="<?= base_url() ?>assets/images/tracklessbankonly.png" alt="">
                 </div>
                 <div class="col-12">
-                    <div class="row">
-                        <div class="col-lg-4 p-3">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-6 col-md-4 col-lg-4 p-3">
                             <div class="box-powered text-center">
                                 <img src="<?= base_url() ?>assets/images/magnify.png" alt="">
                             </div>
                         </div>
-                        <div class="col-lg-4 p-3">
+                        <div class="col-6 col-md-4 col-lg-4 p-3">
                             <div class="box-powered text-center">
                                 <img src="<?= base_url() ?>assets/images/piggylogo.png" alt="">
                             </div>
                         </div>
-                        <div class="col-lg-4 p-3">
+                        <div class="col-6 col-md-4 col-lg-4 p-3">
                             <div class="box-powered text-center">
                                 <img src="<?= base_url() ?>assets/images/freedylogo.png" alt="">
                             </div>
