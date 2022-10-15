@@ -12629,6 +12629,17 @@ footer a:focus {
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
+.f-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.f-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.f-rhd {
+  font-family: 'Red Hat Display', sans-serif;
+}
 
 .modal-trackless {
   background: #000000;
@@ -13784,8 +13795,8 @@ footer a:focus {
   }
 
   .slider h1 {
-    font-size: 50px;
-    line-height: 70px;
+    font-size: 70px;
+    line-height: 110%;
   }
 
   .slider p {
@@ -13883,7 +13894,7 @@ footer a:focus {
   }
 
   .icon-sosmed img {
-    width: 40px;
+    width: 50px;
   }
 
   .footer-contact>h2,
@@ -14272,13 +14283,30 @@ footer a:focus {
   }
 }
 
+/* Trackless Bank */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+.f-dmsans {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.f-baij {
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+.f-monserat {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .bg-slider-bank {
   background: url("../images/abovebackground.png") !important;
   background-repeat: no-repeat !important;
   background-attachment: fixed;
-  background-size: auto 100% !important;
-  background-position-x: 100% !important;
-  /* background-position-y: 100% !important; */
+  background-size: auto 150% !important;
+  background-position-x: 0% !important;
+  background-position-y: 75% !important;
 }
 
 .list-slider svg {
@@ -14297,12 +14325,12 @@ footer a:focus {
   position: relative;
   padding: 3vw 0;
   width: 100%;
-
 }
 
 .box-bumi img {
   position: absolute;
   top: 0%;
+  bottom: 0%;
   right: 0%;
   width: 100%;
 }
@@ -14311,12 +14339,114 @@ footer a:focus {
   position: relative;
   padding: 3vw 0;
   width: 100%;
-  flex-wrap: wrap;
 }
 
 .box-line-slider img {
   position: absolute;
-  bottom: 0%;
+  bottom: 50%;
   right: 0%;
-  width: 75%;
+  width: 70%;
+}
+
+.slider h1 {
+  position: relative;
+}
+
+.slider h1>svg {
+  position: absolute;
+  bottom: -3%;
+  left: -3%;
+}
+
+.service-header-text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 80px;
+  line-height: 110%;
+}
+
+.refferal-slide {
+  padding: 10rem 0 !important;
+}
+
+.refferal-slide h1 {
+  font-size: 65px;
+  line-height: 110%;
+}
+
+.refferal-slide p {
+  font-size: 24px;
+  line-height: 180%;
+
+}
+
+.clr-price h2 {
+  font-weight: 600;
+  font-size: 45px;
+  line-height: 68px;
+}
+
+.clr-price p {
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 150%;
+}
+
+.domain-text h2 {
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 42px;
+}
+
+.domain-text p {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 150%;
+}
+
+.btn-learn {
+  text-decoration: none;
+  border: 1px solid #00DD9C;
+  filter: drop-shadow(0px 10px 40px rgba(157, 255, 179, 0.2));
+  border-radius: 40px;
+  padding: .5rem 3rem;
+  font-size: 20px;
+  margin: .5rem 0;
+}
+
+.btn-learn:hover {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.powered span {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 48px;
+}
+
+.powered img {
+  height: 50px;
+}
+
+.box-powered {
+  padding: 3rem;
+  border: 2px solid #E8E8E8;
+  border-radius: 10px;
+}
+
+.box-powered img {
+  height: 200px;
+}
+
+.circle-1 {
+  position: absolute;
+  top: -20%;
+  left: -20%;
+}
+
+.circle-2 {
+  position: absolute;
+  bottom: -20%;
+  right: 10%;
 }
