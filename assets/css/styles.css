@@ -13136,7 +13136,7 @@ footer a:focus {
   .service-header-text {
     font-style: normal;
     font-weight: 500;
-    font-size: 34px;
+    font-size: 36px;
     line-height: 110%;
   }
 
@@ -13162,7 +13162,7 @@ footer a:focus {
   }
 
   .refferal-slide {
-    padding: 5rem !important;
+    padding: 5rem 3.5rem !important;
   }
 
   .refferal-slide h1 {
@@ -13285,7 +13285,7 @@ footer a:focus {
   }
 
   .navbar-brand img {
-    width: 200px;
+    width: 150px;
   }
 
   .bg-trackless svg {
@@ -13385,14 +13385,14 @@ footer a:focus {
   .bg-imagebox {
     position: relative;
     padding: 3vw 0;
-    width: 150px;
+    width: 100px;
     margin: auto;
   }
 
   .footer-logo-center {
     position: absolute;
     top: 0%;
-    width: 150px;
+    width: 100px;
     margin: auto;
   }
 
@@ -13410,7 +13410,7 @@ footer a:focus {
   }
 
   .footer-contact>h2 {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .footer-contact>span {
