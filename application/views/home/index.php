@@ -11,16 +11,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#">Service</a>
+                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#service">Service</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#">Price</a>
+                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#price">Price</a>
                     </li>
                     <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#">Technology</a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://tracklessproject.com" class="bg-trackless nav-link me-lg-3"
-                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                            aria-controls="offcanvasNavbar">
+                        <a href="https://tracklessproject.com" class="bg-trackless nav-link me-lg-3">
                             <svg width="57" height="53" viewBox="0 0 57 53" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -155,7 +153,7 @@
     </div>
 </header>
 
-<section class="bg-black py-5">
+<section id="service" class="bg-black py-5">
     <div class="box-bumi">
         <img src="<?= base_url(); ?>assets/images/earth.png" alt="">
     </div>
@@ -303,7 +301,7 @@
     </div>
 </section>
 
-<section class="bg-black py-5">
+<section id="price" class="bg-black py-5">
     <div class="container p-5">
         <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
             <div class="col-12 col-lg-8 clr-price">
@@ -441,7 +439,7 @@
         </div>
         <div class="d-flex flex-wrap justify-content-end footer-menus">
             <a href="https://tracklessproject.com" class="">TracklessProject</a> |
-            <a href="#" class="">TracklessMail</a> |
+            <a href="https://tracklessmail.com" class="">TracklessMail</a> |
             <a href="#" class="">TracklessChat</a> |
             <a href="#" class="">TracklessCompany</a> |
             <a href="#" class="active">TracklessBank</a> |
