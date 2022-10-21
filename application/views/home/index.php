@@ -439,7 +439,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex flex-wrap justify-content-end footer-menus">
+        <div class="d-flex flex-wrap justify-content-end footer-menus" translate="no">
             <a href="https://tracklessproject.com" class="">TracklessProject</a> |
             <a href="https://tracklessmail.com" class="">TracklessMail</a> |
             <a href="https://tracklesschat.com" class="">TracklessChat</a> |
