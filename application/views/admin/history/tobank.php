@@ -11,7 +11,18 @@
                     Transactions
                 </div>
                 <div class="card-body">
-                    <input class="datepicker-af" type="text" name="tgl" id="tgl" readonly>
+                    <div class="row g-3">
+                        <div class="col-auto">
+                            <input class="datepicker-af" type="text" name="tgl" id="tgl" readonly>
+                        </div>
+                        <div class="col-auto">
+                            <select name="bank" id="bank" class="form-select my-3">
+                                <?php foreach ($bank as $dt) { ?>
+                                <option value="<?= $dt->id ?>"><?= $dt->bank_name ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
                     <table id="tbl_history" class="table table-bordered">
                         <thead class="table-dark">
                             <tr>

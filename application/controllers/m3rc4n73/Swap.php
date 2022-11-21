@@ -92,7 +92,7 @@ class Swap extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata("failed", validation_errors());
-            redirect('admin/swap');
+            redirect('m3rc4n73/swap');
         }
 
         $input    = $this->input;
@@ -125,7 +125,7 @@ class Swap extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata("failed", validation_errors());
-            redirect('admin/swap');
+            redirect('m3rc4n73/swap');
         }
 
         $input    = $this->input;

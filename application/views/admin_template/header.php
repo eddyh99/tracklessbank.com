@@ -23,7 +23,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-navbartop-freedy">
         <!-- Navbar Brand-->
-        <a class="navbar-brand text-center" href="index.html">
+        <a class="navbar-brand text-center" href="#">
             <img src="<?= base_url() ?>assets/img/tracklessbank/logo-polos.png" alt="" class="" style="height: 25px;">
             TracklessBank
         </a>

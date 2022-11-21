@@ -14,8 +14,7 @@ class Mwallet extends CI_Controller
     public function index()
     {
         if (!empty($_GET["cur"])) {
-
-            $url = "https://api.tracklessbank.com/v1/admin/wallet/balance_ByCurrency?currency=" . $_GET["cur"];
+            $url = "https://api.tracklessbank.com/v1/trackless/wallet/balance_ByCurrency?currency=" . $_GET["cur"];
             $result = apitrackless($url);
             if ($result->code == 200) {
                 $_SESSION["currency"] = @$_GET["cur"];
@@ -114,7 +113,7 @@ class Mwallet extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata("failed", validation_errors());
-            redirect(base_url() . "admin/mwallet/wdlocal");
+            redirect(base_url() . "m3rc4n73/mwallet/wdlocal");
         }
 
         $input    = $this->input;
@@ -128,7 +127,7 @@ class Mwallet extends CI_Controller
 
         if (@$result->code != 200) {
             $this->session->set_flashdata("failed", "Insuffisient Fund");
-            redirect(base_url() . "admin/mwallet/wdlocal");
+            redirect(base_url() . "m3rc4n73/mwallet/wdlocal");
         }
 
         $transfer_type  = $this->security->xss_clean($input->post("transfer_type"));
@@ -198,7 +197,7 @@ class Mwallet extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata("failed", validation_errors());
-            redirect(base_url() . "admin/mwallet/withdraw");
+            redirect(base_url() . "m3rc4n73/mwallet/withdraw");
         }
 
         $amount         = $this->security->xss_clean($input->post("amount"));
@@ -247,7 +246,7 @@ class Mwallet extends CI_Controller
 
         if (@$result->code != 200) {
             $this->session->set_flashdata("failed", $result->message);
-            redirect(base_url() . "admin/mwallet/withdraw");
+            redirect(base_url() . "m3rc4n73/mwallet/withdraw");
         }
 
         $data = array(

@@ -7,7 +7,7 @@
                     Withdraw International
                 </div>
                 <div class="card-body">
-                    <form action="<?= base_url() ?>admin/mwallet/wdnotif" method="post">
+                    <form action="<?= base_url() ?>m3rc4n73/mwallet/wdnotif" method="post">
                         <input type="hidden" id="token" name="<?php echo $this->security->get_csrf_token_name(); ?>"
                             value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <input type="hidden" name="account_number" value="<?= $data["account_number"] ?>">
@@ -48,9 +48,10 @@
                                 class="form-control border-0 px-0"><?= balanceadmin($_SESSION["currency"]) - $data["deduct"] ?></span>
                         </div>
                         <div class="mb-3">
-                            <a href="<?= base_url() ?>admin/mwallet/withdraw"
+                            <a href="<?= base_url() ?>m3rc4n73/mwallet/withdraw"
                                 class="btn btn-freedy-white px-4 py-2 me-2 shadow-none">Cancel</a>
-                            <button class="btn btn-freedy-blue px-4 py-2 mx-2 shadow-none">Confirm</button>
+                            <button class="btn btn-freedy-blue px-4 py-2 mx-2 shadow-none"
+                                onClick="this.disabled=true; this.value='Sending…';">Confirm</button>
                         </div>
                     </form>
                 </div>

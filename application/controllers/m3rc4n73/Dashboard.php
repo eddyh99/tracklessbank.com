@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Currency extends CI_Controller
+class Dashboard extends CI_Controller
 {
     public function __construct()
     {
@@ -14,10 +14,10 @@ class Currency extends CI_Controller
     public function index()
     {
         $data = array(
-            "title"     => "TracklessBank - Currency",
-            "content"   => "admin/currency/currency",
-            "mn_currency" => "active",
-            // "extra"     => "admin/mwallet/js/js_masterwallet",
+            "title"     => "TracklessBank - Admin Dashboard",
+            "content"   => "admin/dashboard",
+            "mn_dashboard" => "active",
+            "currency"  => apitrackless("https://api.tracklessbank.com/v1/trackless/wallet/getAll_Balance")->message,
         );
 
         $this->load->view('admin_template/wrapper', $data);

@@ -27,12 +27,13 @@ $('#tgl').daterangepicker({
 });
 
 
+var readbank = $("#bank").val();
 var tblhistory =
     $('#tbl_history').DataTable({
         "scrollX": true,
         "responsive": true,
         "ajax": {
-            "url": "<?= base_url() ?>admin/transactions/historybank",
+            "url": "<?= base_url() ?>m3rc4n73/transactions/historybank?bank=" + readbank,
             "type": "POST",
             "data": function(d) {
                 d.csrf_freedy = $("#token").val();
@@ -69,4 +70,9 @@ $('#tgl').on("change", function(e) {
     e.preventDefault();
     tblhistory.ajax.reload();
 });
+
+$("#bank").on("change", function() {
+    e.preventDefault();
+    tblhistory.ajax.reload();
+})
 </script>

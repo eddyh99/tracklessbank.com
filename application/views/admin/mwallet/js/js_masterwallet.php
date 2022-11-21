@@ -32,7 +32,7 @@ var tblhistory =
         "scrollX": true,
         "responsive": true,
         "ajax": {
-            "url": "<?= base_url() ?>admin/mwallet/get_history",
+            "url": "<?= base_url() ?>m3rc4n73/mwallet/get_history",
             "type": "POST",
             "data": function(d) {
                 d.csrf_freedy = $("#token").val();

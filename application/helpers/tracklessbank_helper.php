@@ -1,7 +1,7 @@
 <?php
 function apitrackless($url, $postData = NULL)
 {
-    $token = "MgX7HTkke3KK70uVEwEc304ijKVcyoaaA4mjoFMT6Au3zXgoQM";
+    $token = "pPaqjxUmeiwXb9aqfWVREKvNzKOUh5ei5DQPHXCMkIluGCwkXu";
 
     $ch     = curl_init($url);
     $headers    = array(
@@ -30,7 +30,7 @@ function balance($userid, $currency)
 function balanceadmin($currency)
 {
     $balance = apitrackless(
-        "https://api.tracklessbank.com/v1/admin/wallet/balance_ByCurrency?currency=" . $currency
+        "https://api.tracklessbank.com/v1/trackless/wallet/balance_ByCurrency?currency=" . $currency
     )->message->balance;
     return $balance;
 }

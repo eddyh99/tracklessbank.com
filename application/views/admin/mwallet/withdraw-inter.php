@@ -20,7 +20,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <?php } ?>
-                    <form action="<?= base_url() ?>admin/mwallet/wdconfirm" method="post">
+                    <form action="<?= base_url() ?>m3rc4n73/mwallet/wdconfirm" method="post">
                         <input type="hidden" id="token" name="<?php echo $this->security->get_csrf_token_name(); ?>"
                             value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <input type="hidden" name="transfer_type" value="outside">
@@ -96,7 +96,8 @@
                         <div class="col-12 mb-3">
                             <a href="<?= base_url() ?>admin/mwallet/withdraw"
                                 class="btn btn-freedy-white px-4 py-2 me-2 shadow-none">Cancel</a>
-                            <button class="btn btn-freedy-blue px-4 py-2 mx-2 shadow-none">Confirm</button>
+                            <button class="btn btn-freedy-blue px-4 py-2 mx-2 shadow-none"
+                                onClick="this.disabled=true; this.value='Sending…';">Confirm</button>
                         </div>
                     </form>
                 </div>

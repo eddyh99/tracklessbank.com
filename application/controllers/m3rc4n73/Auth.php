@@ -10,176 +10,30 @@ class Auth extends CI_Controller
 
 	public function index()
 	{
-		$data['title'] = "TracklessBank - Login";
-
 		if ($this->session->userdata('user_id')) {
-			if ($this->session->userdata('role') == 'member') {
-				redirect("homepage");
-			} elseif ($this->session->userdata('role') == 'admin') {
-				redirect("/admin/dashboard");
-			}
+			redirect("m3rc4n73/dashboard");
 		}
 
-		$this->load->view('tamplate/header', $data);
-		$this->load->view('auth/login');
-		$this->load->view('tamplate/footer');
+		$data = array(
+			"title"     => "TracklessBank - Login",
+			"content"   => "auth/login",
+		);
+
+		$this->load->view('tamplate/wrapper', $data);
 	}
 
 	public function login()
 	{
-		$data['title'] = "TracklessBank - Login";
-
 		if ($this->session->userdata('user_id')) {
-			if ($this->session->userdata('role') == 'member') {
-				redirect("homepage");
-			} elseif ($this->session->userdata('role') == 'admin') {
-				redirect("/admin/dashboard");
-			}
+			redirect("m3rc4n73/dashboard");
 		}
 
-		$this->load->view('tamplate/header', $data);
-		$this->load->view('auth/login');
-		$this->load->view('tamplate/footer');
-	}
-
-	public function signup()
-	{
-		$data['title'] = "TracklessBank - Signup";
-
-		if ($this->session->userdata('user_id')) {
-			if ($this->session->userdata('role') == 'member') {
-				redirect("homepage");
-			} elseif ($this->session->userdata('role') == 'admin') {
-				redirect("/admin/dashboard");
-			}
-		}
-
-		$this->load->view('tamplate/header', $data);
-		$this->load->view('auth/signup');
-		$this->load->view('tamplate/footer');
-	}
-
-	public function register()
-	{
-		if ($this->session->userdata('user_id')) {
-			if ($this->session->userdata('role') == 'member') {
-				redirect("homepage");
-			} elseif ($this->session->userdata('role') == 'admin') {
-				redirect("/admin/dashboard");
-			}
-		}
-
-		$recaptchaResponse = trim($this->input->post('g-recaptcha-response'));
-		$userIp = $this->input->ip_address();
-		$secret = $this->config->item('google_secret');
-		$url = "https://www.google.com/recaptcha/api/siteverify?secret=" . $secret . "&response=" . $recaptchaResponse . "&remoteip=" . $userIp;
-
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		$output = curl_exec($ch);
-		curl_close($ch);
-
-		$status = json_decode($output, true);
-
-		if (!$status['success']) {
-			$this->session->set_flashdata('flashError', 'Sorry Google Recaptcha Unsuccessful!!');
-			redirect(base_url() . "auth/signup");
-		}
-
-		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email');
-		$this->form_validation->set_rules('confirmemail', 'Confirm Email', 'trim|required|valid_email|matches[email]');
-		$this->form_validation->set_rules('pass', 'Password', 'trim|required|min_length[9]|max_length[15]');
-		$this->form_validation->set_rules('confirmpass', 'Confirm Password', 'trim|required|matches[pass]');
-
-		if ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('failed', "<p style='color:black'>" . validation_errors() . "</p>");
-			redirect(base_url() . "auth/signup");
-			return;
-		}
-
-		$input		= $this->input;
-		$email		= $this->security->xss_clean($input->post("email"));
-		$pass		= $this->security->xss_clean($input->post("pass"));
-		$referral	= $this->security->xss_clean($input->post("referral"));
-		$time_location = $this->security->xss_clean($input->post("time_location"));
-
-		if (empty($time_location)) {
-			$time_location = "Asia/Singapore";
-		}
-
-		$mdata = array(
-			'email'     => $email,
-			'password'  => $pass,
-			'referral'  => $referral,
-			'timezone'  => $time_location
+		$data = array(
+			"title"     => "TracklessBank - Login",
+			"content"   => "auth/login",
 		);
 
-		$url = "https://api.tracklessbank.com/v1/auth/register";
-		$result = apitrackless($url, json_encode($mdata));
-		if ($result->code == 200) {
-			//kirim email registrasi
-
-			$subject = "TracklessBank Registration";
-			$message = "Thank you for registering on TracklessBank<br><br>
-			username : " . $email . "<br>
-			password : (your chosen password)<br><br>
-			click this <a href='" . base_url("auth/activate?token=") . $result->message->token . "'>link</a> to activate yout account<br><br>
-			";
-
-			$this->sendmail($email, $subject, $message);
-
-			$this->session->set_flashdata('success', "<p style='color:black'>You have successfully register</p>");
-			redirect(base_url() . "auth/signup_notif");
-			return;
-		} else {
-			$this->session->set_flashdata('failed', $result->message);
-			redirect(base_url() . "auth/signup");
-
-			return;
-		}
-	}
-
-	public function signup_notif()
-	{
-		if ($this->session->userdata('user_id')) {
-			if ($this->session->userdata('role') == 'member') {
-				redirect("homepage");
-			} elseif ($this->session->userdata('role') == 'admin') {
-				redirect("/admin/dashboard");
-			}
-		}
-
-		$data['title'] = "TracklessBank - Succes Signup";
-
-		$this->load->view('tamplate/header', $data);
-		$this->load->view('auth/signup-notif');
-		$this->load->view('tamplate/footer');
-	}
-
-	public function activate()
-	{
-		if ($this->session->userdata('user_id')) {
-			if ($this->session->userdata('role') == 'member') {
-				redirect("homepage");
-			} elseif ($this->session->userdata('role') == 'admin') {
-				redirect("/admin/dashboard");
-			}
-		}
-
-		$token = $this->security->xss_clean($this->input->get('token'));
-		$url = "https://api.tracklessbank.com/v1/auth/activate?token=" . $token;
-		$result = apitrackless($url);
-
-		if (!empty(@$result->code == 200)) {
-			$this->session->set_flashdata('success', "<p style='color:black'>Activation success</p>");
-			redirect(base_url() . "auth/login");
-			return;
-		} else {
-			$this->session->set_flashdata('failed', "<p style='color:black'>" . $result->message . "</p>");
-			redirect(base_url() . "auth/login");
-			return;
-		}
+		$this->load->view('tamplate/wrapper', $data);
 	}
 
 	public function auth_login()
@@ -228,7 +82,7 @@ class Auth extends CI_Controller
 			redirect("homepage");
 		} elseif ($result->message->role == 'admin') {
 			$_SESSION["mwallet"] = apitrackless("https://api.tracklessbank.com/v1/admin/user/getMasterwallet")->message->ucode_mwallet;
-			redirect("/admin/dashboard");
+			redirect("m3rc4n73/dashboard");
 		}
 	}
 
@@ -360,7 +214,7 @@ class Auth extends CI_Controller
 		$this->session->sess_destroy();
 
 		$this->session->set_flashdata('success', 'You Have been logged out');
-		redirect('Auth/login');
+		redirect('m3rc4n73');
 	}
 
 	public function sendmail($email, $subject, $message)

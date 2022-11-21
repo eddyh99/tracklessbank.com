@@ -6,7 +6,7 @@
         <div class="container-fluid px-4">
             <?php $this->load->view("admin/header"); ?>
             <div class="col-12 my-5">
-                <a href="<?= base_url() ?>admin/mwallet/withdraw"
+                <a href="<?= base_url() ?>m3rc4n73/mwallet/withdraw"
                     class="btn btn-freedy-blue fw-bold px-5 py-3">Withdraw</a>
             </div>
             <div class="col-12 card mb-5">

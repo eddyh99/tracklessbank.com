@@ -13,9 +13,12 @@ class Transactions extends CI_Controller
 
     public function topup()
     {
+
         $data = array(
-            "title"     => "TracklessBank - History Transactions Topup",
+            "title"     => "FreedyBank - History Transactions Topup",
             "content"   => "admin/history/topup",
+            "mn_tc" => "active",
+            "bank"  => apitrackless("https://api.tracklessbank.com/v1/trackless/member/getAll_bank")->message,
             "extra"     => "admin/history/js/js_topup",
         );
 
@@ -26,16 +29,18 @@ class Transactions extends CI_Controller
     {
         $input = $this->input;
         $tgl = explode("-", $this->security->xss_clean($input->post("tgl")));
+        $bank = $_GET['bank'];
         $awal = date_format(date_create($tgl[0]), "Y-m-d");
         $akhir = date_format(date_create($tgl[1]), "Y-m-d");
 
         $mdata = array(
+            "bank_id"    => $bank,
             "date_start" => $awal,
             "date_end"  => $akhir,
             "currency"  => $_SESSION["currency"],
             "timezone"  => $_SESSION["time_location"]
         );
-        $result = apitrackless("https://api.tracklessbank.com/v1/admin/wallet/gethistory_topup", json_encode($mdata));
+        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/wallet/gethistory_banktopup", json_encode($mdata));
         $data["token"] = $this->security->get_csrf_hash();
         $data["history"] = $result->message;
         echo json_encode($data);
@@ -44,8 +49,10 @@ class Transactions extends CI_Controller
     public function towallet()
     {
         $data = array(
-            "title"     => "TracklessBank - History Transactions Wallet",
+            "title"     => "FreedyBank - History Transactions Wallet",
             "content"   => "admin/history/towallet",
+            "mn_tc" => "active",
+            "bank"  => apitrackless("https://api.tracklessbank.com/v1/trackless/member/getAll_bank")->message,
             "extra"     => "admin/history/js/js_towallet",
         );
 
@@ -58,14 +65,16 @@ class Transactions extends CI_Controller
         $tgl = explode("-", $this->security->xss_clean($input->post("tgl")));
         $awal = date_format(date_create($tgl[0]), "Y-m-d");
         $akhir = date_format(date_create($tgl[1]), "Y-m-d");
+        $bank = $_GET['bank'];
 
         $mdata = array(
+            "bank_id"    => $bank,
             "date_start" => $awal,
             "date_end"  => $akhir,
             "currency"  => $_SESSION["currency"],
             "timezone"  => $_SESSION["time_location"]
         );
-        $result = apitrackless("https://api.tracklessbank.com/v1/admin/wallet/gethistory_wallet", json_encode($mdata));
+        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/wallet/gethistory_bankwallet", json_encode($mdata));
         $data["token"] = $this->security->get_csrf_hash();
         $data["history"] = $result->message;
         echo json_encode($data);
@@ -74,8 +83,10 @@ class Transactions extends CI_Controller
     public function tobank()
     {
         $data = array(
-            "title"     => "TracklessBank - History Transactions Withdraw",
+            "title"     => "FreedyBank - History Transactions Withdraw",
             "content"   => "admin/history/tobank",
+            "mn_tc" => "active",
+            "bank"  => apitrackless("https://api.tracklessbank.com/v1/trackless/member/getAll_bank")->message,
             "extra"     => "admin/history/js/js_tobank",
         );
 
@@ -88,14 +99,16 @@ class Transactions extends CI_Controller
         $tgl = explode("-", $this->security->xss_clean($input->post("tgl")));
         $awal = date_format(date_create($tgl[0]), "Y-m-d");
         $akhir = date_format(date_create($tgl[1]), "Y-m-d");
+        $bank = $_GET['bank'];
 
         $mdata = array(
+            "bank_id"    => $bank,
             "date_start" => $awal,
             "date_end"  => $akhir,
             "currency"  => $_SESSION["currency"],
             "timezone"  => $_SESSION["time_location"]
         );
-        $result = apitrackless("https://api.tracklessbank.com/v1/admin/wallet/gethistory_tobank", json_encode($mdata));
+        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/wallet/gethistory_banktobank", json_encode($mdata));
         $data["token"] = $this->security->get_csrf_hash();
         $data["history"] = $result->message;
         echo json_encode($data);
