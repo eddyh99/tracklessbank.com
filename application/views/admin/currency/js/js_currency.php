@@ -10,15 +10,29 @@
 //     });
 // }
 
+$.ajax({
+    url: "<?= base_url() ?>m3rc4n73/currency/getcurrency",
+    dataType: 'json',
+    success: function(result) {
+        $("#list_currency").html(result.message);
+        // console.log(result.message);
+    }
+});
+
 function enablecurrency(cur, status) {
     $.ajax({
         url: "<?= base_url() ?>m3rc4n73/currency/setCurrency?currency=" + cur + "&status=" + status,
         success: function(response) {
-            console.log(response);
             var data = JSON.parse(response);
-        },
-        error: function(response) {
-            alert(cur);
+            console.log(response);
+            $.ajax({
+                url: "<?= base_url() ?>m3rc4n73/currency/getcurrency",
+                dataType: 'json',
+                success: function(result) {
+                    $("#list_currency").html(result.message);
+                    // console.log(result.message);
+                }
+            });
         }
     })
 }

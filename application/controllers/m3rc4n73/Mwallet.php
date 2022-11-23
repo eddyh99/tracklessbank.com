@@ -72,6 +72,7 @@ class Mwallet extends CI_Controller
         $data = array(
             "title"     => "TracklessBank - Withdraw Local",
             "content"   => "admin/mwallet/withdraw-local",
+            "extra"     => "admin/js/js_btn_disabled",
         );
 
         $this->load->view('admin_template/wrapper2', $data);
@@ -82,6 +83,7 @@ class Mwallet extends CI_Controller
         $data = array(
             "title"     => "TracklessBank - Withdraw International",
             "content"   => "admin/mwallet/withdraw-inter",
+            "extra"     => "admin/js/js_btn_disabled",
         );
 
         $this->load->view('admin_template/wrapper2', $data);
@@ -159,6 +161,7 @@ class Mwallet extends CI_Controller
         $data = array(
             "title"     => "TracklessBank - Withdraw Confirm",
             "content"   => "admin/mwallet/wdconfirm",
+            "extra"     => "admin/js/js_btn_disabled",
             "data"      => $temp
         );
 

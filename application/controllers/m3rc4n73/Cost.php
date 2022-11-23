@@ -81,6 +81,7 @@ class Cost extends CI_Controller
 			"title"     => "TracklessBank - Wise Cost",
 			"content"   => "admin/cost/dcost-edit",
 			"mn_dcost"  => "active",
+			"extra"     => "admin/js/js_btn_disabled",
 			"currency"  => apitrackless("https://api.tracklessbank.com/v1/trackless/currency/getAllCurrency")->message,
 			"banks" 		=> apitrackless("https://api.tracklessbank.com/v1/trackless/member/getAll_bank")->message,
 			"dcost"  	=> $mdata,

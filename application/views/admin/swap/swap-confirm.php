@@ -7,7 +7,8 @@
                     Transactions
                 </div>
                 <div class="card-body">
-                    <form method="POST" id="swapconfirm" action="<?= base_url() ?>m3rc4n73/swap/notif" class="swap">
+                    <form method="POST" id="swapconfirm" action="<?= base_url() ?>m3rc4n73/swap/notif" class="swap"
+                        onsubmit="return validate()">
                         <input type="hidden" id="token" name="<?php echo $this->security->get_csrf_token_name(); ?>"
                             value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <input type="hidden" name="quoteid" value="<?= $data["quoteid"] ?>">
@@ -27,7 +28,7 @@
                                 <a href="<?= base_url() ?>m3rc4n73/swap"
                                     class="btn btn-freedy-white px-4 py-2 me-2 shadow-none">Cancel</a>
                                 <button class="btn btn-freedy-blue px-4 py-2 shadow-none" type="submit"
-                                    onClick="this.disabled=true; this.value='Sending…';">Confirm</button>
+                                    id="btnconfirm">Confirm</button>
                             </div>
                         </div>
                     </form>

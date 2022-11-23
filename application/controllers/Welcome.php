@@ -10,6 +10,11 @@ class Welcome extends CI_Controller
 
     public function index()
     {
-        redirect("m3rc4n73");
+        $data = array(
+            'title'     => 'Trackless Bank',
+            'content'   => 'home/index',
+            'extra'     => 'home/js/js_index',
+        );
+        $this->load->view('layout/wrapper', $data);
     }
 }

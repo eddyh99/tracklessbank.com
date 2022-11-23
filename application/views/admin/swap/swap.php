@@ -9,7 +9,7 @@
                 </div>
                 <div class="card-body">
                     <form method="POST" id="swapconfirm" action="<?= base_url() ?>m3rc4n73/swap/confirm"
-                        class="swap text-center">
+                        class="swap text-center" onsubmit="return validate()">
                         <input type="hidden" id="token" name="<?php echo $this->security->get_csrf_token_name(); ?>"
                             value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <input type="hidden" id="amountget" name="amountget">
@@ -56,7 +56,7 @@
                         <div class="row">
                             <div class="d-flex flex-row mt-4">
                                 <button class="btn btn-freedy-blue px-4 py-2 mx-auto shadow-none" type="submit"
-                                    onClick="this.disabled=true; this.value='Sending…';">Confirm</button>
+                                    id="btnconfirm">Confirm</button>
                             </div>
                         </div>
                     </form>

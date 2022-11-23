@@ -47,7 +47,7 @@ function dcost() {
 
         },
         error: function(response) {
-            alert(response);
+            console.log(response);
         }
     })
 }
@@ -58,4 +58,9 @@ $("#currency_dcost").on("change", function() {
 $("#bank_dcost").on("change", function() {
     dcost();
 })
+
+function validate() {
+    $("#btnconfirm").attr("disabled", true);
+    $("#form_submit").submit();
+}
 </script>

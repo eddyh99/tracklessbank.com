@@ -36,4 +36,9 @@ $("#toswap").on("change", function(e) {
     $("#tocurrency").html($('option:selected', this).attr("data-currency"))
     calculate();
 });
+
+function validate() {
+    $("#btnconfirm").attr("disabled", true);
+    $("#swapconfirm").submit();
+}
 </script>

@@ -24,7 +24,8 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="<?= base_url() ?>m3rc4n73/cost/editdcost" method="post">
+                    <form action="<?= base_url() ?>m3rc4n73/cost/editdcost" method="post" id="form_submit"
+                        onsubmit="return validate()">
                         <input type="hidden" id="token" name="<?php echo $this->security->get_csrf_token_name(); ?>"
                             value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <div class="row mb-3">
@@ -81,7 +82,8 @@
                             <input type="text" id="swap" name="swap" class="form-control" readonly>
                         </div>
                         <div class="mb-3">
-                            <button id="editfee" class="btn btn-freedy-blue px-4 py-2 mx-auto shadow-none">Edit</button>
+                            <button id="btnconfirm"
+                                class="btn btn-freedy-blue px-4 py-2 mx-auto shadow-none">Edit</button>
                         </div>
                     </form>
                 </div>
