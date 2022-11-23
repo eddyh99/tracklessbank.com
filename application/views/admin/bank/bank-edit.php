@@ -15,7 +15,7 @@
                 </div>
                 <?php } ?>
             </div>
-            <form action="<?= base_url() ?>m3rc4n73/bank/editbank" method="post" id="form_submit"
+            <form action="<?= base_url() ?>m3rc4n73/bank/editbank_proses" method="post" id="form_submit"
                 onsubmit="return validate()">
                 <input type="hidden" id="token" name="<?php echo $this->security->get_csrf_token_name(); ?>"
                     value="<?php echo $this->security->get_csrf_hash(); ?>">
@@ -40,27 +40,27 @@
                         <div class="mb-3">
                             <label class="form-label">Registered Name</label>
                             <input class="form-control" type="text" name="c_registered_name"
-                                placeholder="Registered Name" value="<?= @$bank->c_registered_name ?>" readonly>
+                                placeholder="Registered Name" value="<?= @$bank->c_registered_name ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Account Number</label>
                             <input class="form-control" type="text" name="c_account_number" placeholder="Account Number"
-                                value="<?= @$bank->c_account_number ?>" readonly>
+                                value="<?= @$bank->c_account_number ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Routing Number</label>
                             <input class="form-control" type="text" name="c_routing_number" placeholder="Routing Number"
-                                value="<?= @$bank->c_routing_number ?>" readonly>
+                                value="<?= @$bank->c_routing_number ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Bank Name</label>
                             <input class="form-control" type="text" name="c_bank_name" placeholder="Bank Name"
-                                value="<?= @$bank->c_bank_name ?>" readonly>
+                                value="<?= @$bank->c_bank_name ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Bank Address</label>
                             <input class="form-control" type="text" name="c_bank_address" placeholder="Bank Address"
-                                value="<?= @$bank->c_bank_address ?>" readonly>
+                                value="<?= @$bank->c_bank_address ?>">
                         </div>
                     </div>
                 </div>
@@ -77,27 +77,27 @@
                         <div class="mb-3">
                             <label class="form-label">Registered Name</label>
                             <input class="form-control" type="text" name="oc_registered_name"
-                                placeholder="Registered Name" value="<?= @$bank->oc_registered_name ?>" readonly>
+                                placeholder="Registered Name" value="<?= @$bank->oc_registered_name ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">IBAN</label>
                             <input class="form-control" type="text" name="oc_iban" placeholder="IBAN"
-                                value="<?= @$bank->oc_iban ?>" readonly>
+                                value="<?= @$bank->oc_iban ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">BIC / SWIFT</label>
                             <input class="form-control" type="text" name="oc_bic" placeholder="BIC / SWIFT"
-                                value="<?= @$bank->oc_bic ?>" readonly>
+                                value="<?= @$bank->oc_bic ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Bank Name</label>
                             <input class="form-control" type="text" name="oc_bank_name" placeholder="Bank Name"
-                                value="<?= @$bank->oc_bank_name ?>" readonly>
+                                value="<?= @$bank->oc_bank_name ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Bank Address</label>
                             <input class="form-control" type="text" name="oc_bank_address" placeholder="Bank Address"
-                                value="<?= @$bank->oc_bank_address ?>" readonly>
+                                value="<?= @$bank->oc_bank_address ?>">
                         </div>
                     </div>
                 </div>

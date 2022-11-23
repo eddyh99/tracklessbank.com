@@ -16,9 +16,10 @@
                 </div>
                 <div class="card-body">
                     <input class="datepicker-af" type="text" name="tgl" id="tgl" readonly>
-                    <table class="table table-bordered" id="tbl_history">
+                    <table class="table table-hover table-bordered" id="tbl_history">
                         <thead class="table-dark">
-                            <tr>
+                            <tr class="align-middle">
+                                <th>No.</th>
                                 <th>Description</th>
                                 <th>Amount</th>
                                 <th>Cost</th>

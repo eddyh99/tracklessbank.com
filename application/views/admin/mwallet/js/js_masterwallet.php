@@ -27,6 +27,7 @@ $('#tgl').daterangepicker({
 });
 
 
+var i = 1;
 var tblhistory =
     $('#tbl_history').DataTable({
         "scrollX": true,
@@ -44,7 +45,15 @@ var tblhistory =
                 return data["history"];
             },
         },
+        order: [
+            [0, 'asc']
+        ],
+        "pageLength": 100,
         "columns": [{
+                "mRender": function(data, type, full, meta) {
+                    return i++;
+                }
+            }, {
                 "data": "ket"
             },
             {

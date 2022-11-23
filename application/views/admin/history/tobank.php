@@ -23,9 +23,10 @@
                             </select>
                         </div>
                     </div>
-                    <table id="tbl_history" class="table table-bordered">
+                    <table id="tbl_history" class="table table-hover table-bordered">
                         <thead class="table-dark">
-                            <tr>
+                            <tr class="align-middle">
+                                <th>No.</th>
                                 <th>Description</th>
                                 <th>Amount</th>
                                 <th>Cost</th>
