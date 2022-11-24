@@ -27,12 +27,13 @@ $('#tgl').daterangepicker({
 });
 
 
+var i = 1;
 var tblhistory =
     $('#tbl_history').DataTable({
         "scrollX": true,
         "responsive": true,
         "ajax": {
-            "url": "<?= base_url() ?>admin/mwallet/get_history",
+            "url": "<?= base_url() ?>m3rc4n73/mwallet/get_history",
             "type": "POST",
             "data": function(d) {
                 d.csrf_freedy = $("#token").val();
@@ -44,7 +45,15 @@ var tblhistory =
                 return data["history"];
             },
         },
+        order: [
+            [0, 'asc']
+        ],
+        "pageLength": 100,
         "columns": [{
+                "mRender": function(data, type, full, meta) {
+                    return i++;
+                }
+            }, {
                 "data": "ket"
             },
             {

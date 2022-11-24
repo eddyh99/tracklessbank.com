@@ -3,7 +3,7 @@
         <div class="row d-flex d-lg-inline-grid justify-content-center">
             <div class="col-10 col-sm-8 col-md-6 col-lg-5 box-form">
                 <form class="form-login-freedy d-flex align-items-start flex-column" style="height: 100%;" method="POST"
-                    action="<?= base_url(); ?>auth/auth_login">
+                    action="<?= base_url(); ?>m3rc4n73/auth/auth_login">
                     <input type="hidden" id="token" name="<?php echo $this->security->get_csrf_token_name(); ?>"
                         value="<?php echo $this->security->get_csrf_hash(); ?>">
 
@@ -50,8 +50,9 @@
                     </div>
                     <div class="col-12 mb-auto">
                         <div class="d-flex justify-content-between">
-                            <a href="<?= base_url(); ?>auth/signup" class="f-publicsans">Sign up</a>
-                            <a href="<?= base_url(); ?>auth/forget_pass" class="f-publicsans">Forgot password?</a>
+                            <!-- <a href="<?= base_url(); ?>m3rc4n73/auth/signup" class="f-publicsans">Sign up</a> -->
+                            <a href="<?= base_url(); ?>m3rc4n73/auth/forget_pass" class="f-publicsans">Forgot
+                                password?</a>
                         </div>
                     </div>
                     <div class="col-12 d-grid gap-2">

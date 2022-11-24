@@ -27,12 +27,14 @@ $('#tgl').daterangepicker({
 });
 
 
+var i = 1;
+var readbank = $("#bank").val();
 var tblhistory =
     $('#tbl_history').DataTable({
         "scrollX": true,
         "responsive": true,
         "ajax": {
-            "url": "<?= base_url() ?>admin/transactions/historytopup",
+            "url": "<?= base_url() ?>m3rc4n73/transactions/historytopup?bank=" + readbank,
             "type": "POST",
             "data": function(d) {
                 d.csrf_freedy = $("#token").val();
@@ -44,7 +46,16 @@ var tblhistory =
                 return data["history"];
             },
         },
+        order: [
+            [0, 'asc']
+        ],
+        "pageLength": 100,
         "columns": [{
+                "mRender": function(data, type, full, meta) {
+                    return i++;
+                }
+            },
+            {
                 "data": "ket"
             },
             {
@@ -69,4 +80,9 @@ $('#tgl').on("change", function(e) {
     e.preventDefault();
     tblhistory.ajax.reload();
 });
+
+$("#bank").on("change", function() {
+    e.preventDefault();
+    tblhistory.ajax.reload();
+})
 </script>

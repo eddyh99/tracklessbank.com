@@ -26,7 +26,7 @@
                     ($_SESSION["currency"] == "EUR") ||
                     ($_SESSION["currency"] == "AED")
                 ) { ?>
-                <a href="<?= base_url() ?>admin/mwallet/wdlocal"
+                <a href="<?= base_url() ?>m3rc4n73/mwallet/wdlocal"
                     class="btn btn-freedy-blue fw-bold px-5 py-3 mx-3">Local
                     Bank</a>
                 <?php } else { ?>
@@ -38,7 +38,7 @@
                 <?php } ?>
 
                 <?php if (($_SESSION["currency"] == "USD") || ($_SESSION["currency"] == "EUR")) { ?>
-                <a href="<?= base_url() ?>admin/mwallet/wdinter"
+                <a href="<?= base_url() ?>m3rc4n73/mwallet/wdinter"
                     class="btn btn-freedy-blue fw-bold px-5 py-3 mx-3">Outside
                     Circuit</a>
 

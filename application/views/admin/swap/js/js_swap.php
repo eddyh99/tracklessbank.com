@@ -6,7 +6,7 @@ $(function() {
 function calculate() {
     if ($("#amount").val() > 0) {
         $.ajax({
-            url: "<?= base_url() ?>admin/swap/swapcalculate",
+            url: "<?= base_url() ?>m3rc4n73/swap/swapcalculate",
             method: "post",
             data: $("#swapconfirm").serialize(),
             success: function(response) {
@@ -36,4 +36,9 @@ $("#toswap").on("change", function(e) {
     $("#tocurrency").html($('option:selected', this).attr("data-currency"))
     calculate();
 });
+
+function validate() {
+    $("#btnconfirm").attr("disabled", true);
+    $("#swapconfirm").submit();
+}
 </script>
