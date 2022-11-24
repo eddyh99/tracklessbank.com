@@ -375,19 +375,28 @@
                 <div class="col-12">
                     <div class="row d-flex justify-content-center">
                         <div class="col-12 col-sm-6 col-md-4 col-lg-4 p-3">
-                            <div class="box-powered text-center">
-                                <img src="<?= base_url() ?>assets/images/magnify.png" alt="">
-                            </div>
+                            <a href="#" class="cs-powered" style="color: #fff;text-decoration: none;">
+                                <div class="box-powered text-center">
+                                    <img src="<?= base_url() ?>assets/images/magnify.png" alt="">
+                                </div>
+                                <span class="mt-3 d-block">Coming soon</span>
+                            </a>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-4 p-3">
-                            <div class="box-powered text-center">
-                                <img src="<?= base_url() ?>assets/images/piggylogo.png" alt="">
-                            </div>
+                            <a href="#" class="cs-powered" style="color: #fff;text-decoration: none;">
+                                <div class="box-powered text-center">
+                                    <img src="<?= base_url() ?>assets/images/piggylogo.png" alt="">
+                                </div>
+                                <span class="mt-3 d-block">Coming soon</span>
+                            </a>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-4 p-3">
-                            <div class="box-powered text-center">
-                                <img src="<?= base_url() ?>assets/images/freedylogo.png" alt="">
-                            </div>
+                            <a href="https://freedybank.com/" class="cs-powered"
+                                style="color: #fff;text-decoration: none;">
+                                <div class="box-powered text-center">
+                                    <img src="<?= base_url() ?>assets/images/freedylogo.png" alt="">
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
