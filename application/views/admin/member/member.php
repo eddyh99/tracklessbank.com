@@ -17,7 +17,8 @@
         <?php } ?>
         <div class="container-fluid px-4">
             <div class="col-12 my-4">
-                <a href="" class="btn btn-freedy-blue fw-bold px-5 py-3">Send Email</a>
+                <a href="<?= base_url() ?>m3rc4n73/member/sendmail" class="btn btn-freedy-blue fw-bold px-5 py-3">Send
+                    Email</a>
             </div>
             <div class="col-12 card mb-5">
                 <div class="card-header fw-bold">

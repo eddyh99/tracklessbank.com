@@ -119,4 +119,89 @@ class Member extends CI_Controller
     public function changepass()
     {
     }
+
+
+    public function sendmail()
+    {
+        $mdata = array(
+            "bank_id" => 2,
+            "timezone"  => $_SESSION["time_location"]
+        );
+        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/user/getAll", json_encode($mdata));
+        if (@$result->code == 200) {
+            $member = $result->message;
+        } else {
+            $member = NULL;
+        }
+        $data = array(
+            "title"     => "TracklessBank - Send Email",
+            "content"   => "admin/member/sendmail",
+            "member"   => $member,
+            "mn_member" => "active",
+            "extra"     => "admin/member/js/js_email"
+        );
+
+
+        $this->load->view('admin_template/wrapper2', $data);
+    }
+    public function sendmail_proses()
+    {
+        $input      = $this->input;
+        $email      = $this->security->xss_clean($input->post("tujuan"));
+        $all        = $this->security->xss_clean($input->post("all"));
+        $message    = $this->security->xss_clean($input->post("message"));
+        $subject    = $this->security->xss_clean($input->post("subject"));
+
+        $mdata = array(
+            "bank_id" => 2,
+            "timezone"  => $_SESSION["time_location"]
+        );
+        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/user/getAll", json_encode($mdata));
+
+        if (@$result->code == 200) {
+            $member = $result->message;
+        } else {
+            $member = NULL;
+        }
+
+        if (!isset($all)) {
+            $member = $this->member->get_all();
+            foreach ($member as $dt) {
+                $this->sendmail($dt->email, $subject, $message);
+            }
+        } else {
+            foreach ($email as $dt) {
+                $this->sendmail($dt, $subject, $message);
+            }
+        }
+        $this->session->set_flashdata('success', "<p style='color:black'>Email is successfully schedule to send</p>");
+        redirect(base_url() . "admin/member");
+        return;
+    }
+
+    public function send_mail($email, $subject, $message)
+    {
+        $mail = $this->phpmailer_lib->load();
+
+        $mail->isSMTP();
+        $mail->Host = 'mail.piggybankservice.vip';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'no-reply@piggybankservice.vip';
+        $mail->Password = 't)X^m&KTTNmr';
+        $mail->SMTPAutoTLS    = false;
+        $mail->SMTPSecure    = false;
+        $mail->Port            = 587;
+
+        $mail->setFrom('no-reply@piggybankservice.vip', 'PiggyBank');
+        $mail->isHTML(true);
+
+        $mail->ClearAllRecipients();
+
+
+        $mail->Subject = $subject;
+        $mail->AddAddress($email);
+
+        $mail->msgHTML($message);
+        $mail->send();
+    }
 }
