@@ -27,7 +27,7 @@ $(document).ready(function() {
         ],
         placeholder: 'Type Message...',
         tabsize: 2,
-        height: 300
+        height: 300        
     });
     $('.dropdown-toggle').dropdown();
 });
