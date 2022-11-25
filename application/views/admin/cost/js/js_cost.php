@@ -21,20 +21,14 @@ $("#currency_wcost").on("change", function() {
 
 function dcost() {
     var readcurrency = $("#currency_dcost").val();
-    var readbank = $("#bank_dcost").val();
     if (!readcurrency) {
         document.getElementById("notifcurr").innerHTML = "Please select a Currency.";
     } else {
         document.getElementById("notifcurr").innerHTML = "";
     }
-    if (!readbank) {
-        document.getElementById("notifbank").innerHTML = "Please select a Bank.";
-    } else {
-        document.getElementById("notifbank").innerHTML = "";
-    }
 
     $.ajax({
-        url: "<?= base_url() ?>m3rc4n73/cost/getdcost?currency=" + readcurrency + "&bank=" + readbank,
+        url: "<?= base_url() ?>m3rc4n73/cost/getdcost?currency=" + readcurrency,
         success: function(response) {
             console.log(response);
             var data = JSON.parse(response);
@@ -53,9 +47,6 @@ function dcost() {
 }
 
 $("#currency_dcost").on("change", function() {
-    dcost();
-})
-$("#bank_dcost").on("change", function() {
     dcost();
 })
 

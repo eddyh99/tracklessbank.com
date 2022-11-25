@@ -26,6 +26,13 @@
                     List Member
                 </div>
                 <div class="card-body">
+                    <div class="col-auto">
+                        <select name="bank" id="bank" class="form-select my-3">
+                            <?php foreach ($bank as $dt) { ?>
+                            <option value="<?= $dt->id ?>"><?= $dt->bank_name ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
                     <table id="member" class="table table-hover table-bordered">
                         <thead class="table-dark">
                             <tr class="align-middle">

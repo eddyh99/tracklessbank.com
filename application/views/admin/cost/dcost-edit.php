@@ -39,20 +39,6 @@
                                     value="<?= $curr ?>" hidden>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="bank_dcost" class="col-sm-2 col-form-label">Bank</label>
-                            <div class="col-sm-10">
-                                <select name="bank" id="bank_dcost" class="form-select" disabled>
-                                    <option value="">-Select Bank-</option>
-                                    <?php foreach ($banks as $dt) { ?>
-                                    <option value="<?= $dt->id ?>" <?php echo ($dt->id == $bank) ? "selected" : "" ?>>
-                                        <?= $dt->bank_name ?></option>
-                                    <?php } ?>
-                                </select>
-                                <input type="text" id="bank" name="bank" class="form-control" value="<?= $bank ?>"
-                                    hidden>
-                            </div>
-                        </div>
                         <div class="mb-3">
                             <label class="form-label">Topup</label>
                             <input type="text" id="topup" name="topup" class="form-control"
@@ -84,7 +70,7 @@
                         </div>
                         <div class="mb-3">
                             <button id="btnconfirm"
-                                class="btn btn-freedy-blue px-4 py-2 mx-auto shadow-none">Edit</button>
+                                class="btn btn-freedy-blue px-4 py-2 mx-auto shadow-none">Confirm</button>
                         </div>
                     </form>
                 </div>

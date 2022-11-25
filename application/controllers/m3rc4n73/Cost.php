@@ -32,7 +32,6 @@ class Cost extends CI_Controller
 			"mn_dcost"    => "active",
 			"extra"     => "admin/cost/js/js_cost",
 			"currency"  => apitrackless("https://api.tracklessbank.com/v1/trackless/currency/getAllCurrency")->message,
-			"bank"  => apitrackless("https://api.tracklessbank.com/v1/trackless/member/getAll_bank")->message,
 		);
 
 		$this->load->view('admin_template/wrapper', $data);
@@ -41,7 +40,6 @@ class Cost extends CI_Controller
 	public function editdcost()
 	{
 		$this->form_validation->set_rules('currency', 'Currency', 'trim|required');
-		$this->form_validation->set_rules('bank', 'Bank', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->session->set_flashdata('failed', validation_errors());
@@ -52,9 +50,8 @@ class Cost extends CI_Controller
 		$input = $this->input;
 
 		$curr = $this->security->xss_clean($input->post("currency"));
-		$bank = $this->security->xss_clean($input->post("bank"));
 
-		$url = apitrackless("https://api.tracklessbank.com/v1/trackless/cost/getCost?currency=" . $curr . "&bank_id=" . $bank);
+		$url = apitrackless("https://api.tracklessbank.com/v1/trackless/cost/getCost?currency=" . $curr);
 
 		$mdata = array();
 		if (@$url->code == 200) {
@@ -86,7 +83,6 @@ class Cost extends CI_Controller
 			"banks" 		=> apitrackless("https://api.tracklessbank.com/v1/trackless/member/getAll_bank")->message,
 			"dcost"  	=> $mdata,
 			"curr"		=> $curr,
-			"bank"		=> $bank,
 		);
 
 		$this->load->view('admin_template/wrapper', $data);
@@ -96,7 +92,6 @@ class Cost extends CI_Controller
 	{
 
 		$this->form_validation->set_rules('currency', 'Currency', 'trim|required');
-		$this->form_validation->set_rules('bank', 'Bank', 'trim|required');
 		$this->form_validation->set_rules('topup', 'Topup', 'trim|required|greater_than[0]');
 		$this->form_validation->set_rules('wallet_sender', 'Wallet sender', 'trim|required|greater_than[0]');
 		$this->form_validation->set_rules('wallet_receiver', 'Wallet receiver', 'trim|required|greater_than[0]');
@@ -113,7 +108,6 @@ class Cost extends CI_Controller
 		$input = $this->input;
 
 		$curr = $this->security->xss_clean($input->post("currency"));
-		$bank = $this->security->xss_clean($input->post("bank"));
 		$topup = $this->security->xss_clean($input->post("topup"));
 		$wallet_sender = $this->security->xss_clean($input->post("wallet_sender"));
 		$wallet_receiver = $this->security->xss_clean($input->post("wallet_receiver"));
@@ -129,7 +123,6 @@ class Cost extends CI_Controller
 			"walletbank_outside" 	=> number_format($walletbank_outside, 2, ".", ","),
 			"swap" 					=> number_format($swap, 2, ".", ","),
 			"currency" 				=> $curr,
-			"bank_id" 				=> $bank,
 		);
 
 		$result = apitrackless("https://api.tracklessbank.com/v1/trackless/cost/setBankcost", json_encode($dataUpdate));
@@ -167,9 +160,7 @@ class Cost extends CI_Controller
 	public function getdcost()
 	{
 		$currency		= $this->security->xss_clean($_GET["currency"]);
-		$bank		= $this->security->xss_clean($_GET["bank"]);
-		$mfee = apitrackless("https://api.tracklessbank.com/v1/trackless/cost/getCost?currency=" . $currency . "&bank_id=" . $bank);
-
+		$mfee = apitrackless("https://api.tracklessbank.com/v1/trackless/cost/getCost?currency=" . $currency);
 		$mdata = array();
 		if (@$mfee->code == 200) {
 			$mdata = array(

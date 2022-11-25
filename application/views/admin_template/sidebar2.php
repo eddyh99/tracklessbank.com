@@ -12,10 +12,6 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-wallet"></i></div>
                         Master Wallet
                     </a>
-                    <a class="nav-link <?= @$mn_member ?>" href="<?= base_url() ?>m3rc4n73/member">
-                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                        Member
-                    </a>
                     <a class="nav-link <?= @$mn_bank ?>" href="<?= base_url() ?>m3rc4n73/bank">
                         <div class="sb-nav-link-icon"><i class="fas fa-bank"></i></div>
                         Bank

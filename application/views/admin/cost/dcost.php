@@ -41,19 +41,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="bank_dcost" class="col-sm-2 col-form-label">Bank</label>
-                            <div class="col-sm-10">
-                                <select name="bank" id="bank_dcost" class="form-select">
-                                    <option value="">-Select Bank-</option>
-                                    <?php foreach ($bank as $dt) { ?>
-                                    <option value="<?= $dt->id ?>"><?= $dt->bank_name ?></option>
-                                    <?php } ?>
-                                </select>
-                                <div class="invalid-feedback d-grid" id="notifbank">
-                                </div>
-                            </div>
-                        </div>
                         <div class="mb-3">
                             <label class="form-label">Topup</label>
                             <input type="text" id="topup" name="topup" class="form-control" readonly>

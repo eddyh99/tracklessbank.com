@@ -7,6 +7,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
+                        <a class="nav-link <?= @$mn_member ?>" href="<?= base_url() ?>m3rc4n73/member">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Member
+                        </a>
                         <a class="nav-link <?= @$mn_currency ?>" href="<?= base_url() ?>m3rc4n73/currency">
                             <div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
                             Currency
