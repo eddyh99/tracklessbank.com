@@ -26,10 +26,16 @@ class Member extends CI_Controller
 
     public function get_all()
     {
-        $mdata = array(
-            "bank_id"   => $_POST["bank_id"],
-            "timezone"  => $_SESSION["time_location"]
-        );
+        if ($_POST["bank_id"]=="all"){
+            $mdata = array(
+                "timezone"  => $_SESSION["time_location"]
+            );
+        }else{
+            $mdata = array(
+                "bank_id"   => $_POST["bank_id"],
+                "timezone"  => $_SESSION["time_location"]
+            );
+        }
         $result = apitrackless("https://api.tracklessbank.com/v1/trackless/user/getAll", json_encode($mdata));
         $data["token"] = $this->security->get_csrf_hash();
         if (@$result->code == 200) {

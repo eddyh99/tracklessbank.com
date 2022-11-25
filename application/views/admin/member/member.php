@@ -28,6 +28,7 @@
                 <div class="card-body">
                     <div class="col-auto">
                         <select name="bank" id="bank" class="form-select my-3">
+                            <option value="all">All Bank</option>
                             <?php foreach ($bank as $dt) { ?>
                             <option value="<?= $dt->id ?>"><?= $dt->bank_name ?></option>
                             <?php } ?>
