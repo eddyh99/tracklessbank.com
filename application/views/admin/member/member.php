@@ -26,13 +26,16 @@
                     List Member
                 </div>
                 <div class="card-body">
-                    <div class="col-auto">
-                        <select name="bank" id="bank" class="form-select my-3">
-                            <option value="all">All Bank</option>
-                            <?php foreach ($bank as $dt) { ?>
-                            <option value="<?= $dt->id ?>"><?= $dt->bank_name ?></option>
-                            <?php } ?>
-                        </select>
+                    <div class=" my-3 row">
+                        <label for="bank" class="col-sm-2 col-form-label">Bank</label>
+                        <div class="col-sm-10">
+                            <select name="bank" id="bank" class="form-select">
+                                <option value="all">All Bank</option>
+                                <?php foreach ($bank as $dt) { ?>
+                                <option value="<?= $dt->id ?>"><?= $dt->bank_name ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
                     </div>
                     <table id="member" class="table table-hover table-bordered">
                         <thead class="table-dark">

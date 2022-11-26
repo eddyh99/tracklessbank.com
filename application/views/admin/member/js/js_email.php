@@ -18,16 +18,16 @@
 $(document).ready(function() {
     $("#message").summernote({
         toolbar: [
-          ['font', ['bold', 'underline', 'clear']],
-          ['fontname', ['fontname']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
         ],
         placeholder: 'Type Message...',
         tabsize: 2,
-        height: 300        
+        height: 300
     });
     $('.dropdown-toggle').dropdown();
 });
@@ -43,4 +43,10 @@ $("#all").on("click", function() {
         $("#tujuan").prop("disabled", false);
     }
 });
+
+
+function validate() {
+    $("#btnconfirm").attr("disabled", true);
+    $("#form_submit").submit();
+}
 </script>

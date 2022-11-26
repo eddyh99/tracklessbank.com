@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://tracklessbank.com/';
+$config['base_url'] = 'http://localhost/tracklessbank.com/';
 date_default_timezone_set('Asia/Singapore');
 
 /*

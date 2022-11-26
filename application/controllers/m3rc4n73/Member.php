@@ -26,11 +26,11 @@ class Member extends CI_Controller
 
     public function get_all()
     {
-        if ($_POST["bank_id"]=="all"){
+        if ($_POST["bank_id"] == "all") {
             $mdata = array(
                 "timezone"  => $_SESSION["time_location"]
             );
-        }else{
+        } else {
             $mdata = array(
                 "bank_id"   => $_POST["bank_id"],
                 "timezone"  => $_SESSION["time_location"]
@@ -140,7 +140,7 @@ class Member extends CI_Controller
             $member = NULL;
         }
         $data = array(
-            "title"     => "TracklessBank - Send Email",
+            "title"     => "Freedybank - Send Email",
             "content"   => "admin/member/sendmail",
             "member"   => $member,
             "mn_member" => "active",
@@ -148,9 +148,9 @@ class Member extends CI_Controller
         );
 
 
-        $this->load->view('admin_template/wrapper2', $data);
+        $this->load->view('admin_template/wrapper', $data);
     }
-    
+
     public function sendmail_proses()
     {
         $input      = $this->input;
@@ -158,49 +158,49 @@ class Member extends CI_Controller
         $all        = $this->security->xss_clean($input->post("all"));
         $message    = $this->security->xss_clean($input->post("message"));
         $subject    = $this->security->xss_clean($input->post("subject"));
-        if ($all=="all"){
+        if ($all == "all") {
             $mdata = array(
                 "timezone"  => $_SESSION["time_location"]
             );
             $result = apitrackless("https://api.tracklessbank.com/v1/trackless/user/getAll", json_encode($mdata));
-            $member=array();
-            foreach ($result->message as $dt){
-                $temp["email"]=$dt->email;
-                array_push($member,$temp);
+            $member = array();
+            foreach ($result->message as $dt) {
+                $temp["email"] = $dt->email;
+                array_push($member, $temp);
             }
-            $this->send_email($member,$subject,$message);
-        }else{
-            $this->send_email($email,$subject,$message);
+            $this->send_email($member, $subject, $message);
+        } else {
+            $this->send_email($email, $subject, $message);
         }
         $this->session->set_flashdata('success', "<p style='color:black'>Email is successfully schedule to send</p>");
         redirect(base_url() . "m3rc4n73/member/sendmail");
         return;
     }
 
-    public function send_email($email=array(), $subject, $message)
+    public function send_email($email, $subject, $message)
     {
         $mail = $this->phpmailer_lib->load();
 
-		$mail->isSMTP();
-		$mail->Host         = 'mail.tracklessbank.com';
-		$mail->SMTPAuth     = true;
-		$mail->Username     = 'no-reply@tracklessbank.com';
-		$mail->Password     = 'NaBbrvu[*Tn^';
-		$mail->SMTPAutoTLS	= false;
-		$mail->SMTPSecure	= false;
-		$mail->Port			= 587;
+        $mail->isSMTP();
+        $mail->Host         = 'mail.tracklessbank.com';
+        $mail->SMTPAuth     = true;
+        $mail->Username     = 'no-reply@tracklessbank.com';
+        $mail->Password     = 'NaBbrvu[*Tn^';
+        $mail->SMTPAutoTLS    = false;
+        $mail->SMTPSecure    = false;
+        $mail->Port            = 587;
 
-		$mail->setFrom('no-reply@tracklessbank.com', 'TracklessBank');
-		$mail->isHTML(true);
+        $mail->setFrom('no-reply@tracklessbank.com', 'TracklessBank');
+        $mail->isHTML(true);
 
-		$mail->ClearAllRecipients();
+        $mail->ClearAllRecipients();
 
-		$mail->Subject = $subject;
-		foreach ($email as $dt){
-    		$mail->AddAddress($dt);
-		}
+        $mail->Subject = $subject;
+        foreach ($email as $dt) {
+            $mail->AddAddress($dt);
+        }
 
-		$mail->msgHTML($message);
-		$mail->send();
+        $mail->msgHTML($message);
+        $mail->send();
     }
 }
