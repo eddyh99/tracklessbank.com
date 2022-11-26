@@ -214,7 +214,7 @@ class Member extends CI_Controller
         );
 
 
-        $this->load->view('admin_template/wrapper2', $data);
+        $this->load->view('admin_template/wrapper', $data);
     }
 
     public function sendmail_proses()
