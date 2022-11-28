@@ -1,39 +1,51 @@
 <script>
-// function enablecurrency(cur, status) {
-//     $.get("<?= base_url() ?>m3rc4n73/currency/setCurrency?currency=" + cur + "&status=" + status, function(data) {
-//         var data = JSON.parse(data);
-//         console.log(data);
-//         if (data.error == 'failed') {
-//             alert(data.message + ' ' + cur + ' ' + status);
-//             $("#" + cur).prop('checked', true);
-//         }
-//     });
-// }
-
 $.ajax({
     url: "<?= base_url() ?>m3rc4n73/currency/getcurrency",
     dataType: 'json',
     success: function(result) {
         $("#list_currency").html(result.message);
-        // console.log(result.message);
     }
 });
 
 function enablecurrency(cur, status) {
-    $.ajax({
-        url: "<?= base_url() ?>m3rc4n73/currency/setCurrency?currency=" + cur + "&status=" + status,
-        success: function(response) {
-            var data = JSON.parse(response);
-            console.log(response);
-            $.ajax({
-                url: "<?= base_url() ?>m3rc4n73/currency/getcurrency",
-                dataType: 'json',
-                success: function(result) {
-                    $("#list_currency").html(result.message);
-                    // console.log(result.message);
+    var notif = 'are you sure to ' + status + ' ' + cur + '?';
+    var loading = document.getElementById("loadingProgress")
+    if (confirm(notif)) {
+        loading.classList.remove("collapse");
+        $.ajax({
+            url: "<?= base_url() ?>m3rc4n73/currency/setCurrency?currency=" + cur + "&status=" + status,
+            success: function(response) {
+                var data = JSON.parse(response);
+                console.log(response);
+                if (status == "active") {
+                    $.ajax({
+                        url: "<?= base_url() ?>m3rc4n73/cost/sendmail_proses?currency=" + cur,
+                        dataType: 'json',
+                        success: function(result) {
+                            console.log(result);
+                            window.location.href =
+                                "<?= base_url() ?>m3rc4n73/cost/editbcost?currency=" + cur;
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        url: "<?= base_url() ?>m3rc4n73/currency/getcurrency",
+                        dataType: 'json',
+                        success: function(result) {
+                            $("#list_currency").html(result.message);
+                        }
+                    });
                 }
-            });
-        }
-    })
+            }
+        })
+    } else {
+        $.ajax({
+            url: "<?= base_url() ?>m3rc4n73/currency/getcurrency",
+            dataType: 'json',
+            success: function(result) {
+                $("#list_currency").html(result.message);
+            }
+        });
+    }
 }
 </script>

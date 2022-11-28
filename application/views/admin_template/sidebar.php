@@ -15,7 +15,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
                             Currency
                         </a>
-                        <a class="nav-link <?= @$mn_wcost ?>" href="<?= base_url() ?>m3rc4n73/cost/wcost">
+                        <a class="nav-link <?= @$mn_wcost ?>" href="<?= base_url() ?>m3rc4n73/cost/bcost">
                             <div class="sb-nav-link-icon"><i class="fas fa-coins"></i></div>
                             Bank Cost
                         </a>
