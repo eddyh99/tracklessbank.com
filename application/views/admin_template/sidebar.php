@@ -15,9 +15,9 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
                             Currency
                         </a>
-                        <a class="nav-link <?= @$mn_wcost ?>" href="<?= base_url() ?>m3rc4n73/cost/wcost">
+                        <a class="nav-link <?= @$mn_wcost ?>" href="<?= base_url() ?>m3rc4n73/cost/bcost">
                             <div class="sb-nav-link-icon"><i class="fas fa-coins"></i></div>
-                            Wise Cost
+                            Bank Cost
                         </a>
                         <a class="nav-link <?= @$mn_dcost ?>" href="<?= base_url() ?>m3rc4n73/cost/dcost">
                             <div class="sb-nav-link-icon"><i class="fas fa-coins"></i></div>

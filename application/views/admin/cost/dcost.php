@@ -23,7 +23,6 @@
                     Default Cost
                 </div>
                 <div class="card-body">
-
                     <form action="<?= base_url() ?>m3rc4n73/cost/editdcost" method="post" id="form_submit"
                         onsubmit="return validate()">
                         <input type="hidden" id="token" name="<?php echo $this->security->get_csrf_token_name(); ?>"
@@ -42,27 +41,64 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Topup</label>
-                            <input type="text" id="topup" name="topup" class="form-control" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Wallet sender</label>
-                            <input type="text" id="wallet_sender" name="wallet_sender" class="form-control" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Wallet receiver</label>
-                            <input type="text" id="wallet_receiver" name="wallet_receiver" class="form-control"
+                            <label class="form-label">Topup Circuit (Fixed)</label>
+                            <input type="text" id="topup_circuit_fxd" name="topup_circuit_fxd" class="form-control"
                                 readonly>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Walletbank circuit</label>
-                            <input type="text" id="walletbank_circuit" name="walletbank_circuit" class="form-control"
+                            <label class="form-label">Topup Circuit (%)</label>
+                            <input type="text" id="topup_circuit_pct" name="topup_circuit_pct" class="form-control"
                                 readonly>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Walletbank outside</label>
-                            <input type="text" id="walletbank_outside" name="walletbank_outside" class="form-control"
+                            <label class="form-label">Topup Outside (Fixed)</label>
+                            <input type="text" id="topup_outside_fxd" name="topup_outside_fxd" class="form-control"
                                 readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Topup Outside (%)</label>
+                            <input type="text" id="topup_outside_pct" name="topup_outside_pct" class="form-control"
+                                readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Wallet Sender Circuit (Fixed)</label>
+                            <input type="text" id="wallet_sender_fxd" name="wallet_sender_fxd" class="form-control"
+                                readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Wallet Sender Circuit (%)</label>
+                            <input type="text" id="wallet_sender_pct" name="wallet_sender_pct" class="form-control"
+                                readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Wallet Receive Outside (Fixed)</label>
+                            <input type="text" id="wallet_receiver_fxd" name="wallet_receiver_fxd" class="form-control"
+                                readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Wallet Receive Outside (%)</label>
+                            <input type="text" id="wallet_receiver_pct" name="wallet_receiver_pct" class="form-control"
+                                readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Walletbank Circuit (Fixed)</label>
+                            <input type="text" id="walletbank_circuit_fxd" name="walletbank_circuit_fxd"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Walletbank Circuit (%)</label>
+                            <input type="text" id="walletbank_circuit_pct" name="walletbank_circuit_pct"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Walletbank Outside (Fixed)</label>
+                            <input type="text" id="walletbank_outside_fxd" name="walletbank_outside_fxd"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Walletbank Outside (%)</label>
+                            <input type="text" id="walletbank_outside_pct" name="walletbank_outside_pct"
+                                class="form-control" readonly>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Swap</label>

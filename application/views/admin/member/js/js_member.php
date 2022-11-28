@@ -7,9 +7,9 @@ $(function() {
         "ajax": {
             "url": "<?= base_url() ?>m3rc4n73/member/get_all",
             "type": "POST",
-            "data": function ( d ) {
+            "data": function(d) {
                 d.csrf_freedy = $("#token").val(),
-                d.bank_id = $("#bank").val()
+                    d.bank_id = $("#bank").val()
             },
             "dataSrc": function(data) {
                 $("#token").val(data["token"]);

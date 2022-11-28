@@ -10,7 +10,8 @@
                     Send Email
                 </div>
                 <div class="card-body">
-                    <form action="<?= base_url() ?>m3rc4n73/member/sendmail_proses" method="post">
+                    <form action="<?= base_url() ?>m3rc4n73/member/sendmail_proses" method="post" id="form_submit"
+                        onsubmit="return validate()">
                         <input type="hidden" id="token" name="<?php echo $this->security->get_csrf_token_name(); ?>"
                             value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <div class="card-body">

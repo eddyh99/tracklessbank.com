@@ -20,7 +20,7 @@
                     Default Cost
                 </div>
                 <div class="card-body">
-                    <form action="<?= base_url() ?>m3rc4n73/cost/editdcost_prosses" method="post" id="form_submit"
+                    <form action="<?= base_url() ?>m3rc4n73/cost/editbcost_prosses" method="post" id="form_submit"
                         onsubmit="return validate()">
                         <input type="hidden" id="token" name="<?php echo $this->security->get_csrf_token_name(); ?>"
                             value="<?php echo $this->security->get_csrf_hash(); ?>">
@@ -42,70 +42,46 @@
                         <div class="mb-3">
                             <label class="form-label">Topup Circuit (Fixed)</label>
                             <input type="text" id="topup_circuit_fxd" name="topup_circuit_fxd" class="form-control"
-                                value="<?= $dcost['topup_circuit_fxd'] ?>">
+                                value="<?= $bcost['topup_circuit_fxd']; ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Topup Circuit (%)</label>
                             <input type="text" id="topup_circuit_pct" name="topup_circuit_pct" class="form-control"
-                                value="<?= $dcost['topup_circuit_pct'] ?>">
+                                value="<?= $bcost['topup_circuit_pct']; ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Topup Outside (Fixed)</label>
                             <input type="text" id="topup_outside_fxd" name="topup_outside_fxd" class="form-control"
-                                value="<?= $dcost['topup_outside_fxd'] ?>">
+                                value="<?= $bcost['topup_outside_fxd']; ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Topup Outside (%)</label>
                             <input type="text" id="topup_outside_pct" name="topup_outside_pct" class="form-control"
-                                value="<?= $dcost['topup_outside_pct'] ?>">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Wallet Sender Circuit (Fixed)</label>
-                            <input type="text" id="wallet_sender_fxd" name="wallet_sender_fxd" class="form-control"
-                                value="<?= $dcost['wallet_sender_fxd'] ?>">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Wallet Sender Circuit (%)</label>
-                            <input type="text" id="wallet_sender_pct" name="wallet_sender_pct" class="form-control"
-                                value="<?= $dcost['wallet_sender_pct'] ?>">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Wallet Receive Outside (Fixed)</label>
-                            <input type="text" id="wallet_receiver_fxd" name="wallet_receiver_fxd" class="form-control"
-                                value="<?= $dcost['wallet_receiver_fxd'] ?>">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Wallet Receive Outside (%)</label>
-                            <input type="text" id="wallet_receiver_pct" name="wallet_receiver_pct" class="form-control"
-                                value="<?= $dcost['wallet_receiver_pct'] ?>">
+                                value="<?= $bcost['topup_outside_pct']; ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Walletbank Circuit (Fixed)</label>
-                            <input type="text" id="walletbank_circuit_fxd" name="walletbank_circuit_fxd"
-                                class="form-control" value="<?= $dcost['walletbank_circuit_fxd'] ?>">
+                            <input type="text" id="transfer_circuit_fxd" name="transfer_circuit_fxd"
+                                class="form-control" value="<?= $bcost['transfer_circuit_fxd']; ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Walletbank Circuit (%)</label>
-                            <input type="text" id="walletbank_circuit_pct" name="walletbank_circuit_pct"
-                                class="form-control" value="<?= $dcost['walletbank_circuit_pct'] ?>">
+                            <input type="text" id="transfer_circuit_pct" name="transfer_circuit_pct"
+                                class="form-control" value="<?= $bcost['transfer_circuit_pct']; ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Walletbank Outside (Fixed)</label>
-                            <input type="text" id="walletbank_outside_fxd" name="walletbank_outside_fxd"
-                                class="form-control" value="<?= $dcost['walletbank_outside_fxd'] ?>">
+                            <input type="text" id="transfer_outside_fxd" name="transfer_outside_fxd"
+                                class="form-control" value="<?= $bcost['transfer_outside_fxd']; ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Walletbank Outside (%)</label>
-                            <input type="text" id="walletbank_outside_pct" name="walletbank_outside_pct"
-                                class="form-control" value="<?= $dcost['walletbank_outside_pct'] ?>">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Swap</label>
-                            <input type="text" id="swap" name="swap" class="form-control" value="<?= $dcost['swap'] ?>">
+                            <input type="text" id="transfer_outside_pct" name="transfer_outside_pct"
+                                class="form-control" value="<?= $bcost['transfer_outside_pct']; ?>">
                         </div>
                         <div class="mb-3">
                             <button id="btnconfirm"
-                                class="btn btn-freedy-blue px-4 py-2 mx-auto shadow-none">Confirm</button>
+                                class="btn btn-freedy-blue px-4 py-2 mx-auto shadow-none">Edit</button>
                         </div>
                     </form>
                 </div>
