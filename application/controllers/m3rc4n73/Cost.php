@@ -57,17 +57,17 @@ class Cost extends CI_Controller
 		if (@$url->code == 200) {
 			$mdata = array(
 				"topup_circuit_fxd" => number_format($url->message->topup_circuit_fxd, 2, ".", ","),
-				"topup_circuit_pct" => number_format($url->message->topup_circuit_pct*100, 2, ".", ","),
+				"topup_circuit_pct" => number_format($url->message->topup_circuit_pct * 100, 2, ".", ","),
 				"topup_outside_fxd" => number_format($url->message->topup_outside_fxd, 2, ".", ","),
-				"topup_outside_pct" => number_format($url->message->topup_outside_pct*100, 2, ".", ","),
+				"topup_outside_pct" => number_format($url->message->topup_outside_pct * 100, 2, ".", ","),
 				"wallet_sender_fxd" => number_format($url->message->wallet_sender_fxd, 2, ".", ","),
-				"wallet_sender_pct" => number_format($url->message->wallet_sender_pct*100, 2, ".", ","),
+				"wallet_sender_pct" => number_format($url->message->wallet_sender_pct * 100, 2, ".", ","),
 				"wallet_receiver_fxd" => number_format($url->message->wallet_receiver_fxd, 2, ".", ","),
-				"wallet_receiver_pct" => number_format($url->message->wallet_receiver_pct*100, 2, ".", ","),
+				"wallet_receiver_pct" => number_format($url->message->wallet_receiver_pct * 100, 2, ".", ","),
 				"walletbank_circuit_fxd" => number_format($url->message->walletbank_circuit_fxd, 2, ".", ","),
-				"walletbank_circuit_pct" => number_format($url->message->walletbank_circuit_pct*100, 2, ".", ","),
+				"walletbank_circuit_pct" => number_format($url->message->walletbank_circuit_pct * 100, 2, ".", ","),
 				"walletbank_outside_fxd" => number_format($url->message->walletbank_outside_fxd, 2, ".", ","),
-				"walletbank_outside_pct" => number_format($url->message->walletbank_outside_pct*100, 2, ".", ","),
+				"walletbank_outside_pct" => number_format($url->message->walletbank_outside_pct * 100, 2, ".", ","),
 				"swap" => number_format($url->message->swap, 2, ".", ","),
 			);
 		} else {
@@ -146,17 +146,17 @@ class Cost extends CI_Controller
 
 		$dataUpdate = array(
 			"topup_circuit_fxd" => $topup_circuit_fxd,
-			"topup_circuit_pct" => $topup_circuit_pct/100,
+			"topup_circuit_pct" => $topup_circuit_pct / 100,
 			"topup_outside_fxd" => $topup_outside_fxd,
-			"topup_outside_pct" => $topup_outside_pct/100,
+			"topup_outside_pct" => $topup_outside_pct / 100,
 			"wallet_sender_fxd" => $wallet_sender_fxd,
-			"wallet_sender_pct" => $wallet_sender_pct/100,
+			"wallet_sender_pct" => $wallet_sender_pct / 100,
 			"wallet_receiver_fxd" => $wallet_receiver_fxd,
-			"wallet_receiver_pct" => $wallet_receiver_pct/100,
+			"wallet_receiver_pct" => $wallet_receiver_pct / 100,
 			"walletbank_circuit_fxd" => $walletbank_circuit_fxd,
-			"walletbank_circuit_pct" => $walletbank_circuit_pct/100,
+			"walletbank_circuit_pct" => $walletbank_circuit_pct / 100,
 			"walletbank_outside_fxd" => $walletbank_outside_fxd,
-			"walletbank_outside_pct" => $walletbank_outside_pct/100,
+			"walletbank_outside_pct" => $walletbank_outside_pct / 100,
 			"swap" => $swap,
 			"currency" => $curr,
 		);
@@ -193,13 +193,13 @@ class Cost extends CI_Controller
 		if (@$url->code == 200) {
 			$mdata = array(
 				"transfer_circuit_fxd" => number_format($url->message->transfer_circuit_fxd, 2, ".", ","),
-				"transfer_circuit_pct" => number_format($url->message->transfer_circuit_pct*100, 2, ".", ","),
+				"transfer_circuit_pct" => number_format($url->message->transfer_circuit_pct * 100, 2, ".", ","),
 				"transfer_outside_fxd" => number_format($url->message->transfer_outside_fxd, 2, ".", ","),
-				"transfer_outside_pct" => number_format($url->message->transfer_outside_pct*100, 2, ".", ","),
+				"transfer_outside_pct" => number_format($url->message->transfer_outside_pct * 100, 2, ".", ","),
 				"topup_circuit_fxd" => number_format($url->message->topup_circuit_fxd, 2, ".", ","),
-				"topup_circuit_pct" => number_format($url->message->topup_circuit_pct*100, 2, ".", ","),
+				"topup_circuit_pct" => number_format($url->message->topup_circuit_pct * 100, 2, ".", ","),
 				"topup_outside_fxd" => number_format($url->message->topup_outside_fxd, 2, ".", ","),
-				"topup_outside_pct" => number_format($url->message->topup_outside_pct*100, 2, ".", ",")
+				"topup_outside_pct" => number_format($url->message->topup_outside_pct * 100, 2, ".", ",")
 			);
 		} else {
 			$mdata = array(
@@ -259,13 +259,13 @@ class Cost extends CI_Controller
 
 		$dataUpdate = array(
 			"transfer_circuit_fxd" => $transfer_circuit_fxd,
-			"transfer_circuit_pct" => $transfer_circuit_pct/100,
+			"transfer_circuit_pct" => $transfer_circuit_pct / 100,
 			"transfer_outside_fxd" => $transfer_outside_fxd,
-			"transfer_outside_pct" => $transfer_outside_pct/100,
+			"transfer_outside_pct" => $transfer_outside_pct / 100,
 			"topup_circuit_fxd" => $topup_circuit_fxd,
-			"topup_circuit_pct" => $topup_circuit_pct/100,
+			"topup_circuit_pct" => $topup_circuit_pct / 100,
 			"topup_outside_fxd" => $topup_outside_fxd,
-			"topup_outside_pct" => $topup_outside_pct/100,
+			"topup_outside_pct" => $topup_outside_pct / 100,
 			"currency" => $curr
 		);
 
@@ -290,13 +290,13 @@ class Cost extends CI_Controller
 		if (@$mfee->code == 200) {
 			$mdata = array(
 				"transfer_circuit_fxd" => number_format($mfee->message->transfer_circuit_fxd, 2, ".", ","),
-				"transfer_circuit_pct" => number_format($mfee->message->transfer_circuit_pct*100, 2, ".", ","),
+				"transfer_circuit_pct" => number_format($mfee->message->transfer_circuit_pct * 100, 2, ".", ","),
 				"transfer_outside_fxd" => number_format($mfee->message->transfer_outside_fxd, 2, ".", ","),
-				"transfer_outside_pct" => number_format($mfee->message->transfer_outside_pct*100, 2, ".", ","),
+				"transfer_outside_pct" => number_format($mfee->message->transfer_outside_pct * 100, 2, ".", ","),
 				"topup_circuit_fxd" => number_format($mfee->message->topup_circuit_fxd, 2, ".", ","),
-				"topup_circuit_pct" => number_format($mfee->message->topup_circuit_pct*100, 2, ".", ","),
+				"topup_circuit_pct" => number_format($mfee->message->topup_circuit_pct * 100, 2, ".", ","),
 				"topup_outside_fxd" => number_format($mfee->message->topup_outside_fxd, 2, ".", ","),
-				"topup_outside_pct" => number_format($mfee->message->topup_outside_pct*100, 2, ".", ",")
+				"topup_outside_pct" => number_format($mfee->message->topup_outside_pct * 100, 2, ".", ",")
 			);
 		} else {
 			$mdata = array(
@@ -321,17 +321,17 @@ class Cost extends CI_Controller
 		if (@$mfee->code == 200) {
 			$mdata = array(
 				"topup_circuit_fxd" => number_format($mfee->message->topup_circuit_fxd, 2, ".", ","),
-				"topup_circuit_pct" => number_format($mfee->message->topup_circuit_pct*100, 2, ".", ","),
+				"topup_circuit_pct" => number_format($mfee->message->topup_circuit_pct * 100, 2, ".", ","),
 				"topup_outside_fxd" => number_format($mfee->message->topup_outside_fxd, 2, ".", ","),
-				"topup_outside_pct" => number_format($mfee->message->topup_outside_pct*100, 2, ".", ","),
+				"topup_outside_pct" => number_format($mfee->message->topup_outside_pct * 100, 2, ".", ","),
 				"wallet_sender_fxd" => number_format($mfee->message->wallet_sender_fxd, 2, ".", ","),
-				"wallet_sender_pct" => number_format($mfee->message->wallet_sender_pct*100, 2, ".", ","),
+				"wallet_sender_pct" => number_format($mfee->message->wallet_sender_pct * 100, 2, ".", ","),
 				"wallet_receiver_fxd" => number_format($mfee->message->wallet_receiver_fxd, 2, ".", ","),
-				"wallet_receiver_pct" => number_format($mfee->message->wallet_receiver_pct*100, 2, ".", ","),
+				"wallet_receiver_pct" => number_format($mfee->message->wallet_receiver_pct * 100, 2, ".", ","),
 				"walletbank_circuit_fxd" => number_format($mfee->message->walletbank_circuit_fxd, 2, ".", ","),
-				"walletbank_circuit_pct" => number_format($mfee->message->walletbank_circuit_pct*100, 2, ".", ","),
+				"walletbank_circuit_pct" => number_format($mfee->message->walletbank_circuit_pct * 100, 2, ".", ","),
 				"walletbank_outside_fxd" => number_format($mfee->message->walletbank_outside_fxd, 2, ".", ","),
-				"walletbank_outside_pct" => number_format($mfee->message->walletbank_outside_pct*100, 2, ".", ","),
+				"walletbank_outside_pct" => number_format($mfee->message->walletbank_outside_pct * 100, 2, ".", ","),
 				"swap" => number_format($mfee->message->swap, 2, ".", ","),
 			);
 		} else {
