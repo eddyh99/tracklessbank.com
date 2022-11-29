@@ -81,7 +81,7 @@
                         </div>
                         <div class="mb-3">
                             <button id="btnconfirm"
-                                class="btn btn-freedy-blue px-4 py-2 mx-auto shadow-none">Edit</button>
+                                class="btn btn-freedy-blue px-4 py-2 mx-auto shadow-none">Confirm</button>
                         </div>
                     </form>
                 </div>

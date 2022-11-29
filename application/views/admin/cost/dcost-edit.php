@@ -60,22 +60,22 @@
                                 value="<?= $dcost['topup_outside_pct'] ?>">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Wallet Sender Circuit (Fixed)</label>
+                            <label class="form-label">Wallet Sender (Fixed)</label>
                             <input type="text" id="wallet_sender_fxd" name="wallet_sender_fxd" class="form-control"
                                 value="<?= $dcost['wallet_sender_fxd'] ?>">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Wallet Sender Circuit (%)</label>
+                            <label class="form-label">Wallet Sender (%)</label>
                             <input type="text" id="wallet_sender_pct" name="wallet_sender_pct" class="form-control"
                                 value="<?= $dcost['wallet_sender_pct'] ?>">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Wallet Receive Outside (Fixed)</label>
+                            <label class="form-label">Wallet Receive (Fixed)</label>
                             <input type="text" id="wallet_receiver_fxd" name="wallet_receiver_fxd" class="form-control"
                                 value="<?= $dcost['wallet_receiver_fxd'] ?>">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Wallet Receive Outside (%)</label>
+                            <label class="form-label">Wallet Receive (%)</label>
                             <input type="text" id="wallet_receiver_pct" name="wallet_receiver_pct" class="form-control"
                                 value="<?= $dcost['wallet_receiver_pct'] ?>">
                         </div>
