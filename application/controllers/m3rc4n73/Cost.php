@@ -105,19 +105,19 @@ class Cost extends CI_Controller
 	public function editdcost_prosses()
 	{
 		$this->form_validation->set_rules('currency', 'Currency', 'trim|required');
-		$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('wallet_sender_fxd', 'Wallet Sender (Fixed)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('wallet_sender_pct', 'Wallet Sender (%)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('wallet_receiver_fxd', 'Wallet Receiver (Fixed)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('wallet_receiver_pct', 'Wallet Receiver (%)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('walletbank_circuit_fxd', 'Walletbank Circuit (Fixed)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('walletbank_circuit_pct', 'Walletbank Circuit (%)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('walletbank_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('walletbank_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('swap', 'Swap', 'trim|required|greater_than[0]');
+		$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('wallet_sender_fxd', 'Wallet Sender (Fixed)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('wallet_sender_pct', 'Wallet Sender (%)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('wallet_receiver_fxd', 'Wallet Receiver (Fixed)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('wallet_receiver_pct', 'Wallet Receiver (%)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('walletbank_circuit_fxd', 'Walletbank Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('walletbank_circuit_pct', 'Walletbank Circuit (%)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('walletbank_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('walletbank_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('swap', 'Swap', 'trim|required|greater_than_equal_to[0]');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->session->set_flashdata('failed', validation_errors());
@@ -230,14 +230,14 @@ class Cost extends CI_Controller
 	public function editbcost_prosses()
 	{
 		$this->form_validation->set_rules('currency', 'Currency', 'trim|required');
-		$this->form_validation->set_rules('transfer_circuit_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('transfer_circuit_pct', 'Walletbank Outside (%)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('transfer_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('transfer_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('topup_circuit_pct', 'Topup Outside (%)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than[0]');
-		$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than[0]');
+		$this->form_validation->set_rules('transfer_circuit_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('transfer_circuit_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('transfer_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('transfer_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('topup_circuit_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->session->set_flashdata('failed', validation_errors());

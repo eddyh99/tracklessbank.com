@@ -62,7 +62,7 @@ class Member extends CI_Controller
     public function enabled($id)
     {
         $id = $this->security->xss_clean($id);
-        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/user/setMember?status=disabled&userid=" . $id);
+        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/user/setMember?status=enabled&userid=" . $id);
         if ($result->code != 200) {
             $this->session->set_flashdata("failed", $result->message);
             redirect('m3rc4n73/member');
