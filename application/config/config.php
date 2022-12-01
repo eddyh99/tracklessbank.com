@@ -24,6 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/tracklessbank.com/';
+date_default_timezone_set('Asia/Singapore');
 
 /*
 |--------------------------------------------------------------------------

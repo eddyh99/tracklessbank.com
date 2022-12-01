@@ -55,6 +55,7 @@ class Swap extends CI_Controller
                 "target"    => $target,
                 "amount"    => $amount
             );
+
             $result = apitrackless("https://api.tracklessbank.com/v1/admin/swap/swap_summary", json_encode($mdata));
             if (@$result->code != 200) {
                 header("HTTP/1.1 500 Internal Server Error");

@@ -39,52 +39,86 @@
                                     value="<?= $curr ?>" hidden>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="bank_dcost" class="col-sm-2 col-form-label">Bank</label>
-                            <div class="col-sm-10">
-                                <select name="bank" id="bank_dcost" class="form-select" disabled>
-                                    <option value="">-Select Bank-</option>
-                                    <?php foreach ($banks as $dt) { ?>
-                                    <option value="<?= $dt->id ?>" <?php echo ($dt->id == $bank) ? "selected" : "" ?>>
-                                        <?= $dt->bank_name ?></option>
-                                    <?php } ?>
-                                </select>
-                                <input type="text" id="bank" name="bank" class="form-control" value="<?= $bank ?>"
-                                    hidden>
-                            </div>
+                        <div class="mb-3">
+                            <label class="form-label">Topup Circuit (Fixed)</label>
+                            <input type="text" id="topup_circuit_fxd" name="topup_circuit_fxd" class="form-control"
+                                value="<?= $dcost['topup_circuit_fxd'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Topup</label>
-                            <input type="text" id="topup" name="topup" class="form-control"
-                                value="<?= $dcost['topup'] ?>">
+                            <label class="form-label">Topup Circuit (%)</label>
+                            <input type="text" id="topup_circuit_pct" name="topup_circuit_pct" class="form-control"
+                                value="<?= $dcost['topup_circuit_pct'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Wallet sender</label>
-                            <input type="text" id="wallet_sender" name="wallet_sender" class="form-control"
-                                value="<?= $dcost['wallet_sender'] ?>">
+                            <label class="form-label">Topup Outside (Fixed)</label>
+                            <input type="text" id="topup_outside_fxd" name="topup_outside_fxd" class="form-control"
+                                value="<?= $dcost['topup_outside_fxd'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Wallet receiver</label>
-                            <input type="text" id="wallet_receiver" name="wallet_receiver" class="form-control"
-                                value="<?= $dcost['wallet_receiver'] ?>">
+                            <label class="form-label">Topup Outside (%)</label>
+                            <input type="text" id="topup_outside_pct" name="topup_outside_pct" class="form-control"
+                                value="<?= $dcost['topup_outside_pct'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Walletbank circuit</label>
-                            <input type="text" id="walletbank_circuit" name="walletbank_circuit" class="form-control"
-                                value="<?= $dcost['walletbank_circuit'] ?>">
+                            <label class="form-label">Wallet Sender (Fixed)</label>
+                            <input type="text" id="wallet_sender_fxd" name="wallet_sender_fxd" class="form-control"
+                                value="<?= $dcost['wallet_sender_fxd'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Walletbank outside</label>
-                            <input type="text" id="walletbank_outside" name="walletbank_outside" class="form-control"
-                                value="<?= $dcost['walletbank_outside'] ?>">
+                            <label class="form-label">Wallet Sender (%)</label>
+                            <input type="text" id="wallet_sender_pct" name="wallet_sender_pct" class="form-control"
+                                value="<?= $dcost['wallet_sender_pct'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Wallet Receive (Fixed)</label>
+                            <input type="text" id="wallet_receiver_fxd" name="wallet_receiver_fxd" class="form-control"
+                                value="<?= $dcost['wallet_receiver_fxd'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Wallet Receive (%)</label>
+                            <input type="text" id="wallet_receiver_pct" name="wallet_receiver_pct" class="form-control"
+                                value="<?= $dcost['wallet_receiver_pct'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Walletbank Circuit (Fixed)</label>
+                            <input type="text" id="walletbank_circuit_fxd" name="walletbank_circuit_fxd"
+                                class="form-control" value="<?= $dcost['walletbank_circuit_fxd'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Walletbank Circuit (%)</label>
+                            <input type="text" id="walletbank_circuit_pct" name="walletbank_circuit_pct"
+                                class="form-control" value="<?= $dcost['walletbank_circuit_pct'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Walletbank Outside (Fixed)</label>
+                            <input type="text" id="walletbank_outside_fxd" name="walletbank_outside_fxd"
+                                class="form-control" value="<?= $dcost['walletbank_outside_fxd'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Walletbank Outside (%)</label>
+                            <input type="text" id="walletbank_outside_pct" name="walletbank_outside_pct"
+                                class="form-control" value="<?= $dcost['walletbank_outside_pct'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Swap</label>
-                            <input type="text" id="swap" name="swap" class="form-control" value="<?= $dcost['swap'] ?>">
+                            <input type="text" id="swap" name="swap" class="form-control" value="<?= $dcost['swap'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
                         <div class="mb-3">
                             <button id="btnconfirm"
-                                class="btn btn-freedy-blue px-4 py-2 mx-auto shadow-none">Edit</button>
+                                class="btn btn-freedy-blue px-4 py-2 mx-auto shadow-none">Confirm</button>
                         </div>
                     </form>
                 </div>

@@ -18,7 +18,7 @@
                             <label for=""><?= $_SESSION["symbol"] ?></label>
                             <input type="text" class="form-control text-end" name="amount" id="amount"
                                 placeholder="0.00"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
 
                         <div class="swap-selection d-flex flex-column align-items-center justify-content-center">

@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg bg-transparent" id="mainNav">
         <div class="container-fluid ps-0 pe-5">
             <a class="navbar-brand fw-bold" href="#page-top">
-                <img src="<?= base_url(); ?>assets/home/images/tc-bank-new.png">
+                <img src="<?= base_url(); ?>assets/images/tc-bank-new.png">
             </a>
             <button class="navbar-toggler toggler-trackless" type="button" data-bs-toggle="offcanvas"
                 data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -11,16 +11,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#">Service</a>
+                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#service">Service</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#">Price</a>
+                    <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#price">Price</a>
                     </li>
                     <li class="nav-item"><a class="nav-link me-lg-3 mt-lg-3 text-white" href="#">Technology</a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://tracklessproject.com" class="bg-trackless nav-link me-lg-3"
-                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                            aria-controls="offcanvasNavbar">
+                        <a href="https://tracklessproject.com" class="bg-trackless nav-link me-lg-3">
                             <svg width="57" height="53" viewBox="0 0 57 53" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -145,19 +143,19 @@
             <div class="col-lg-5 d-none d-sm-none d-lg-inline">
                 <!-- Masthead device mockup feature-->
                 <div class="masthead-device-mockup text-center">
-                    <img class="img-fluid" src="<?= base_url(); ?>assets/home/images/earthcoin.png" alt="">
+                    <img class="img-fluid" src="<?= base_url(); ?>assets/images/earthcoin.png" alt="">
                 </div>
             </div>
         </div>
     </div>
     <div class="box-line-slider">
-        <img src="<?= base_url(); ?>assets/home/images/linevector.png" alt="">
+        <img src="<?= base_url(); ?>assets/images/linevector.png" alt="">
     </div>
 </header>
 
-<section class="bg-black py-5">
+<section id="service" class="bg-black py-5">
     <div class="box-bumi">
-        <img src="<?= base_url(); ?>assets/home/images/earth.png" alt="">
+        <img src="<?= base_url(); ?>assets/images/earth.png" alt="">
     </div>
     <div class="container p-5">
         <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
@@ -303,7 +301,7 @@
     </div>
 </section>
 
-<section class="bg-black py-5">
+<section id="price" class="bg-black py-5">
     <div class="container p-5">
         <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
             <div class="col-12 col-lg-8 clr-price">
@@ -324,7 +322,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="px-5 px-sm-0 d-none d-sm-none d-lg-inline">
-                    <img class="img-fluid" src="<?= base_url() ?>assets/home/images/money.png" alt="..." />
+                    <img class="img-fluid" src="<?= base_url() ?>assets/images/money.png" alt="..." />
                 </div>
             </div>
             <div class="col-12 col-lg-12 my-5">
@@ -372,14 +370,14 @@
                 </div>
                 <div class="col-12 mt-5 mb-3 my-lg-5 powered">
                     <span class="text-white f-monserat">Powered by</span>&nbsp;
-                    <img src="<?= base_url() ?>assets/home/images/tracklessbankonly.png" alt="">
+                    <img src="<?= base_url() ?>assets/images/tracklessbankonly.png" alt="">
                 </div>
                 <div class="col-12">
                     <div class="row d-flex justify-content-center">
                         <div class="col-12 col-sm-6 col-md-4 col-lg-4 p-3">
                             <a href="#" class="cs-powered text-center" style="color: #fff;text-decoration: none;">
                                 <div class="box-powered text-center">
-                                    <img src="<?= base_url() ?>assets/home/images/magnify.png" alt="">
+                                    <img src="<?= base_url() ?>assets/images/magnify.png" alt="">
                                 </div>
                                 <span class="mt-3 d-block">Coming soon</span>
                             </a>
@@ -387,7 +385,7 @@
                         <div class="col-12 col-sm-6 col-md-4 col-lg-4 p-3">
                             <a href="#" class="cs-powered text-center" style="color: #fff;text-decoration: none;">
                                 <div class="box-powered text-center">
-                                    <img src="<?= base_url() ?>assets/home/images/piggylogo.png" alt="">
+                                    <img src="<?= base_url() ?>assets/images/piggylogo.png" alt="">
                                 </div>
                                 <span class="mt-3 d-block">Coming soon</span>
                             </a>
@@ -396,7 +394,7 @@
                             <a href="https://freedybank.com/" class="cs-powered text-center"
                                 style="color: #fff;text-decoration: none;">
                                 <div class="box-powered text-center">
-                                    <img src="<?= base_url() ?>assets/home/images/freedylogo.png" alt="">
+                                    <img src="<?= base_url() ?>assets/images/freedylogo.png" alt="">
                                 </div>
                             </a>
                         </div>
@@ -412,32 +410,32 @@
     <div class="container-fluid px-md-5">
         <div class="container">
             <div class="bg-imagebox">
-                <img src="<?= base_url() ?>assets/home/images/trackless-fit.png" alt="" class="footer-logo-center">
+                <img src="<?= base_url() ?>assets/images/trackless-fit.png" alt="" class="footer-logo-center">
             </div>
             <div class="d-flex justify-content-around">
                 <div class="col-4">
-                    <img src="<?= base_url(); ?>assets/home/images/footer-logo.png" class="footer-logo">
+                    <img src="<?= base_url(); ?>assets/images/footer-logo.png" class="footer-logo">
                     <div class="d-flex flex-wrap icon-sosmed">
                         <div class="me-md-2 me-lg-2 me-xl-3 mt-1 mt-sm-3">
-                            <img src="<?= base_url() ?>assets/home/images/fb-icon.png" class="p-1">
+                            <img src="<?= base_url() ?>assets/images/fb-icon.png" class="p-1">
                         </div>
                         <div class="me-md-2 me-lg-2 me-xl-3 mt-1 mt-sm-3">
-                            <img src="<?= base_url() ?>assets/home/images/twitter-icon.png" class="p-1">
+                            <img src="<?= base_url() ?>assets/images/twitter-icon.png" class="p-1">
                         </div>
                         <div class="me-md-2 me-lg-2 me-xl-3 mt-1 mt-sm-3">
-                            <img src="<?= base_url() ?>assets/home/images/ig-icon.png" class="p-1">
+                            <img src="<?= base_url() ?>assets/images/ig-icon.png" class="p-1">
                         </div>
                         <div class="me-md-2 me-lg-2 me-xl-3 mt-1 mt-sm-3">
-                            <img src="<?= base_url() ?>assets/home/images/c-icon.png" class="p-1">
+                            <img src="<?= base_url() ?>assets/images/c-icon.png" class="p-1">
                         </div>
                         <div class="me-md-2 me-lg-2 me-xl-3 mt-1 mt-sm-3">
-                            <img src="<?= base_url() ?>assets/home/images/linkedin-icon.png" class="p-1">
+                            <img src="<?= base_url() ?>assets/images/linkedin-icon.png" class="p-1">
                         </div>
                         <div class="me-md-2 me-lg-2 me-xl-3 mt-1 mt-sm-3">
-                            <img src="<?= base_url() ?>assets/home/images/tiktok-icon.png" class="p-1">
+                            <img src="<?= base_url() ?>assets/images/tiktok-icon.png" class="p-1">
                         </div>
                         <div class="me-md-2 me-lg-2 me-xl-3 mt-1 mt-sm-3">
-                            <img src="<?= base_url() ?>assets/home/images/youtube-icon.png" class="p-1">
+                            <img src="<?= base_url() ?>assets/images/youtube-icon.png" class="p-1">
                         </div>
                     </div>
                 </div>
@@ -448,7 +446,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex flex-wrap justify-content-end footer-menus" translate="no">
+        <div class="d-flex flex-wrap justify-content-end footer-menus text-white" translate="no">
             <a href="https://tracklessproject.com" class="">TracklessProject</a> |
             <a href="https://tracklessmail.com" class="">TracklessMail</a> |
             <a href="https://tracklesschat.com" class="">TracklessChat</a> |

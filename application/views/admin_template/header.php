@@ -21,15 +21,12 @@
     <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-    <!-- summernote css -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-
 </head>
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-navbartop-freedy">
         <!-- Navbar Brand-->
-        <a class="navbar-brand text-center" href="#">
+        <a class="navbar-brand text-center" href="<?= base_url() ?>m3rc4n73/dashboard">
             <img src="<?= base_url() ?>assets/img/tracklessbank/logo-polos.png" alt="" class="" style="height: 25px;">
             TracklessBank
         </a>

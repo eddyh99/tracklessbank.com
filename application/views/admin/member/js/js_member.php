@@ -7,8 +7,9 @@ $(function() {
         "ajax": {
             "url": "<?= base_url() ?>m3rc4n73/member/get_all",
             "type": "POST",
-            "data": {
-                csrf_freedy: $("#token").val()
+            "data": function(d) {
+                d.csrf_freedy = $("#token").val(),
+                    d.bank_id = $("#bank").val()
             },
             "dataSrc": function(data) {
                 $("#token").val(data["token"]);
@@ -41,10 +42,6 @@ $(function() {
                         full.id +
                         '" class="m-1 btn btn-warning btn-sm">Enable</a> ';
                 }
-                button = button + '<a href="<?= base_url() ?>m3rc4n73/member/memberfee/' +
-                    full
-                    .ucode + '/' + btoa(full.email) +
-                    '" class="m-1 btn btn-default btn-sm border">Change Fee</a> ';
                 button = button + '<a href="<?= base_url() ?>m3rc4n73/member/history/' +
                     full
                     .ucode +

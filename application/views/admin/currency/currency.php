@@ -23,3 +23,5 @@
         </div>
     </main>
 </div>
+
+<?php $this->load->view('admin_template/loading'); ?>
