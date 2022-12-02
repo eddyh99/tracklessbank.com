@@ -59,7 +59,7 @@ class Auth extends CI_Controller
 		$result = apitrackless($url, json_encode($mdata));
 		if (@$result->code != 200) {
 			$this->session->set_flashdata('failed', $result->message);
-			redirect(base_url() . "auth/login");
+			redirect("m3rc4n73");
 			return;
 		}
 
@@ -73,14 +73,7 @@ class Auth extends CI_Controller
 			'symbol'    => "&dollar;"
 		);
 		$this->session->set_userdata($session_data);
-		if ($result->message->role == 'member') {
-			$member_session = array(
-				'ucode'     => $result->message->ucode,
-				'referral'  => $result->message->refcode
-			);
-			$this->session->set_userdata($member_session);
-			redirect("homepage");
-		} elseif ($result->message->role == 'admin') {
+		if ($result->message->role == 'admin') {
 			$_SESSION["mwallet"] = apitrackless("https://api.tracklessbank.com/v1/admin/user/getMasterwallet")->message->ucode_mwallet;
 			redirect("m3rc4n73/dashboard");
 		}
