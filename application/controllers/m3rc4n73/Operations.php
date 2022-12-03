@@ -42,14 +42,14 @@ class Operations extends CI_Controller
 				while (($dt = fgetcsv($handle, 2048, ","))) {
 					$i++;
 					if ($i == 1) continue;
-					$xx=explode(",",$dt[0]);
-					if (substr($xx[0],0,8)=="TRANSFER"){
-					    if (!empty($xx[5]) && substr(json_decode($xx[5]),0,5)=="Topup" && substr(json_decode($xx[4]),0,8)=="Received"){
+					//$xx=explode(",",$dt[0]);
+					if (substr($dt[0],0,8)=="TRANSFER"){
+					    if (!empty($dt[5]) && substr($dt[5],0,5)=="Topup" && substr($dt[4],0,8)=="Received"){
 					        $temp["admin_id"]=$_SESSION["user_id"];
-    					    $temp["ucode"]=explode(" ",json_decode($xx[5]))[1];
-    					    $temp["currency"]=$xx[3];
-    					    $temp["wise_id"]=substr($xx[0],-9);
-    					    $temp["amount"]=$xx[2];
+    					    $temp["ucode"]=explode(" ",$dt[5])[1];
+    					    $temp["currency"]=$dt[3];
+    					    $temp["wise_id"]=substr($dt[0],-9);
+    					    $temp["amount"]=$dt[2];
     					    array_push($mdata,$temp);
 					    }
 					}

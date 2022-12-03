@@ -116,7 +116,7 @@
                     ($_SESSION["currency"] == "TRY")
                 ) { ?>
                 <div class="col-12 my-3 mb-5 d-grid gap-2">
-                    <button id="btnconfirm" class="btn btn-freedy-blue px-4 py-2 shadow-none">Edit</button>
+                    <button id="btnconfirm" class="btn btn-freedy-blue px-4 py-2 shadow-none">Confirm</button>
                 </div>
                 <?php } else { ?>
                 <?php } ?>

@@ -63,10 +63,7 @@ var tblhistory =
                 "data": "cost"
             },
             {
-                "data": "referral"
-            },
-            {
-                "data": "fee"
+                "data": "comission"
             },
             {
                 "data": "date_created"

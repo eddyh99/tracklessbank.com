@@ -14,7 +14,7 @@ class Cost extends CI_Controller
 	public function bcost()
 	{
 		$data = array(
-			"title"     => "TracklessBank - Wise Cost",
+			"title"     => "TracklessBank - Bank Cost",
 			"content"   => "admin/cost/bcost",
 			"mn_wcost"    => "active",
 			"extra"     => "admin/cost/js/js_cost",
@@ -68,7 +68,7 @@ class Cost extends CI_Controller
 				"walletbank_circuit_pct" => number_format($url->message->walletbank_circuit_pct * 100, 2, ".", ","),
 				"walletbank_outside_fxd" => number_format($url->message->walletbank_outside_fxd, 2, ".", ","),
 				"walletbank_outside_pct" => number_format($url->message->walletbank_outside_pct * 100, 2, ".", ","),
-				"swap" => number_format($url->message->swap, 2, ".", ","),
+				"swap" => number_format($url->message->swap*100, 2, ".", ","),
 			);
 		} else {
 			$mdata = array(
@@ -157,7 +157,7 @@ class Cost extends CI_Controller
 			"walletbank_circuit_pct" => $walletbank_circuit_pct / 100,
 			"walletbank_outside_fxd" => $walletbank_outside_fxd,
 			"walletbank_outside_pct" => $walletbank_outside_pct / 100,
-			"swap" => $swap,
+			"swap" => $swap/100,
 			"currency" => $curr,
 		);
 
@@ -258,10 +258,10 @@ class Cost extends CI_Controller
 		$topup_outside_pct = $this->security->xss_clean($input->post("topup_outside_pct"));
 
 		$dataUpdate = array(
-			"transfer_circuit_fxd" => $transfer_circuit_fxd,
-			"transfer_circuit_pct" => $transfer_circuit_pct / 100,
-			"transfer_outside_fxd" => $transfer_outside_fxd,
-			"transfer_outside_pct" => $transfer_outside_pct / 100,
+			"walletbank_circuit_fxd" => $transfer_circuit_fxd,
+			"walletbank_circuit_pct" => $transfer_circuit_pct / 100,
+			"walletbank_outside_fxd" => $transfer_outside_fxd,
+			"walletbank_outside_pct" => $transfer_outside_pct / 100,
 			"topup_circuit_fxd" => $topup_circuit_fxd,
 			"topup_circuit_pct" => $topup_circuit_pct / 100,
 			"topup_outside_fxd" => $topup_outside_fxd,
@@ -270,7 +270,6 @@ class Cost extends CI_Controller
 		);
 
 		$result = apitrackless("https://api.tracklessbank.com/v1/trackless/cost/setWisecost", json_encode($dataUpdate));
-
 		if (@$result->code != 200) {
 			$this->session->set_flashdata("failed", $result->message);
 			redirect("m3rc4n73/cost/bcost");
