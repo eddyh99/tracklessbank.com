@@ -58,15 +58,15 @@ class Bank extends CI_Controller
     public function editbank_proses()
     {
         $this->form_validation->set_rules('c_account_number', 'Account Number', 'trim|required');
-        $this->form_validation->set_rules('c_registered_name', 'Registeredn Name', 'trim|required');
+        $this->form_validation->set_rules('c_registered_name', 'Circuit Registered Name', 'trim|required');
         $this->form_validation->set_rules('c_routing_number', 'Routing Number', 'trim|required');
-        $this->form_validation->set_rules('c_bank_name', 'Bank Name', 'trim|required');
-        $this->form_validation->set_rules('c_bank_address', 'Bank Address', 'trim|required');
-        $this->form_validation->set_rules('oc_registered_name', 'Registered Name', 'trim|required');
+        $this->form_validation->set_rules('c_bank_name', 'Circuit Bank Name', 'trim');
+        $this->form_validation->set_rules('c_bank_address', 'Circuit Bank Address', 'trim|required');
+        $this->form_validation->set_rules('oc_registered_name', 'Outside Registered Name', 'trim|required');
         $this->form_validation->set_rules('oc_iban', 'Iban', 'trim|required');
         $this->form_validation->set_rules('oc_bic', 'Bic', 'trim|required');
-        $this->form_validation->set_rules('oc_bank_name', 'Bank Name', 'trim|required');
-        $this->form_validation->set_rules('oc_bank_address', 'Bank Address', 'trim|required');
+        $this->form_validation->set_rules('oc_bank_name', 'Ouside Bank Name', 'trim');
+        $this->form_validation->set_rules('oc_bank_address', 'Outside Bank Address', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('failed', validation_errors());
@@ -102,7 +102,6 @@ class Bank extends CI_Controller
         );
 
         $result = apitrackless("https://api.tracklessbank.com/v1/trackless/bank/setBank", json_encode($dataUpdate));
-
         if (@$result->code != 200) {
             $this->session->set_flashdata("failed", $result->message);
             redirect("m3rc4n73/bank");

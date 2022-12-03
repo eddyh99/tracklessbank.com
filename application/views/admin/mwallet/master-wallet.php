@@ -24,7 +24,6 @@
                                 <th>Amount</th>
                                 <th>Cost</th>
                                 <th>Comission</th>
-                                <th>Fee (Net)</th>
                                 <th>Date</th>
                             </tr>
                         </thead>

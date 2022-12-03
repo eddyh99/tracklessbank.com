@@ -14,7 +14,7 @@ class Cost extends CI_Controller
 	public function bcost()
 	{
 		$data = array(
-			"title"     => "TracklessBank - Wise Cost",
+			"title"     => "TracklessBank - Bank Cost",
 			"content"   => "admin/cost/bcost",
 			"mn_wcost"    => "active",
 			"extra"     => "admin/cost/js/js_cost",
@@ -68,7 +68,8 @@ class Cost extends CI_Controller
 				"walletbank_circuit_pct" => number_format($url->message->walletbank_circuit_pct * 100, 2, ".", ","),
 				"walletbank_outside_fxd" => number_format($url->message->walletbank_outside_fxd, 2, ".", ","),
 				"walletbank_outside_pct" => number_format($url->message->walletbank_outside_pct * 100, 2, ".", ","),
-				"swap" => number_format($url->message->swap, 2, ".", ","),
+				"swap" => number_format($url->message->swap * 100, 2, ".", ","),
+				"swap_fxd" => number_format($url->message->swap_fxd, 2, ".", ","),
 			);
 		} else {
 			$mdata = array(
@@ -85,6 +86,7 @@ class Cost extends CI_Controller
 				"walletbank_outside_fxd" => number_format(0, 2, ".", ","),
 				"walletbank_outside_pct" => number_format(0, 2, ".", ","),
 				"swap" => number_format(0, 2, ".", ","),
+				"swap_fxd" => number_format(0, 2, ".", ","),
 			);
 		}
 
@@ -104,31 +106,47 @@ class Cost extends CI_Controller
 
 	public function editdcost_prosses()
 	{
+		$input = $this->input;
+		$curr = $this->security->xss_clean($input->post("currency"));
+
+		if (($curr == "USD") ||
+			($curr == "EUR")
+		) {
+			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('walletbank_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('walletbank_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than[0]');
+		}
+
+		if (($curr == "AUD") ||
+			($curr == "NZD") ||
+			($curr == "CAD") ||
+			($curr == "HUF") ||
+			($curr == "SGD") ||
+			($curr == "TRY")
+		) {
+			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than[0]');
+		}
+
 		$this->form_validation->set_rules('currency', 'Currency', 'trim|required');
-		$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
 		$this->form_validation->set_rules('wallet_sender_fxd', 'Wallet Sender (Fixed)', 'trim|required|greater_than_equal_to[0]');
 		$this->form_validation->set_rules('wallet_sender_pct', 'Wallet Sender (%)', 'trim|required|greater_than_equal_to[0]');
 		$this->form_validation->set_rules('wallet_receiver_fxd', 'Wallet Receiver (Fixed)', 'trim|required|greater_than_equal_to[0]');
 		$this->form_validation->set_rules('wallet_receiver_pct', 'Wallet Receiver (%)', 'trim|required|greater_than_equal_to[0]');
 		$this->form_validation->set_rules('walletbank_circuit_fxd', 'Walletbank Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
 		$this->form_validation->set_rules('walletbank_circuit_pct', 'Walletbank Circuit (%)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('walletbank_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('walletbank_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('swap', 'Swap', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('swap', 'Swap (%)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('swap_fxd', 'Swap (Fixed)', 'trim|required|greater_than_equal_to[0]');
+
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->session->set_flashdata('failed', validation_errors());
 			redirect(base_url() . "m3rc4n73/cost/dcost");
 			return;
 		}
-
-		$input = $this->input;
-
-		$curr = $this->security->xss_clean($input->post("currency"));
-		$topup = $this->security->xss_clean($input->post("topup"));
 
 		$topup_circuit_fxd = $this->security->xss_clean($input->post("topup_circuit_fxd"));
 		$topup_circuit_pct = $this->security->xss_clean($input->post("topup_circuit_pct"));
@@ -143,6 +161,7 @@ class Cost extends CI_Controller
 		$walletbank_outside_fxd = $this->security->xss_clean($input->post("walletbank_outside_fxd"));
 		$walletbank_outside_pct = $this->security->xss_clean($input->post("walletbank_outside_pct"));
 		$swap = $this->security->xss_clean($input->post("swap"));
+		$swap_fxd = $this->security->xss_clean($input->post("swap_fxd"));
 
 		$dataUpdate = array(
 			"topup_circuit_fxd" => $topup_circuit_fxd,
@@ -157,7 +176,8 @@ class Cost extends CI_Controller
 			"walletbank_circuit_pct" => $walletbank_circuit_pct / 100,
 			"walletbank_outside_fxd" => $walletbank_outside_fxd,
 			"walletbank_outside_pct" => $walletbank_outside_pct / 100,
-			"swap" => $swap,
+			"swap" => $swap / 100,
+			"swap_fxd" => $swap_fxd,
 			"currency" => $curr,
 		);
 
@@ -229,15 +249,35 @@ class Cost extends CI_Controller
 
 	public function editbcost_prosses()
 	{
+
+		$input = $this->input;
+		$curr = $this->security->xss_clean($input->post("currency"));
+
+		if (($curr == "USD") ||
+			($curr == "EUR")
+		) {
+			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than[0]');
+		}
+
+		if (($curr == "AUD") ||
+			($curr == "NZD") ||
+			($curr == "CAD") ||
+			($curr == "HUF") ||
+			($curr == "SGD") ||
+			($curr == "TRY")
+		) {
+			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than[0]');
+		}
+
 		$this->form_validation->set_rules('currency', 'Currency', 'trim|required');
 		$this->form_validation->set_rules('transfer_circuit_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
 		$this->form_validation->set_rules('transfer_circuit_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
 		$this->form_validation->set_rules('transfer_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
 		$this->form_validation->set_rules('transfer_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('topup_circuit_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->session->set_flashdata('failed', validation_errors());
@@ -245,9 +285,6 @@ class Cost extends CI_Controller
 			return;
 		}
 
-		$input = $this->input;
-
-		$curr = $this->security->xss_clean($input->post("currency"));
 		$transfer_circuit_fxd = $this->security->xss_clean($input->post("transfer_circuit_fxd"));
 		$transfer_circuit_pct = $this->security->xss_clean($input->post("transfer_circuit_pct"));
 		$transfer_outside_fxd = $this->security->xss_clean($input->post("transfer_outside_fxd"));
@@ -258,10 +295,10 @@ class Cost extends CI_Controller
 		$topup_outside_pct = $this->security->xss_clean($input->post("topup_outside_pct"));
 
 		$dataUpdate = array(
-			"transfer_circuit_fxd" => $transfer_circuit_fxd,
-			"transfer_circuit_pct" => $transfer_circuit_pct / 100,
-			"transfer_outside_fxd" => $transfer_outside_fxd,
-			"transfer_outside_pct" => $transfer_outside_pct / 100,
+			"walletbank_circuit_fxd" => $transfer_circuit_fxd,
+			"walletbank_circuit_pct" => $transfer_circuit_pct / 100,
+			"walletbank_outside_fxd" => $transfer_outside_fxd,
+			"walletbank_outside_pct" => $transfer_outside_pct / 100,
 			"topup_circuit_fxd" => $topup_circuit_fxd,
 			"topup_circuit_pct" => $topup_circuit_pct / 100,
 			"topup_outside_fxd" => $topup_outside_fxd,
@@ -270,7 +307,6 @@ class Cost extends CI_Controller
 		);
 
 		$result = apitrackless("https://api.tracklessbank.com/v1/trackless/cost/setWisecost", json_encode($dataUpdate));
-
 		if (@$result->code != 200) {
 			$this->session->set_flashdata("failed", $result->message);
 			redirect("m3rc4n73/cost/bcost");
@@ -332,7 +368,8 @@ class Cost extends CI_Controller
 				"walletbank_circuit_pct" => number_format($mfee->message->walletbank_circuit_pct * 100, 2, ".", ","),
 				"walletbank_outside_fxd" => number_format($mfee->message->walletbank_outside_fxd, 2, ".", ","),
 				"walletbank_outside_pct" => number_format($mfee->message->walletbank_outside_pct * 100, 2, ".", ","),
-				"swap" => number_format($mfee->message->swap, 2, ".", ","),
+				"swap" => number_format($mfee->message->swap * 100, 2, ".", ","),
+				"swap_fxd" => number_format($mfee->message->swap_fxd, 2, ".", ","),
 			);
 		} else {
 			$mdata = array(
@@ -349,6 +386,7 @@ class Cost extends CI_Controller
 				"walletbank_outside_fxd" => number_format(0, 2, ".", ","),
 				"walletbank_outside_pct" => number_format(0, 2, ".", ","),
 				"swap" => number_format(0, 2, ".", ","),
+				"swap_fxd" => number_format(0, 2, ".", ","),
 			);
 		}
 		echo json_encode($mdata);

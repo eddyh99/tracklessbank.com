@@ -16,18 +16,6 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-bank"></i></div>
                         Bank
                     </a>
-                    <a class="nav-link collapsed <?= @$mn_op ?>" href="#" data-bs-toggle="collapse"
-                        data-bs-target="#Operations" aria-expanded="false" aria-controls="Operations">
-                        <div class="sb-nav-link-icon"><i class="fas fa-users-cog"></i></div>
-                        Operations
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="Operations" aria-labelledby="headingTwo"
-                        data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="<?= base_url() ?>m3rc4n73/Operations/topup">Topup</a>
-                        </nav>
-                    </div>
                     <a class="nav-link collapsed <?= @$mn_tc ?>" href="#" data-bs-toggle="collapse"
                         data-bs-target="#History" aria-expanded="false" aria-controls="History">
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
