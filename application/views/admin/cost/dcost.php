@@ -40,69 +40,73 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" id="topup_circuit_fxd_div">
                             <label class="form-label">Topup Circuit (Fixed)</label>
                             <input type="text" id="topup_circuit_fxd" name="topup_circuit_fxd" class="form-control"
                                 readonly>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" id="topup_circuit_pct_div">
                             <label class="form-label">Topup Circuit (%)</label>
                             <input type="text" id="topup_circuit_pct" name="topup_circuit_pct" class="form-control"
                                 readonly>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" id="topup_outside_fxd_div">
                             <label class="form-label">Topup Outside (Fixed)</label>
                             <input type="text" id="topup_outside_fxd" name="topup_outside_fxd" class="form-control"
                                 readonly>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" id="topup_outside_pct_div">
                             <label class="form-label">Topup Outside (%)</label>
                             <input type="text" id="topup_outside_pct" name="topup_outside_pct" class="form-control"
                                 readonly>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" id="wallet_sender_fxd_div">
                             <label class="form-label">Wallet Sender (Fixed)</label>
                             <input type="text" id="wallet_sender_fxd" name="wallet_sender_fxd" class="form-control"
                                 readonly>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" id="wallet_sender_pct_div">
                             <label class="form-label">Wallet Sender (%)</label>
                             <input type="text" id="wallet_sender_pct" name="wallet_sender_pct" class="form-control"
                                 readonly>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" id="wallet_receiver_fxd_div">
                             <label class="form-label">Wallet Receive (Fixed)</label>
                             <input type="text" id="wallet_receiver_fxd" name="wallet_receiver_fxd" class="form-control"
                                 readonly>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" id="wallet_receiver_pct_div">
                             <label class="form-label">Wallet Receive (%)</label>
                             <input type="text" id="wallet_receiver_pct" name="wallet_receiver_pct" class="form-control"
                                 readonly>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" id="walletbank_circuit_fxd_div">
                             <label class="form-label">Walletbank Circuit (Fixed)</label>
                             <input type="text" id="walletbank_circuit_fxd" name="walletbank_circuit_fxd"
                                 class="form-control" readonly>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" id="walletbank_circuit_pct_div">
                             <label class="form-label">Walletbank Circuit (%)</label>
                             <input type="text" id="walletbank_circuit_pct" name="walletbank_circuit_pct"
                                 class="form-control" readonly>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" id="walletbank_outside_fxd_div">
                             <label class="form-label">Walletbank Outside (Fixed)</label>
                             <input type="text" id="walletbank_outside_fxd" name="walletbank_outside_fxd"
                                 class="form-control" readonly>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" id="walletbank_outside_pct_div">
                             <label class="form-label">Walletbank Outside (%)</label>
                             <input type="text" id="walletbank_outside_pct" name="walletbank_outside_pct"
                                 class="form-control" readonly>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Swap</label>
+                        <div class="mb-3" id="swap_div">
+                            <label class="form-label">Swap (%)</label>
                             <input type="text" id="swap" name="swap" class="form-control" readonly>
+                        </div>
+                        <div class="mb-3" id="swap_fxd_div">
+                            <label class="form-label">Swap (Fixed)</label>
+                            <input type="text" id="swap_fxd" name="swap_fxd" class="form-control" readonly>
                         </div>
                         <div class="mb-3">
                             <button id="btnconfirm"
