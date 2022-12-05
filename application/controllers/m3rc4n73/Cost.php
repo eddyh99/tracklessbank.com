@@ -112,12 +112,12 @@ class Cost extends CI_Controller
 		if (($curr == "USD") ||
 			($curr == "EUR")
 		) {
-			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('walletbank_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('walletbank_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('walletbank_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('walletbank_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
 		}
 
 		if (($curr == "AUD") ||
@@ -127,8 +127,8 @@ class Cost extends CI_Controller
 			($curr == "SGD") ||
 			($curr == "TRY")
 		) {
-			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
 		}
 
 		$this->form_validation->set_rules('currency', 'Currency', 'trim|required');
@@ -256,10 +256,10 @@ class Cost extends CI_Controller
 		if (($curr == "USD") ||
 			($curr == "EUR")
 		) {
-			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
 		}
 
 		if (($curr == "AUD") ||
@@ -269,19 +269,19 @@ class Cost extends CI_Controller
 			($curr == "SGD") ||
 			($curr == "TRY")
 		) {
-			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
 		}
 
 		$this->form_validation->set_rules('currency', 'Currency', 'trim|required');
-		$this->form_validation->set_rules('transfer_circuit_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('transfer_circuit_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('transfer_circuit_fxd', 'Walletbank Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('transfer_circuit_pct', 'Walletbank Circuit (%)', 'trim|required|greater_than_equal_to[0]');
 		$this->form_validation->set_rules('transfer_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
 		$this->form_validation->set_rules('transfer_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->session->set_flashdata('failed', validation_errors());
-			redirect(base_url() . "m3rc4n73/cost/dcost");
+			redirect(base_url() . "m3rc4n73/cost/bcost");
 			return;
 		}
 
@@ -311,7 +311,7 @@ class Cost extends CI_Controller
 			$this->session->set_flashdata("failed", $result->message);
 			redirect("m3rc4n73/cost/bcost");
 		} else {
-			$this->session->set_flashdata("success", "Default Cost Already Set");
+			$this->session->set_flashdata("success", "Bank Cost Already Set");
 			redirect("m3rc4n73/cost/bcost");
 		}
 	}
