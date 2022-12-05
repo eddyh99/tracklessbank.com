@@ -39,6 +39,11 @@
                                     value="<?= $curr ?>" hidden>
                             </div>
                         </div>
+                        <?php
+                        if (
+                            ($currency == "USD") ||
+                            ($currency == "EUR")
+                        ) { ?>
                         <div class="mb-3" id="topup_circuit_fxd_div">
                             <label class="form-label">Topup Circuit (Fixed)</label>
                             <input type="text" id="topup_circuit_fxd" name="topup_circuit_fxd" class="form-control"
@@ -63,6 +68,33 @@
                                 value="<?= $dcost['topup_outside_pct'] ?>"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
+                        <?php
+                        } ?>
+                        <?php
+                        if (($currency == "AUD") ||
+                            ($currency == "NZD") ||
+                            ($currency == "CAD") ||
+                            ($currency == "HUF") ||
+                            ($currency == "SGD") ||
+                            ($currency == "TRY")
+                        ) {
+                        ?>
+                        <div class="mb-3" id="topup_circuit_fxd_div">
+                            <label class="form-label">Topup Circuit (Fixed)</label>
+                            <input type="text" id="topup_circuit_fxd" name="topup_circuit_fxd" class="form-control"
+                                value="<?= $dcost['topup_circuit_fxd'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                        </div>
+                        <div class="mb-3" id="topup_circuit_pct_div">
+                            <label class="form-label">Topup Circuit (%)</label>
+                            <input type="text" id="topup_circuit_pct" name="topup_circuit_pct" class="form-control"
+                                value="<?= $dcost['topup_circuit_pct'] ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                        </div>
+                        <?php
+                        } ?>
+
+
                         <div class="mb-3" id="wallet_sender_fxd_div">
                             <label class="form-label">Wallet Sender (Fixed)</label>
                             <input type="text" id="wallet_sender_fxd" name="wallet_sender_fxd" class="form-control"
@@ -99,6 +131,12 @@
                                 class="form-control" value="<?= $dcost['walletbank_circuit_pct'] ?>"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
+
+                        <?php
+                        if (($currency == "USD") ||
+                            ($currency == "EUR")
+                        ) {
+                        ?>
                         <div class="mb-3" id="walletbank_outside_fxd_div">
                             <label class="form-label">Walletbank Outside (Fixed)</label>
                             <input type="text" id="walletbank_outside_fxd" name="walletbank_outside_fxd"
@@ -111,6 +149,9 @@
                                 class="form-control" value="<?= $dcost['walletbank_outside_pct'] ?>"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
+                        <?php
+                        } ?>
+
                         <div class="mb-3" id="swap_div">
                             <label class="form-label">Swap (%)</label>
                             <input type="text" id="swap" name="swap" class="form-control" value="<?= $dcost['swap'] ?>"
