@@ -23,21 +23,25 @@ function bcost() {
                 (readcurrency != "HUF") ||
                 (readcurrency != "SGD") ||
                 (readcurrency != "TRY")) {
-                $("#topup_outside_fxd_div").hide()
-                $("#topup_outside_pct_div").hide()
                 $("#topup_circuit_fxd_div").hide()
                 $("#topup_circuit_pct_div").hide()
-            }
-            if ((readcurrency != "AUD") ||
-                (readcurrency != "NZD") ||
-                (readcurrency != "CAD") ||
-                (readcurrency != "HUF") ||
-                (readcurrency != "SGD") ||
-                (readcurrency != "TRY")) {
                 $("#topup_outside_fxd_div").hide()
                 $("#topup_outside_pct_div").hide()
+                $("#transfer_outside_fxd_div").hide()
+                $("#transfer_outside_pct_div").hide()
+            }
+            if ((readcurrency == "AUD") ||
+                (readcurrency == "NZD") ||
+                (readcurrency == "CAD") ||
+                (readcurrency == "HUF") ||
+                (readcurrency == "SGD") ||
+                (readcurrency == "TRY")) {
                 $("#topup_circuit_fxd_div").show()
                 $("#topup_circuit_pct_div").show()
+                $("#topup_outside_fxd_div").hide()
+                $("#topup_outside_pct_div").hide()
+                $("#transfer_outside_fxd_div").hide()
+                $("#transfer_outside_pct_div").hide()
             }
             if ((readcurrency == "USD") ||
                 (readcurrency == "EUR")) {
@@ -45,6 +49,8 @@ function bcost() {
                 $("#topup_outside_pct_div").show()
                 $("#topup_circuit_fxd_div").show()
                 $("#topup_circuit_pct_div").show()
+                $("#transfer_outside_fxd_div").show()
+                $("#transfer_outside_pct_div").show()
             }
         },
         error: function(response) {
@@ -93,34 +99,34 @@ function dcost() {
                 (readcurrency != "HUF") ||
                 (readcurrency != "SGD") ||
                 (readcurrency != "TRY")) {
-                $("#walletbank_outside_fxd_div").hide()
-                $("#walletbank_outside_pct_div").hide()
                 $("#topup_outside_fxd_div").hide()
                 $("#topup_outside_pct_div").hide()
                 $("#topup_circuit_fxd_div").hide()
                 $("#topup_circuit_pct_div").hide()
-            }
-            if ((readcurrency != "AUD") ||
-                (readcurrency != "NZD") ||
-                (readcurrency != "CAD") ||
-                (readcurrency != "HUF") ||
-                (readcurrency != "SGD") ||
-                (readcurrency != "TRY")) {
                 $("#walletbank_outside_fxd_div").hide()
                 $("#walletbank_outside_pct_div").hide()
+            }
+            if ((readcurrency == "AUD") ||
+                (readcurrency == "NZD") ||
+                (readcurrency == "CAD") ||
+                (readcurrency == "HUF") ||
+                (readcurrency == "SGD") ||
+                (readcurrency == "TRY")) {
                 $("#topup_outside_fxd_div").hide()
                 $("#topup_outside_pct_div").hide()
                 $("#topup_circuit_fxd_div").show()
                 $("#topup_circuit_pct_div").show()
+                $("#walletbank_outside_fxd_div").hide()
+                $("#walletbank_outside_pct_div").hide()
             }
             if ((readcurrency == "USD") ||
                 (readcurrency == "EUR")) {
-                $("#walletbank_outside_fxd_div").show()
-                $("#walletbank_outside_pct_div").show()
                 $("#topup_outside_fxd_div").show()
                 $("#topup_outside_pct_div").show()
                 $("#topup_circuit_fxd_div").show()
                 $("#topup_circuit_pct_div").show()
+                $("#walletbank_outside_fxd_div").show()
+                $("#walletbank_outside_pct_div").show()
             }
 
         },
@@ -136,6 +142,5 @@ $("#currency_dcost").on("change", function() {
 
 function validate() {
     $("#btnconfirm").attr("disabled", true);
-    $("#form_submit").submit();
 }
 </script>

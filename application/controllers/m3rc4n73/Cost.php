@@ -6,6 +6,7 @@ class Cost extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		// error_reporting(0);
 		if (empty($this->session->userdata('user_id'))) {
 			redirect(base_url());
 		}
@@ -112,12 +113,12 @@ class Cost extends CI_Controller
 		if (($curr == "USD") ||
 			($curr == "EUR")
 		) {
-			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('walletbank_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('walletbank_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('walletbank_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('walletbank_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
 		}
 
 		if (($curr == "AUD") ||
@@ -127,8 +128,8 @@ class Cost extends CI_Controller
 			($curr == "SGD") ||
 			($curr == "TRY")
 		) {
-			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
 		}
 
 		$this->form_validation->set_rules('currency', 'Currency', 'trim|required');
@@ -162,6 +163,49 @@ class Cost extends CI_Controller
 		$walletbank_outside_pct = $this->security->xss_clean($input->post("walletbank_outside_pct"));
 		$swap = $this->security->xss_clean($input->post("swap"));
 		$swap_fxd = $this->security->xss_clean($input->post("swap_fxd"));
+
+		if ($topup_circuit_fxd == '') {
+			$topup_circuit_fxd = 0;
+		}
+		if ($topup_circuit_pct == '') {
+			$topup_circuit_pct = 0;
+		}
+		if ($topup_outside_fxd == '') {
+			$topup_outside_fxd = 0;
+		}
+		if ($topup_outside_pct == '') {
+			$topup_outside_pct = 0;
+		}
+		if ($wallet_sender_fxd == '') {
+			$wallet_sender_fxd = 0;
+		}
+		if ($wallet_sender_pct == '') {
+			$wallet_sender_pct = 0;
+		}
+		if ($wallet_receiver_fxd == '') {
+			$wallet_receiver_fxd = 0;
+		}
+		if ($wallet_receiver_pct == '') {
+			$wallet_receiver_pct = 0;
+		}
+		if ($walletbank_circuit_fxd == '') {
+			$walletbank_circuit_fxd = 0;
+		}
+		if ($walletbank_circuit_pct == '') {
+			$walletbank_circuit_pct = 0;
+		}
+		if ($walletbank_outside_fxd == '') {
+			$walletbank_outside_fxd = 0;
+		}
+		if ($walletbank_outside_pct == '') {
+			$walletbank_outside_pct = 0;
+		}
+		if ($swap == '') {
+			$swap = 0;
+		}
+		if ($swap_fxd == '') {
+			$swap_fxd = 0;
+		}
 
 		$dataUpdate = array(
 			"topup_circuit_fxd" => $topup_circuit_fxd,
@@ -256,10 +300,12 @@ class Cost extends CI_Controller
 		if (($curr == "USD") ||
 			($curr == "EUR")
 		) {
-			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('transfer_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('transfer_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
 		}
 
 		if (($curr == "AUD") ||
@@ -269,19 +315,17 @@ class Cost extends CI_Controller
 			($curr == "SGD") ||
 			($curr == "TRY")
 		) {
-			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than[0]');
-			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than[0]');
+			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
+			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
 		}
 
 		$this->form_validation->set_rules('currency', 'Currency', 'trim|required');
-		$this->form_validation->set_rules('transfer_circuit_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('transfer_circuit_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('transfer_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
-		$this->form_validation->set_rules('transfer_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('transfer_circuit_fxd', 'Walletbank Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
+		$this->form_validation->set_rules('transfer_circuit_pct', 'Walletbank Circuit (%)', 'trim|required|greater_than_equal_to[0]');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->session->set_flashdata('failed', validation_errors());
-			redirect(base_url() . "m3rc4n73/cost/dcost");
+			redirect(base_url() . "m3rc4n73/cost/bcost");
 			return;
 		}
 
@@ -293,6 +337,31 @@ class Cost extends CI_Controller
 		$topup_circuit_pct = $this->security->xss_clean($input->post("topup_circuit_pct"));
 		$topup_outside_fxd = $this->security->xss_clean($input->post("topup_outside_fxd"));
 		$topup_outside_pct = $this->security->xss_clean($input->post("topup_outside_pct"));
+
+		if ($topup_circuit_fxd == '') {
+			$topup_circuit_fxd = 0;
+		}
+		if ($topup_circuit_pct == '') {
+			$topup_circuit_pct = 0;
+		}
+		if ($topup_outside_fxd == '') {
+			$topup_outside_fxd = 0;
+		}
+		if ($topup_outside_pct == '') {
+			$topup_outside_pct = 0;
+		}
+		if ($transfer_circuit_fxd == '') {
+			$transfer_circuit_fxd = 0;
+		}
+		if ($transfer_circuit_pct == '') {
+			$transfer_circuit_pct = 0;
+		}
+		if ($transfer_outside_fxd == '') {
+			$transfer_outside_fxd = 0;
+		}
+		if ($transfer_outside_pct == '') {
+			$transfer_outside_pct = 0;
+		}
 
 		$dataUpdate = array(
 			"walletbank_circuit_fxd" => $transfer_circuit_fxd,
@@ -311,7 +380,7 @@ class Cost extends CI_Controller
 			$this->session->set_flashdata("failed", $result->message);
 			redirect("m3rc4n73/cost/bcost");
 		} else {
-			$this->session->set_flashdata("success", "Default Cost Already Set");
+			$this->session->set_flashdata("success", "Bank Cost Already Set");
 			redirect("m3rc4n73/cost/bcost");
 		}
 	}

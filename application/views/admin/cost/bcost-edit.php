@@ -21,7 +21,7 @@
                 </div>
                 <div class="card-body">
                     <form action="<?= base_url() ?>m3rc4n73/cost/editbcost_prosses" method="post" id="form_submit"
-                        onsubmit="return validate()">
+                        onSubmit="return validate()">
                         <input type="hidden" id="token" name="<?php echo $this->security->get_csrf_token_name(); ?>"
                             value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <div class="row mb-3">
@@ -39,6 +39,11 @@
                                     value="<?= $curr ?>" hidden>
                             </div>
                         </div>
+                        <?php
+                        if (
+                            ($currency == "USD") ||
+                            ($currency == "EUR")
+                        ) { ?>
                         <div class="mb-3" id="topup_circuit_fxd_div">
                             <label class="form-label">Topup Circuit (Fixed)</label>
                             <input type="text" id="topup_circuit_fxd" name="topup_circuit_fxd" class="form-control"
@@ -63,6 +68,32 @@
                                 value="<?= $bcost['topup_outside_pct']; ?>"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
+                        <?php
+                        } ?>
+                        <?php
+                        if (($currency == "AUD") ||
+                            ($currency == "NZD") ||
+                            ($currency == "CAD") ||
+                            ($currency == "HUF") ||
+                            ($currency == "SGD") ||
+                            ($currency == "TRY")
+                        ) {
+                        ?>
+                        <div class="mb-3" id="topup_circuit_fxd_div">
+                            <label class="form-label">Topup Circuit (Fixed)</label>
+                            <input type="text" id="topup_circuit_fxd" name="topup_circuit_fxd" class="form-control"
+                                value="<?= $bcost['topup_circuit_fxd']; ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                        </div>
+                        <div class="mb-3" id="topup_circuit_pct_div">
+                            <label class="form-label">Topup Circuit (%)</label>
+                            <input type="text" id="topup_circuit_pct" name="topup_circuit_pct" class="form-control"
+                                value="<?= $bcost['topup_circuit_pct']; ?>"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                        </div>
+                        <?php
+                        } ?>
+
                         <div class="mb-3" id="transfer_circuit_fxd_div">
                             <label class="form-label">Walletbank Circuit (Fixed)</label>
                             <input type="text" id="transfer_circuit_fxd" name="transfer_circuit_fxd"
@@ -75,6 +106,12 @@
                                 class="form-control" value="<?= $bcost['transfer_circuit_pct']; ?>"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
+
+                        <?php
+                        if (($currency == "USD") ||
+                            ($currency == "EUR")
+                        ) {
+                        ?>
                         <div class="mb-3" id="transfer_outside_fxd_div">
                             <label class="form-label">Walletbank Outside (Fixed)</label>
                             <input type="text" id="transfer_outside_fxd" name="transfer_outside_fxd"
@@ -87,6 +124,7 @@
                                 class="form-control" value="<?= $bcost['transfer_outside_pct']; ?>"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
+                        <?php } ?>
                         <div class="mb-3">
                             <button id="btnconfirm"
                                 class="btn btn-freedy-blue px-4 py-2 mx-auto shadow-none">Confirm</button>
