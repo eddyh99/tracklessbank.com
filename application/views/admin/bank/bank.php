@@ -29,7 +29,9 @@
                     ($_SESSION["currency"] == "CAD") ||
                     ($_SESSION["currency"] == "HUF") ||
                     ($_SESSION["currency"] == "SGD") ||
-                    ($_SESSION["currency"] == "TRY")
+                    ($_SESSION["currency"] == "TRY") ||
+                    ($_SESSION["currency"] == "GBP") ||
+                    ($_SESSION["currency"] == "RON")
                 ) { ?>
                 <div class="col-12 card mt-3">
                     <div class="card-header fw-bold">
@@ -38,36 +40,94 @@
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
+                            <?php if (
+                                    ($_SESSION["currency"] == "NZD") ||
+                                    ($_SESSION["currency"] == "CAD") ||
+                                    ($_SESSION["currency"] == "HUF") ||
+                                    ($_SESSION["currency"] == "RON") ||
+                                    ($_SESSION["currency"] == "SGD")
+                                ) { ?>
+                            <label class="form-label">Account number</label>
+
+                            <?php } else { ?>
+                            <label class="form-label">IBAN</label>
+                            <?php } ?>
+
+                            <input class="form-control" type="text" name="number_circuit"
+                                value="<?= @$bank->number_circuit ?>" readonly>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Registered Name</label>
-                            <input class="form-control" type="text" name="c_registered_name"
-                                placeholder="Registered Name" value="<?= @$bank->c_registered_name ?>" readonly>
+                            <input class="form-control" type="text" name="name_circuit"
+                                value="<?= @$bank->name_circuit ?>" readonly>
                         </div>
+
+                        <?php if (
+                                ($_SESSION["currency"] != "NZD") ||
+                                ($_SESSION["currency"] != "HUF") ||
+                                ($_SESSION["currency"] != "TRY")
+                            ) { ?>
                         <div class="mb-3">
-                            <label class="form-label">Account Number</label>
-                            <input class="form-control" type="text" name="c_account_number" placeholder="Account Number"
-                                value="<?= @$bank->c_account_number ?>" readonly>
+                            <?php
+                                    if (($_SESSION["currency"] == "GBP")) {
+                                    ?>
+                            <label class="form-label">Sort code</label>
+
+                            <?php } elseif (($_SESSION["currency"] == "AUD")) { ?>
+                            <label class="form-label">BSB code</label>
+
+                            <?php } elseif (($_SESSION["currency"] == "CAD")) { ?>
+                            <label class="form-label">Institution number</label>
+
+                            <?php } elseif (
+                                        ($_SESSION["currency"] == "RON") ||
+                                        ($_SESSION["currency"] == "SGD")
+                                    ) { ?>
+                            <label class="form-label">Bank code</label>
+
+                            <?php } else { ?>
+                            <label class="form-label">Swift</label>
+                            <?php } ?>
+
+                            <input class="form-control" type="text" name="routing_circuit"
+                                value="<?= @$bank->routing_circuit ?>" readonly>
                         </div>
+                        <?php } ?>
+
                         <div class="mb-3">
-                            <label class="form-label">Routing Number</label>
-                            <input class="form-control" type="text" name="c_routing_number" placeholder="Routing Number"
-                                value="<?= @$bank->c_routing_number ?>" readonly>
+                            <?php if (($_SESSION["currency"] == "GBP")) { ?>
+                            <label class="form-label">Account number</label>
+
+                            <?php } elseif (($_SESSION["currency"] == "CAD")) { ?>
+                            <label class="form-label">Transit number</label>
+
+                            <?php } else { ?>
+                            <label class="form-label">Transit</label>
+                            <?php } ?>
+
+                            <input class="form-control" type="text" name="transit_circuit"
+                                value="<?= @$bank->transit_circuit ?>" readonly>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Bank Name</label>
-                            <input class="form-control" type="text" name="c_bank_name" placeholder="Bank Name"
-                                value="<?= @$bank->c_bank_name ?>" readonly>
+                            <input class="form-control" type="text" name="bankname_circuit"
+                                value="<?= @$bank->bankname_circuit ?>" readonly>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Bank Address</label>
-                            <input class="form-control" type="text" name="c_bank_address" placeholder="Bank Address"
-                                value="<?= @$bank->c_bank_address ?>" readonly>
+                            <input class="form-control" type="text" name="address_circuit"
+                                value="<?= @$bank->address_circuit ?>" readonly>
                         </div>
                     </div>
                 </div>
                 <?php } else { ?>
 
-                <?php } ?>
-                <?php if (($_SESSION["currency"] == "USD") || ($_SESSION["currency"] == "EUR")) { ?>
+                <?php }
+                if (
+                    ($_SESSION["currency"] == "USD") ||
+                    ($_SESSION["currency"] == "EUR") ||
+                    ($_SESSION["currency"] == "GBP")
+                ) { ?>
                 <div class="col-12 card mt-3">
                     <div class="card-header fw-bold">
                         <i class="fas fa-bank me-1"></i>
@@ -76,35 +136,42 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label class="form-label">Registered Name</label>
-                            <input class="form-control" type="text" name="oc_registered_name"
-                                placeholder="Registered Name" value="<?= @$bank->oc_registered_name ?>" readonly>
+                            <input class="form-control" type="text" name="name_outside"
+                                value="<?= @$bank->name_outside ?>" readonly>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">IBAN</label>
-                            <input class="form-control" type="text" name="oc_iban" placeholder="IBAN"
-                                value="<?= @$bank->oc_iban ?>" readonly>
+                            <input class="form-control" type="text" name="iban_outside"
+                                value="<?= @$bank->iban_outside ?>" readonly>
                         </div>
                         <div class="mb-3">
+                            <?php
+                                if (
+                                    ($_SESSION["currency"] == "USD") ||
+                                    ($_SESSION["currency"] == "EUR") ||
+                                    ($_SESSION["currency"] == "GBP")
+                                ) { ?>
+                            <label class="form-label">SWIFT/BIC</label>
+                            <?php } else { ?>
                             <label class="form-label">BIC / SWIFT</label>
-                            <input class="form-control" type="text" name="oc_bic" placeholder="BIC / SWIFT"
-                                value="<?= @$bank->oc_bic ?>" readonly>
+                            <?php
+                                } ?>
+                            <input class="form-control" type="text" name="bic_outside"
+                                value="<?= @$bank->bic_outside ?>" readonly>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Bank Name</label>
-                            <input class="form-control" type="text" name="oc_bank_name" placeholder="Bank Name"
-                                value="<?= @$bank->oc_bank_name ?>" readonly>
+                            <input class="form-control" type="text" name="bankname_outside"
+                                value="<?= @$bank->bankname_outside ?>" readonly>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Bank Address</label>
-                            <input class="form-control" type="text" name="oc_bank_address" placeholder="Bank Address"
-                                value="<?= @$bank->oc_bank_address ?>" readonly>
+                            <input class="form-control" type="text" name="address_outside"
+                                value="<?= @$bank->address_outside ?>" readonly>
                         </div>
                     </div>
                 </div>
-
-                <?php } ?>
-
-                <?php
+                <?php }
                 if (
                     ($_SESSION["currency"] == "USD") ||
                     ($_SESSION["currency"] == "EUR") ||
@@ -113,12 +180,13 @@
                     ($_SESSION["currency"] == "CAD") ||
                     ($_SESSION["currency"] == "HUF") ||
                     ($_SESSION["currency"] == "SGD") ||
-                    ($_SESSION["currency"] == "TRY")
+                    ($_SESSION["currency"] == "TRY") ||
+                    ($_SESSION["currency"] == "GBP") ||
+                    ($_SESSION["currency"] == "RON")
                 ) { ?>
                 <div class="col-12 my-3 mb-5 d-grid gap-2">
                     <button id="btnconfirm" class="btn btn-freedy-blue px-4 py-2 shadow-none">Edit</button>
                 </div>
-                <?php } else { ?>
                 <?php } ?>
             </form>
         </div>
