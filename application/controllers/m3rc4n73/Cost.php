@@ -111,24 +111,27 @@ class Cost extends CI_Controller
 		$curr = $this->security->xss_clean($input->post("currency"));
 
 		if (($curr == "USD") ||
-			($curr == "EUR")
-		) {
-			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
-			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
-			$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
-			$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
-			$this->form_validation->set_rules('walletbank_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
-			$this->form_validation->set_rules('walletbank_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
-		}
-
-		if (($curr == "NZD") ||
+			($curr == "EUR") ||
+			($curr == "AUD") ||
+			($curr == "NZD") ||
 			($curr == "CAD") ||
 			($curr == "HUF") ||
 			($curr == "SGD") ||
-			($curr == "TRY")
+			($curr == "TRY") ||
+			($curr == "GBP") ||
+			($curr == "RON")
 		) {
 			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
 			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
+
+			if (($curr == "USD") ||
+				($curr == "EUR")
+			) {
+				$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+				$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
+				$this->form_validation->set_rules('walletbank_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+				$this->form_validation->set_rules('walletbank_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
+			}
 		}
 
 		$this->form_validation->set_rules('currency', 'Currency', 'trim|required');
@@ -297,24 +300,27 @@ class Cost extends CI_Controller
 		$curr = $this->security->xss_clean($input->post("currency"));
 
 		if (($curr == "USD") ||
-			($curr == "EUR")
-		) {
-			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
-			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
-			$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
-			$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
-			$this->form_validation->set_rules('transfer_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
-			$this->form_validation->set_rules('transfer_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
-		}
-
-		if (($curr == "NZD") ||
+			($curr == "EUR") ||
+			($curr == "AUD") ||
+			($curr == "NZD") ||
 			($curr == "CAD") ||
 			($curr == "HUF") ||
 			($curr == "SGD") ||
-			($curr == "TRY")
+			($curr == "TRY") ||
+			($curr == "GBP") ||
+			($curr == "RON")
 		) {
 			$this->form_validation->set_rules('topup_circuit_fxd', 'Topup Circuit (Fixed)', 'trim|required|greater_than_equal_to[0]');
 			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
+
+			if (($curr == "USD") ||
+				($curr == "EUR")
+			) {
+				$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+				$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
+				$this->form_validation->set_rules('transfer_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+				$this->form_validation->set_rules('transfer_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
+			}
 		}
 
 		$this->form_validation->set_rules('currency', 'Currency', 'trim|required');
