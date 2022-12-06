@@ -17,7 +17,7 @@
             </div>
             <div class="col-12 card mb-5 mt-3">
                 <div class="card-header fw-bold">
-                    Default Cost
+                    Bank Cost
                 </div>
                 <div class="card-body">
                     <form action="<?= base_url() ?>m3rc4n73/cost/editbcost_prosses" method="post" id="form_submit"
@@ -41,8 +41,16 @@
                         </div>
                         <?php
                         if (
-                            ($currency == "USD") ||
-                            ($currency == "EUR")
+                            ($curr == "USD") ||
+                            ($curr == "EUR") ||
+                            ($curr == "AUD") ||
+                            ($curr == "NZD") ||
+                            ($curr == "CAD") ||
+                            ($curr == "HUF") ||
+                            ($curr == "SGD") ||
+                            ($curr == "TRY") ||
+                            ($curr == "GBP") ||
+                            ($curr == "RON")
                         ) { ?>
                         <div class="mb-3" id="topup_circuit_fxd_div">
                             <label class="form-label">Topup Circuit (Fixed)</label>
@@ -56,6 +64,10 @@
                                 value="<?= $bcost['topup_circuit_pct']; ?>"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
+                        <?php
+                            if (($curr == "USD") ||
+                                ($curr == "EUR")
+                            ) { ?>
                         <div class="mb-3" id="topup_outside_fxd_div">
                             <label class="form-label">Topup Outside (Fixed)</label>
                             <input type="text" id="topup_outside_fxd" name="topup_outside_fxd" class="form-control"
@@ -68,30 +80,7 @@
                                 value="<?= $bcost['topup_outside_pct']; ?>"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
-                        <?php
-                        } ?>
-                        <?php
-                        if (($currency == "AUD") ||
-                            ($currency == "NZD") ||
-                            ($currency == "CAD") ||
-                            ($currency == "HUF") ||
-                            ($currency == "SGD") ||
-                            ($currency == "TRY")
-                        ) {
-                        ?>
-                        <div class="mb-3" id="topup_circuit_fxd_div">
-                            <label class="form-label">Topup Circuit (Fixed)</label>
-                            <input type="text" id="topup_circuit_fxd" name="topup_circuit_fxd" class="form-control"
-                                value="<?= $bcost['topup_circuit_fxd']; ?>"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
-                        </div>
-                        <div class="mb-3" id="topup_circuit_pct_div">
-                            <label class="form-label">Topup Circuit (%)</label>
-                            <input type="text" id="topup_circuit_pct" name="topup_circuit_pct" class="form-control"
-                                value="<?= $bcost['topup_circuit_pct']; ?>"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
-                        </div>
-                        <?php
+                        <?php }
                         } ?>
 
                         <div class="mb-3" id="transfer_circuit_fxd_div">
@@ -108,8 +97,8 @@
                         </div>
 
                         <?php
-                        if (($currency == "USD") ||
-                            ($currency == "EUR")
+                        if (($curr == "USD") ||
+                            ($curr == "EUR")
                         ) {
                         ?>
                         <div class="mb-3" id="transfer_outside_fxd_div">

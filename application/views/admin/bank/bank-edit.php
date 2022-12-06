@@ -39,12 +39,18 @@
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
+                            <label class="form-label">Account Holder</label>
+                            <input class="form-control" type="text" name="name_circuit"
+                                value="<?= @$bank->name_circuit ?>">
+                        </div>
+                        <div class="mb-3">
                             <?php if (
                                     ($_SESSION["currency"] == "NZD") ||
                                     ($_SESSION["currency"] == "CAD") ||
                                     ($_SESSION["currency"] == "HUF") ||
                                     ($_SESSION["currency"] == "RON") ||
-                                    ($_SESSION["currency"] == "SGD")
+                                    ($_SESSION["currency"] == "SGD") ||
+                                    ($_SESSION["currency"] == "AUD")
                                 ) { ?>
                             <label class="form-label">Account number</label>
 
@@ -54,15 +60,10 @@
                             <input class="form-control" type="text" name="number_circuit"
                                 value="<?= @$bank->number_circuit ?>">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Registered Name</label>
-                            <input class="form-control" type="text" name="name_circuit"
-                                value="<?= @$bank->name_circuit ?>">
-                        </div>
 
                         <?php if (
-                                ($_SESSION["currency"] != "NZD") ||
-                                ($_SESSION["currency"] != "HUF") ||
+                                ($_SESSION["currency"] != "NZD") &&
+                                ($_SESSION["currency"] != "HUF") &&
                                 ($_SESSION["currency"] != "TRY")
                             ) { ?>
                         <div class="mb-3">
@@ -91,7 +92,7 @@
                                 value="<?= @$bank->routing_circuit ?>">
                         </div>
                         <?php } ?>
-
+                        <?php if (($_SESSION["currency"] == "GBP") || ($_SESSION["currency"] == "CAD")) { ?>
                         <div class="mb-3">
                             <?php if (($_SESSION["currency"] == "GBP")) { ?>
                             <label class="form-label">Account number</label>
@@ -99,13 +100,12 @@
                             <?php } elseif (($_SESSION["currency"] == "CAD")) { ?>
                             <label class="form-label">Transit number</label>
 
-                            <?php } else { ?>
-                            <label class="form-label">Transit</label>
                             <?php } ?>
 
                             <input class="form-control" type="text" name="transit_circuit"
                                 value="<?= @$bank->transit_circuit ?>">
                         </div>
+                        <?php } ?>
                         <div class="mb-3">
                             <label class="form-label">Bank Name</label>
                             <input class="form-control" type="text" name="bankname_circuit"
@@ -145,13 +145,11 @@
                         <div class="mb-3">
                             <?php
                                 if (
-                                    ($_SESSION["currency"] == "USD") ||
-                                    ($_SESSION["currency"] == "EUR") ||
                                     ($_SESSION["currency"] == "GBP")
                                 ) { ?>
                             <label class="form-label">SWIFT/BIC</label>
                             <?php } else { ?>
-                            <label class="form-label">BIC / SWIFT</label>
+                            <label class="form-label">Swift</label>
                             <?php
                                 } ?>
                             <input class="form-control" type="text" name="bic_outside"

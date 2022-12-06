@@ -18,7 +18,7 @@ class Transactions extends CI_Controller
             "title"     => "FreedyBank - History Transactions Topup",
             "content"   => "admin/history/topup",
             "mn_tc" => "active",
-            "bank"  => apitrackless("https://api.tracklessbank.com/v1/trackless/member/getAll_bank")->message,
+            "bank"  => apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
             "extra"     => "admin/history/js/js_topup",
         );
 
@@ -40,7 +40,7 @@ class Transactions extends CI_Controller
             "currency"  => $_SESSION["currency"],
             "timezone"  => $_SESSION["time_location"]
         );
-        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/wallet/gethistory_banktopup", json_encode($mdata));
+        $result = apitrackless(URLAPI . "/v1/trackless/wallet/gethistory_banktopup", json_encode($mdata));
         $data["token"] = $this->security->get_csrf_hash();
         $data["history"] = $result->message;
         echo json_encode($data);
@@ -52,7 +52,7 @@ class Transactions extends CI_Controller
             "title"     => "FreedyBank - History Transactions Wallet",
             "content"   => "admin/history/towallet",
             "mn_tc" => "active",
-            "bank"  => apitrackless("https://api.tracklessbank.com/v1/trackless/member/getAll_bank")->message,
+            "bank"  => apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
             "extra"     => "admin/history/js/js_towallet",
         );
 
@@ -74,7 +74,7 @@ class Transactions extends CI_Controller
             "currency"  => $_SESSION["currency"],
             "timezone"  => $_SESSION["time_location"]
         );
-        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/wallet/gethistory_bankwallet", json_encode($mdata));
+        $result = apitrackless(URLAPI . "/v1/trackless/wallet/gethistory_bankwallet", json_encode($mdata));
         $data["token"] = $this->security->get_csrf_hash();
         $data["history"] = $result->message;
         echo json_encode($data);
@@ -86,7 +86,7 @@ class Transactions extends CI_Controller
             "title"     => "FreedyBank - History Transactions Withdraw",
             "content"   => "admin/history/tobank",
             "mn_tc" => "active",
-            "bank"  => apitrackless("https://api.tracklessbank.com/v1/trackless/member/getAll_bank")->message,
+            "bank"  => apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
             "extra"     => "admin/history/js/js_tobank",
         );
 
@@ -108,7 +108,7 @@ class Transactions extends CI_Controller
             "currency"  => $_SESSION["currency"],
             "timezone"  => $_SESSION["time_location"]
         );
-        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/wallet/gethistory_banktobank", json_encode($mdata));
+        $result = apitrackless(URLAPI . "/v1/trackless/wallet/gethistory_banktobank", json_encode($mdata));
         $data["token"] = $this->security->get_csrf_hash();
         $data["history"] = $result->message;
         echo json_encode($data);

@@ -22,7 +22,7 @@ function apitrackless($url, $postData = NULL)
 function balance($userid, $currency)
 {
     $balance = apitrackless(
-        "https://api.tracklessbank.com/v1/member/wallet/getBalance?currency=" . $currency . "&userid=" . $userid
+        URLAPI . "/v1/member/wallet/getBalance?currency=" . $currency . "&userid=" . $userid
     )->message->balance;
     return $balance;
 }
@@ -30,7 +30,7 @@ function balance($userid, $currency)
 function balanceadmin($currency)
 {
     $balance = apitrackless(
-        "https://api.tracklessbank.com/v1/trackless/wallet/balance_ByCurrency?currency=" . $currency
+        URLAPI . "/v1/trackless/wallet/balance_ByCurrency?currency=" . $currency
     )->message->balance;
     return $balance;
 }

@@ -15,14 +15,16 @@ function bcost() {
             $("#topup_outside_fxd").val(data.topup_outside_fxd)
             $("#topup_outside_pct").val(data.topup_outside_pct)
 
-            if ((readcurrency != "USD") ||
-                (readcurrency != "EUR") ||
-                (readcurrency != "AUD") ||
-                (readcurrency != "NZD") ||
-                (readcurrency != "CAD") ||
-                (readcurrency != "HUF") ||
-                (readcurrency != "SGD") ||
-                (readcurrency != "TRY")) {
+            if ((readcurrency != "USD") &&
+                (readcurrency != "EUR") &&
+                (readcurrency != "AUD") &&
+                (readcurrency != "NZD") &&
+                (readcurrency != "CAD") &&
+                (readcurrency != "HUF") &&
+                (readcurrency != "SGD") &&
+                (readcurrency != "TRY") &&
+                (readcurrency != "GBP") &&
+                (readcurrency != "RON")) {
                 $("#topup_circuit_fxd_div").hide()
                 $("#topup_circuit_pct_div").hide()
                 $("#topup_outside_fxd_div").hide()
@@ -35,7 +37,9 @@ function bcost() {
                 (readcurrency == "CAD") ||
                 (readcurrency == "HUF") ||
                 (readcurrency == "SGD") ||
-                (readcurrency == "TRY")) {
+                (readcurrency == "TRY") ||
+                (readcurrency == "GBP") ||
+                (readcurrency == "RON")) {
                 $("#topup_circuit_fxd_div").show()
                 $("#topup_circuit_pct_div").show()
                 $("#topup_outside_fxd_div").hide()
@@ -91,14 +95,16 @@ function dcost() {
             $("#swap").val(data.swap)
             $("#swap_fxd").val(data.swap_fxd)
 
-            if ((readcurrency != "USD") ||
-                (readcurrency != "EUR") ||
-                (readcurrency != "AUD") ||
-                (readcurrency != "NZD") ||
-                (readcurrency != "CAD") ||
-                (readcurrency != "HUF") ||
-                (readcurrency != "SGD") ||
-                (readcurrency != "TRY")) {
+            if ((readcurrency != "USD") &&
+                (readcurrency != "EUR") &&
+                (readcurrency != "AUD") &&
+                (readcurrency != "NZD") &&
+                (readcurrency != "CAD") &&
+                (readcurrency != "HUF") &&
+                (readcurrency != "SGD") &&
+                (readcurrency != "TRY") &&
+                (readcurrency != "GBP") &&
+                (readcurrency != "RON")) {
                 $("#topup_outside_fxd_div").hide()
                 $("#topup_outside_pct_div").hide()
                 $("#topup_circuit_fxd_div").hide()
@@ -111,7 +117,9 @@ function dcost() {
                 (readcurrency == "CAD") ||
                 (readcurrency == "HUF") ||
                 (readcurrency == "SGD") ||
-                (readcurrency == "TRY")) {
+                (readcurrency == "TRY") ||
+                (readcurrency == "GBP") ||
+                (readcurrency == "RON")) {
                 $("#topup_outside_fxd_div").hide()
                 $("#topup_outside_pct_div").hide()
                 $("#topup_circuit_fxd_div").show()

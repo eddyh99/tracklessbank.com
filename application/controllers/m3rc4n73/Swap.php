@@ -16,7 +16,7 @@ class Swap extends CI_Controller
         $mdata = array(
             "userid" => $_SESSION["user_id"]
         );
-        $url = "https://api.tracklessbank.com/v1/admin/currency/getAllCurrency";
+        $url = URLAPI . "/v1/admin/currency/getAllCurrency";
         $body["currency"]   = apitrackless($url, json_encode($mdata))->message;
 
         $data = array(
@@ -56,7 +56,7 @@ class Swap extends CI_Controller
                 "amount"    => $amount
             );
 
-            $result = apitrackless("https://api.tracklessbank.com/v1/admin/swap/swap_summary", json_encode($mdata));
+            $result = apitrackless(URLAPI . "/v1/admin/swap/swap_summary", json_encode($mdata));
             if (@$result->code != 200) {
                 header("HTTP/1.1 500 Internal Server Error");
                 $error = array(
@@ -103,7 +103,7 @@ class Swap extends CI_Controller
             "amount"    => $this->security->xss_clean(number_format($input->post("amount"), 2)),
             "quoteid"   => $this->security->xss_clean($input->post("quoteid")),
             "amountget" => $this->security->xss_clean($input->post("amountget")),
-            "symbol"    => apitrackless("https://api.tracklessbank.com/v1/admin/currency/getsymbol?currency=" . $target)->message
+            "symbol"    => apitrackless(URLAPI . "/v1/admin/currency/getsymbol?currency=" . $target)->message
         );
 
 
@@ -143,7 +143,7 @@ class Swap extends CI_Controller
                 "quoteid"   => $quoteid,
             );
 
-            $result = apitrackless("https://api.tracklessbank.com/v1/trackless/swap/swaptracklessProcess", json_encode($mdata));
+            $result = apitrackless(URLAPI . "/v1/trackless/swap/swaptracklessProcess", json_encode($mdata));
             if (@$result->code != 200) {
                 $this->session->set_flashdata("failed", $result->message);
                 redirect('m3rc4n73/swap');
@@ -152,7 +152,7 @@ class Swap extends CI_Controller
             $datatc = array(
                 "amount"    => $amount,
                 "amountget" => $result->message->receive,
-                "symbol"    => apitrackless("https://api.tracklessbank.com/v1/admin/currency/getsymbol?currency=" . $target)->message
+                "symbol"    => apitrackless(URLAPI . "/v1/admin/currency/getsymbol?currency=" . $target)->message
             );
 
             $data = array(

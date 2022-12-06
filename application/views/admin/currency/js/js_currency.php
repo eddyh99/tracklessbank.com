@@ -15,12 +15,12 @@ function enablecurrency(cur, status) {
     }
     var loading = document.getElementById("loadingProgress");
     if (confirm(notif)) {
-        $.ajax({
-            url: "<?= base_url() ?>m3rc4n73/currency/setCurrency?currency=" + cur + "&status=" + status,
-            success: function(response) {
-                var data = JSON.parse(response);
-                if (status == "active") {
-                    loading.classList.remove("collapse");
+        if (status == "active") {
+            loading.classList.remove("collapse");
+            $.ajax({
+                url: "<?= base_url() ?>m3rc4n73/currency/setCurrency?currency=" + cur + "&status=" + status,
+                success: function(response) {
+                    var data = JSON.parse(response);
                     console.log(response);
                     $.ajax({
                         url: "<?= base_url() ?>m3rc4n73/cost/sendmail_proses?currency=" + cur,
@@ -31,19 +31,19 @@ function enablecurrency(cur, status) {
                                 "<?= base_url() ?>m3rc4n73/cost/editbcost?currency=" + cur;
                         }
                     });
-                } else {
-                    console.log(response);
-                    alert(data.message);
-                    $.ajax({
-                        url: "<?= base_url() ?>m3rc4n73/currency/getcurrency",
-                        dataType: 'json',
-                        success: function(result) {
-                            $("#list_currency").html(result.message);
-                        }
-                    });
                 }
-            }
-        })
+            })
+        } else {
+            console.log(response);
+            alert(data.message);
+            $.ajax({
+                url: "<?= base_url() ?>m3rc4n73/currency/getcurrency",
+                dataType: 'json',
+                success: function(result) {
+                    $("#list_currency").html(result.message);
+                }
+            });
+        }
     } else {
         $.ajax({
             url: "<?= base_url() ?>m3rc4n73/currency/getcurrency",

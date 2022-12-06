@@ -19,7 +19,7 @@ class Cost extends CI_Controller
 			"content"   => "admin/cost/bcost",
 			"mn_wcost"    => "active",
 			"extra"     => "admin/cost/js/js_cost",
-			"currency"  => apitrackless("https://api.tracklessbank.com/v1/trackless/currency/getAllCurrency")->message,
+			"currency"  => apitrackless(URLAPI . "/v1/trackless/currency/getAllCurrency")->message,
 		);
 
 		$this->load->view('admin_template/wrapper', $data);
@@ -32,7 +32,7 @@ class Cost extends CI_Controller
 			"content"   => "admin/cost/dcost",
 			"mn_dcost"    => "active",
 			"extra"     => "admin/cost/js/js_cost",
-			"currency"  => apitrackless("https://api.tracklessbank.com/v1/trackless/currency/getAllCurrency")->message,
+			"currency"  => apitrackless(URLAPI . "/v1/trackless/currency/getAllCurrency")->message,
 		);
 
 		$this->load->view('admin_template/wrapper', $data);
@@ -52,7 +52,7 @@ class Cost extends CI_Controller
 
 		$curr = $this->security->xss_clean($input->post("currency"));
 
-		$url = apitrackless("https://api.tracklessbank.com/v1/trackless/cost/getCost?currency=" . $curr);
+		$url = apitrackless(URLAPI . "/v1/trackless/cost/getCost?currency=" . $curr);
 
 		$mdata = array();
 		if (@$url->code == 200) {
@@ -96,8 +96,8 @@ class Cost extends CI_Controller
 			"content"   => "admin/cost/dcost-edit",
 			"mn_dcost"  => "active",
 			"extra"     => "admin/js/js_btn_disabled",
-			"currency"  => apitrackless("https://api.tracklessbank.com/v1/trackless/currency/getAllCurrency")->message,
-			"banks" 		=> apitrackless("https://api.tracklessbank.com/v1/trackless/member/getAll_bank")->message,
+			"currency"  => apitrackless(URLAPI . "/v1/trackless/currency/getAllCurrency")->message,
+			"banks" 		=> apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
 			"dcost"  	=> $mdata,
 			"curr"		=> $curr,
 		);
@@ -121,8 +121,7 @@ class Cost extends CI_Controller
 			$this->form_validation->set_rules('walletbank_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
 		}
 
-		if (($curr == "AUD") ||
-			($curr == "NZD") ||
+		if (($curr == "NZD") ||
 			($curr == "CAD") ||
 			($curr == "HUF") ||
 			($curr == "SGD") ||
@@ -225,7 +224,7 @@ class Cost extends CI_Controller
 			"currency" => $curr,
 		);
 
-		$result = apitrackless("https://api.tracklessbank.com/v1/trackless/cost/setBankcost", json_encode($dataUpdate));
+		$result = apitrackless(URLAPI . "/v1/trackless/cost/setBankcost", json_encode($dataUpdate));
 
 		if (@$result->code != 200) {
 			$this->session->set_flashdata("failed", $result->message);
@@ -251,7 +250,7 @@ class Cost extends CI_Controller
 			$curr = $_GET['currency'];
 		}
 
-		$url = apitrackless("https://api.tracklessbank.com/v1/trackless/cost/getWiseCost?currency=" . $curr);
+		$url = apitrackless(URLAPI . "/v1/trackless/cost/getWiseCost?currency=" . $curr);
 
 		$mdata = array();
 		if (@$url->code == 200) {
@@ -283,7 +282,7 @@ class Cost extends CI_Controller
 			"content"   => "admin/cost/bcost-edit",
 			"mn_wcost"  => "active",
 			"extra"     => "admin/js/js_btn_disabled",
-			"currency"  => apitrackless("https://api.tracklessbank.com/v1/trackless/currency/getAllCurrency")->message,
+			"currency"  => apitrackless(URLAPI . "/v1/trackless/currency/getAllCurrency")->message,
 			"bcost"  	=> $mdata,
 			"curr"		=> $curr,
 		);
@@ -308,8 +307,7 @@ class Cost extends CI_Controller
 			$this->form_validation->set_rules('transfer_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
 		}
 
-		if (($curr == "AUD") ||
-			($curr == "NZD") ||
+		if (($curr == "NZD") ||
 			($curr == "CAD") ||
 			($curr == "HUF") ||
 			($curr == "SGD") ||
@@ -375,7 +373,7 @@ class Cost extends CI_Controller
 			"currency" => $curr
 		);
 
-		$result = apitrackless("https://api.tracklessbank.com/v1/trackless/cost/setWisecost", json_encode($dataUpdate));
+		$result = apitrackless(URLAPI . "/v1/trackless/cost/setWisecost", json_encode($dataUpdate));
 		if (@$result->code != 200) {
 			$this->session->set_flashdata("failed", $result->message);
 			redirect("m3rc4n73/cost/bcost");
@@ -389,7 +387,7 @@ class Cost extends CI_Controller
 	{
 		$currency		= $this->security->xss_clean($_GET["currency"]);
 
-		$mfee = apitrackless("https://api.tracklessbank.com/v1/trackless/cost/getWiseCost?currency=" . $currency);
+		$mfee = apitrackless(URLAPI . "/v1/trackless/cost/getWiseCost?currency=" . $currency);
 
 		$mdata = array();
 		if (@$mfee->code == 200) {
@@ -421,7 +419,7 @@ class Cost extends CI_Controller
 	public function getdcost()
 	{
 		$currency		= $this->security->xss_clean($_GET["currency"]);
-		$mfee = apitrackless("https://api.tracklessbank.com/v1/trackless/cost/getCost?currency=" . $currency);
+		$mfee = apitrackless(URLAPI . "/v1/trackless/cost/getCost?currency=" . $currency);
 		$mdata = array();
 		if (@$mfee->code == 200) {
 			$mdata = array(
@@ -465,7 +463,7 @@ class Cost extends CI_Controller
 	{
 		$subject    = "New Currency Activation";
 
-		$result = apitrackless("https://api.tracklessbank.com/v1/trackless/member/getAll_bank");
+		$result = apitrackless(URLAPI . "/v1/trackless/member/getAll_bank");
 		foreach ($result->message as $dt) {
 			$email = $dt->email;
 			$message = "
