@@ -91,21 +91,20 @@
                                 value="<?= @$bank->routing_circuit ?>">
                         </div>
                         <?php } ?>
-
-                        <div class="mb-3">
-                            <?php if (($_SESSION["currency"] == "GBP")) { ?>
-                            <label class="form-label">Account number</label>
-
-                            <?php } elseif (($_SESSION["currency"] == "CAD")) { ?>
-                            <label class="form-label">Transit number</label>
-
-                            <?php } else { ?>
-                            <label class="form-label">Transit</label>
-                            <?php } ?>
-
-                            <input class="form-control" type="text" name="transit_circuit"
-                                value="<?= @$bank->transit_circuit ?>">
-                        </div>
+                        <?php if (($_SESSION["currency"]=="GBP") || ($_SESSION["currency"]=="CAD")){?>
+                            <div class="mb-3">
+                                <?php if (($_SESSION["currency"] == "GBP")) { ?>
+                                <label class="form-label">Account number</label>
+    
+                                <?php } elseif (($_SESSION["currency"] == "CAD")) { ?>
+                                <label class="form-label">Transit number</label>
+    
+                                <?php } ?>
+    
+                                <input class="form-control" type="text" name="transit_circuit"
+                                    value="<?= @$bank->transit_circuit ?>">
+                            </div>
+                        <?php }?>
                         <div class="mb-3">
                             <label class="form-label">Bank Name</label>
                             <input class="form-control" type="text" name="bankname_circuit"
