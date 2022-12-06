@@ -34,15 +34,22 @@ function enablecurrency(cur, status) {
                 }
             })
         } else {
-            console.log(response);
-            alert(data.message);
             $.ajax({
-                url: "<?= base_url() ?>m3rc4n73/currency/getcurrency",
-                dataType: 'json',
-                success: function(result) {
-                    $("#list_currency").html(result.message);
+                url: "<?= base_url() ?>m3rc4n73/currency/setCurrency?currency=" + cur + "&status=" + status,
+                success: function(response) {
+                    var data = JSON.parse(response);
+                    console.log(response);
+                    alert(data.message);
+                    $.ajax({
+                        url: "<?= base_url() ?>m3rc4n73/currency/getcurrency",
+                        dataType: 'json',
+                        success: function(result) {
+                            $("#list_currency").html(result.message);
+                        }
+                    });
+
                 }
-            });
+            })
         }
     } else {
         $.ajax({
