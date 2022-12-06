@@ -42,8 +42,13 @@ function bcost() {
                 (readcurrency == "RON")) {
                 $("#topup_circuit_fxd_div").show()
                 $("#topup_circuit_pct_div").show()
-                $("#topup_outside_fxd_div").hide()
-                $("#topup_outside_pct_div").hide()
+                if ((readcurrency == "GBP")) {
+                    $("#topup_outside_fxd_div").show()
+                    $("#topup_outside_pct_div").show()
+                } else {
+                    $("#topup_outside_fxd_div").hide()
+                    $("#topup_outside_pct_div").hide()
+                }
                 $("#transfer_outside_fxd_div").hide()
                 $("#transfer_outside_pct_div").hide()
             }

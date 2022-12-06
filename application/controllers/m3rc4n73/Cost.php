@@ -125,12 +125,17 @@ class Cost extends CI_Controller
 			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
 
 			if (($curr == "USD") ||
+				($curr == "GBP") ||
 				($curr == "EUR")
 			) {
 				$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
 				$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
-				$this->form_validation->set_rules('walletbank_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
-				$this->form_validation->set_rules('walletbank_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
+				if (($curr == "USD") ||
+					($curr == "EUR")
+				) {
+					$this->form_validation->set_rules('walletbank_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+					$this->form_validation->set_rules('walletbank_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
+				}
 			}
 		}
 
@@ -314,12 +319,17 @@ class Cost extends CI_Controller
 			$this->form_validation->set_rules('topup_circuit_pct', 'Topup Circuit (%)', 'trim|required|greater_than_equal_to[0]');
 
 			if (($curr == "USD") ||
+				($curr == "GBP") ||
 				($curr == "EUR")
 			) {
 				$this->form_validation->set_rules('topup_outside_fxd', 'Topup Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
 				$this->form_validation->set_rules('topup_outside_pct', 'Topup Outside (%)', 'trim|required|greater_than_equal_to[0]');
-				$this->form_validation->set_rules('transfer_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
-				$this->form_validation->set_rules('transfer_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
+				if (($curr == "USD") ||
+					($curr == "EUR")
+				) {
+					$this->form_validation->set_rules('transfer_outside_fxd', 'Walletbank Outside (Fixed)', 'trim|required|greater_than_equal_to[0]');
+					$this->form_validation->set_rules('transfer_outside_pct', 'Walletbank Outside (%)', 'trim|required|greater_than_equal_to[0]');
+				}
 			}
 		}
 

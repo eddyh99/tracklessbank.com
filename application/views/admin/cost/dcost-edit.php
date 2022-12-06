@@ -66,7 +66,8 @@
                         </div>
                         <?php
                             if (($curr == "USD") ||
-                                ($curr == "EUR")
+                                ($curr == "EUR") ||
+                                ($curr == "GBP")
                             ) { ?>
                         <div class="mb-3" id="topup_outside_fxd_div">
                             <label class="form-label">Topup Outside (Fixed)</label>
