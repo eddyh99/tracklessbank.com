@@ -14,7 +14,7 @@ class Mwallet extends CI_Controller
     public function index()
     {
         if (!empty($_GET["cur"])) {
-            $url = "https://api.tracklessbank.com/v1/trackless/wallet/balance_ByCurrency?currency=" . $_GET["cur"];
+            $url = URLAPI . "/v1/trackless/wallet/balance_ByCurrency?currency=" . $_GET["cur"];
             $result = apitrackless($url);
             if ($result->code == 200) {
                 $_SESSION["currency"] = @$_GET["cur"];
@@ -24,7 +24,7 @@ class Mwallet extends CI_Controller
                 $result = apitrackless($url);
                 $_SESSION["currency"] = "USD";
                 $_SESSION["symbol"] = "&dollar;";
-                $_SESSION["balance"] = apitrackless("https://api.tracklessbank.com/v1/admin/wallet/balance_ByCurrency?currency=USD")->message->balance;
+                $_SESSION["balance"] = apitrackless(URLAPI . "/v1/admin/wallet/balance_ByCurrency?currency=USD")->message->balance;
             }
         }
 
@@ -51,7 +51,7 @@ class Mwallet extends CI_Controller
             "currency"  => $_SESSION["currency"],
             "timezone"  => $_SESSION["time_location"]
         );
-        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/wallet/gethistory_bycurrency", json_encode($mdata));
+        $result = apitrackless(URLAPI . "/v1/trackless/wallet/gethistory_bycurrency", json_encode($mdata));
         $data["token"] = $this->security->get_csrf_hash();
         $data["history"] = $result->message;
         echo json_encode($data);
@@ -125,7 +125,7 @@ class Mwallet extends CI_Controller
             "transfer_type"     => $this->security->xss_clean($input->post("transfer_type")),
         );
 
-        $result = apitrackless("https://api.tracklessbank.com/v1/admin/withdraw/withdrawSummary", json_encode($mdata));
+        $result = apitrackless(URLAPI . "/v1/admin/withdraw/withdrawSummary", json_encode($mdata));
 
         if (@$result->code != 200) {
             $this->session->set_flashdata("failed", "Insuffisient Fund");
@@ -245,7 +245,7 @@ class Mwallet extends CI_Controller
             )
         );
 
-        $result = apitrackless("https://api.tracklessbank.com/v1/admin/withdraw/withdrawTransfer", json_encode($mdata));
+        $result = apitrackless(URLAPI . "/v1/admin/withdraw/withdrawTransfer", json_encode($mdata));
 
         if (@$result->code != 200) {
             $this->session->set_flashdata("failed", $result->message);

@@ -16,7 +16,7 @@ class Currency extends CI_Controller
 
     public function index()
     {
-        // $url = "https://api.tracklessbank.com/v1/trackless/currency/getAllCurrency";
+        // $url = URLAPI."/v1/trackless/currency/getAllCurrency";
 
         $data = array(
             "title"     => "TracklessBank - Currency",
@@ -31,7 +31,7 @@ class Currency extends CI_Controller
 
     public function getcurrency()
     {
-        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/currency/getAllCurrency");
+        $result = apitrackless(URLAPI . "/v1/trackless/currency/getAllCurrency");
         $data["currency"] = $result->message;
         $response = array(
             "message"   => utf8_encode($this->load->view('admin/currency/listcurrency', $data, TRUE))
@@ -43,7 +43,7 @@ class Currency extends CI_Controller
     {
         $currency = $_GET["currency"];
         $status = $_GET["status"];
-        $url = "https://api.tracklessbank.com/v1/trackless/currency/currencyStatus?status=" . $status . "&currency=" . $currency;
+        $url = URLAPI . "/v1/trackless/currency/currencyStatus?status=" . $status . "&currency=" . $currency;
         $result = apitrackless($url);
 
         // $mdata = array();

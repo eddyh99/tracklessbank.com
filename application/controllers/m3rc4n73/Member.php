@@ -16,7 +16,7 @@ class Member extends CI_Controller
         $data = array(
             "title"     => "TracklessBank - Member",
             "content"   => "admin/member/member",
-            "bank"      => apitrackless("https://api.tracklessbank.com/v1/trackless/member/getAll_bank")->message,
+            "bank"      => apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
             "mn_member" => "active",
             "extra"     => "admin/member/js/js_member"
         );
@@ -36,7 +36,7 @@ class Member extends CI_Controller
                 "timezone"  => $_SESSION["time_location"]
             );
         }
-        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/user/getAll", json_encode($mdata));
+        $result = apitrackless(URLAPI . "/v1/trackless/user/getAll", json_encode($mdata));
         $data["token"] = $this->security->get_csrf_hash();
         if (@$result->code == 200) {
             $data["member"] = $result->message;
@@ -49,7 +49,7 @@ class Member extends CI_Controller
     public function activate($id)
     {
         $id = $this->security->xss_clean($id);
-        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/user/setMember?status=activate&userid=" . $id);
+        $result = apitrackless(URLAPI . "/v1/trackless/user/setMember?status=activate&userid=" . $id);
         if ($result->code != 200) {
             $this->session->set_flashdata("failed", $result->message);
             redirect('m3rc4n73/member');
@@ -62,7 +62,7 @@ class Member extends CI_Controller
     public function enabled($id)
     {
         $id = $this->security->xss_clean($id);
-        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/user/setMember?status=enabled&userid=" . $id);
+        $result = apitrackless(URLAPI . "/v1/trackless/user/setMember?status=enabled&userid=" . $id);
         if ($result->code != 200) {
             $this->session->set_flashdata("failed", $result->message);
             redirect('m3rc4n73/member');
@@ -75,7 +75,7 @@ class Member extends CI_Controller
     public function disabled($id)
     {
         $id = $this->security->xss_clean($id);
-        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/user/setMember?status=disabled&userid=" . $id);
+        $result = apitrackless(URLAPI . "/v1/trackless/user/setMember?status=disabled&userid=" . $id);
         if ($result->code != 200) {
             $this->session->set_flashdata("failed", $result->message);
             redirect('m3rc4n73/member');
@@ -133,7 +133,7 @@ class Member extends CI_Controller
         $mdata = array(
             "timezone"  => $_SESSION["time_location"]
         );
-        $result = apitrackless("https://api.tracklessbank.com/v1/trackless/user/getAll", json_encode($mdata));
+        $result = apitrackless(URLAPI . "/v1/trackless/user/getAll", json_encode($mdata));
         if (@$result->code == 200) {
             $member = $result->message;
         } else {
@@ -162,7 +162,7 @@ class Member extends CI_Controller
             $mdata = array(
                 "timezone"  => $_SESSION["time_location"]
             );
-            $result = apitrackless("https://api.tracklessbank.com/v1/trackless/user/getAll", json_encode($mdata));
+            $result = apitrackless(URLAPI . "/v1/trackless/user/getAll", json_encode($mdata));
             $member = array();
             foreach ($result->message as $dt) {
                 $temp["email"] = $dt->email;

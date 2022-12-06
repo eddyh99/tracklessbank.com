@@ -55,7 +55,7 @@ class Auth extends CI_Controller
 			'password' => sha1($pass)
 		);
 
-		$url = "https://api.tracklessbank.com/v1/auth/signin";
+		$url = URLAPI . "/v1/auth/signin";
 		$result = apitrackless($url, json_encode($mdata));
 		if (@$result->code != 200) {
 			$this->session->set_flashdata('failed', $result->message);
@@ -74,7 +74,7 @@ class Auth extends CI_Controller
 		);
 		$this->session->set_userdata($session_data);
 		if ($result->message->role == 'admin') {
-			$_SESSION["mwallet"] = apitrackless("https://api.tracklessbank.com/v1/admin/user/getMasterwallet")->message->ucode_mwallet;
+			$_SESSION["mwallet"] = apitrackless(URLAPI . "/v1/admin/user/getMasterwallet")->message->ucode_mwallet;
 			redirect("m3rc4n73/dashboard");
 		}
 	}
@@ -142,7 +142,7 @@ class Auth extends CI_Controller
 		}
 
 		$email = $this->security->xss_clean($this->input->post('email'));
-		$url = "https://api.tracklessbank.com/v1/auth/resetpassword?email=" . $email;
+		$url = URLAPI . "/v1/auth/resetpassword?email=" . $email;
 		$result = apitrackless($url);
 		if (!empty(@$result->code == 200)) {
 
@@ -191,7 +191,7 @@ class Auth extends CI_Controller
 			'token'     => $token
 		);
 
-		$url = "https://api.tracklessbank.com/v1/auth/updatepassword";
+		$url = URLAPI . "/v1/auth/updatepassword";
 		$result = apitrackless($url, json_encode($mdata));
 		if ($result->code == 200) {
 			$this->session->set_flashdata("success", "Your password is successfully changed");

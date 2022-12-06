@@ -17,7 +17,7 @@ class Dashboard extends CI_Controller
             "title"     => "TracklessBank - Admin Dashboard",
             "content"   => "admin/dashboard",
             "mn_dashboard" => "active",
-            "currency"  => apitrackless("https://api.tracklessbank.com/v1/trackless/wallet/getAll_Balance")->message,
+            "currency"  => apitrackless(URLAPI . "/v1/trackless/wallet/getAll_Balance")->message,
         );
 
         $this->load->view('admin_template/wrapper', $data);

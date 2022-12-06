@@ -41,8 +41,16 @@
                         </div>
                         <?php
                         if (
-                            ($currency == "USD") ||
-                            ($currency == "EUR")
+                            ($curr == "USD") ||
+                            ($curr == "EUR") ||
+                            ($curr == "AUD") ||
+                            ($curr == "NZD") ||
+                            ($curr == "CAD") ||
+                            ($curr == "HUF") ||
+                            ($curr == "SGD") ||
+                            ($curr == "TRY") ||
+                            ($curr == "GBP") ||
+                            ($curr == "RON")
                         ) { ?>
                         <div class="mb-3" id="topup_circuit_fxd_div">
                             <label class="form-label">Topup Circuit (Fixed)</label>
@@ -56,6 +64,10 @@
                                 value="<?= $dcost['topup_circuit_pct'] ?>"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
+                        <?php
+                            if (($curr == "USD") ||
+                                ($curr == "EUR")
+                            ) { ?>
                         <div class="mb-3" id="topup_outside_fxd_div">
                             <label class="form-label">Topup Outside (Fixed)</label>
                             <input type="text" id="topup_outside_fxd" name="topup_outside_fxd" class="form-control"
@@ -68,32 +80,8 @@
                                 value="<?= $dcost['topup_outside_pct'] ?>"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
                         </div>
-                        <?php
+                        <?php }
                         } ?>
-                        <?php
-                        if (($currency == "AUD") ||
-                            ($currency == "NZD") ||
-                            ($currency == "CAD") ||
-                            ($currency == "HUF") ||
-                            ($currency == "SGD") ||
-                            ($currency == "TRY")
-                        ) {
-                        ?>
-                        <div class="mb-3" id="topup_circuit_fxd_div">
-                            <label class="form-label">Topup Circuit (Fixed)</label>
-                            <input type="text" id="topup_circuit_fxd" name="topup_circuit_fxd" class="form-control"
-                                value="<?= $dcost['topup_circuit_fxd'] ?>"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
-                        </div>
-                        <div class="mb-3" id="topup_circuit_pct_div">
-                            <label class="form-label">Topup Circuit (%)</label>
-                            <input type="text" id="topup_circuit_pct" name="topup_circuit_pct" class="form-control"
-                                value="<?= $dcost['topup_circuit_pct'] ?>"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
-                        </div>
-                        <?php
-                        } ?>
-
 
                         <div class="mb-3" id="wallet_sender_fxd_div">
                             <label class="form-label">Wallet Sender (Fixed)</label>
@@ -133,8 +121,8 @@
                         </div>
 
                         <?php
-                        if (($currency == "USD") ||
-                            ($currency == "EUR")
+                        if (($curr == "USD") ||
+                            ($curr == "EUR")
                         ) {
                         ?>
                         <div class="mb-3" id="walletbank_outside_fxd_div">
