@@ -27,14 +27,33 @@ class Member extends CI_Controller
     public function get_all()
     {
         if ($_POST["bank_id"] == "all") {
-            $mdata = array(
-                "timezone"  => $_SESSION["time_location"]
-            );
+            if ($_GET['status'] == 'active') {
+                $mdata = array(
+                    "status" => "active",
+                    "timezone"  => $_SESSION["time_location"]
+                );
+            }
+            if ($_GET['status'] == 'disabled') {
+                $mdata = array(
+                    "status" => "disabled",
+                    "timezone"  => $_SESSION["time_location"]
+                );
+            }
         } else {
-            $mdata = array(
-                "bank_id"   => $_POST["bank_id"],
-                "timezone"  => $_SESSION["time_location"]
-            );
+            if ($_GET['status'] == 'active') {
+                $mdata = array(
+                    "bank_id"   => $_POST["bank_id"],
+                    "status" => "active",
+                    "timezone"  => $_SESSION["time_location"]
+                );
+            }
+            if ($_GET['status'] == 'disabled') {
+                $mdata = array(
+                    "bank_id"   => $_POST["bank_id"],
+                    "status" => "disabled",
+                    "timezone"  => $_SESSION["time_location"]
+                );
+            }
         }
         $result = apitrackless(URLAPI . "/v1/trackless/user/getAll", json_encode($mdata));
         $data["token"] = $this->security->get_csrf_hash();

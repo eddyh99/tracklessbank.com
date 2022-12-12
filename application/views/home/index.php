@@ -308,7 +308,8 @@
                 <div>
                     <h2 class="text-green f-poppins my-3 my-lg-3 m-lg-0">Clear & transparent prices</h2>
                     <p class="text-white m-0 f-poppins mb-2">We provide to our clients clear and transparent prices.</p>
-                    <a href="#" class="btn btn-learn text-green f-poppins">Learn more</a>
+                    <a href="<?= base_url() ?>link/lern_transparency" class="btn btn-learn text-green f-poppins">Learn
+                        more</a>
                 </div>
                 <div class="my-4">
                     <p class="text-white f-poppins">

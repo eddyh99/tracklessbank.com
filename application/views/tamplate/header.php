@@ -48,4 +48,4 @@
     <link href="<?= base_url() ?>assets/css/auth/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="background: #19191D;">
