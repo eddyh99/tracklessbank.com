@@ -20,28 +20,21 @@
                 <?php } ?>
             </div>
             <div class="col-12 my-5 text-center">
-                <?php
-                if (
-                    ($_SESSION["currency"] == "USD") ||
-                    ($_SESSION["currency"] == "EUR") ||
-                    ($_SESSION["currency"] == "AED")
-                ) { ?>
+                <?php if (file_exists(APPPATH . 'views/admin/mwallet/currency/' . $_SESSION['currency'] . '.php')) { ?>
                 <a href="<?= base_url() ?>m3rc4n73/mwallet/wdlocal"
                     class="btn btn-freedy-blue fw-bold px-5 py-3 mx-3">Local
                     Bank</a>
-                <?php } else { ?>
-                <div class="receive-note">
-                    <span>If you want to topup <?= $_SESSION["currency"] ?>, You need to convert another
-                        currency</span>
-                </div>
 
-                <?php } ?>
-
-                <?php if (($_SESSION["currency"] == "USD") || ($_SESSION["currency"] == "EUR")) { ?>
+                <?php if (($_SESSION["currency"] == "USD") || ($_SESSION["currency"] == "EUR") || ($_SESSION["currency"] == "GBP")) { ?>
                 <a href="<?= base_url() ?>m3rc4n73/mwallet/wdinter"
                     class="btn btn-freedy-blue fw-bold px-5 py-3 mx-3">Outside
                     Circuit</a>
-
+                <?php }
+                } else { ?>
+                <div class="receive-note">
+                    <span>If you want to Withdraw <?= $_SESSION["currency"] ?>, You need to convert another
+                        currency</span>
+                </div>
                 <?php } ?>
             </div>
         </div>

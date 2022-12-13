@@ -21,9 +21,9 @@
                     Email</a>
             </div>
             <div class="col-12 card mb-5">
-                <div class="card-header fw-bold">
+                <div class="card-header fw-bold text-capitalize">
                     <i class="fas fa-list me-1"></i>
-                    List Member
+                    List Member <?= $_GET['status'] ?>
                 </div>
                 <div class="card-body">
                     <div class=" my-3 row">
@@ -37,21 +37,27 @@
                             </select>
                         </div>
                     </div>
-                    <table id="member" class="table table-hover table-bordered">
-                        <thead class="table-dark">
-                            <tr class="align-middle">
-                                <th>No.</th>
-                                <th>Email</th>
-                                <th>Unique Code</th>
-                                <th>Referral Code</th>
-                                <th>Status</th>
-                                <th>Last Login</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody style="border-top: 0;">
-                        </tbody>
-                    </table>
+                    <?php if ($_GET['status'] == 'active') { ?>
+                    <table id="memberactive" class="table table-hover table-bordered">
+                        <?php } ?>
+                        <?php if ($_GET['status'] == 'disabled') { ?>
+                        <table id="memberdisabled" class="table table-hover table-bordered">
+                            <?php } ?>
+
+                            <thead class="table-dark">
+                                <tr class="align-middle">
+                                    <th>No.</th>
+                                    <th>Email</th>
+                                    <th>Unique Code</th>
+                                    <th>Referral Code</th>
+                                    <th>Status</th>
+                                    <th>Last Login</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody style="border-top: 0;">
+                            </tbody>
+                        </table>
                 </div>
             </div>
         </div>

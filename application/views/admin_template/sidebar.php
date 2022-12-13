@@ -7,10 +7,23 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link <?= @$mn_member ?>" href="<?= base_url() ?>m3rc4n73/member">
+                        <a class="nav-link collapsed <?= @$mn_member ?>" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#Member" aria-expanded="false" aria-controls="Member">
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             Member
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
+                        <div class="collapse" id="Member" aria-labelledby="headingTwo"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="<?= base_url() ?>m3rc4n73/member?status=active">Member
+                                    Active</a>
+                            </nav>
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="<?= base_url() ?>m3rc4n73/member?status=disabled">Member
+                                    Disable</a>
+                            </nav>
+                        </div>
                         <a class="nav-link collapsed <?= @$mn_op ?>" href="#" data-bs-toggle="collapse"
                             data-bs-target="#Operations" aria-expanded="false" aria-controls="Operations">
                             <div class="sb-nav-link-icon"><i class="fas fa-users-cog"></i></div>
@@ -22,7 +35,7 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="<?= base_url() ?>m3rc4n73/Operations/topup">Topup</a>
                             </nav>
-                        </div>                        
+                        </div>
                         <a class="nav-link <?= @$mn_currency ?>" href="<?= base_url() ?>m3rc4n73/currency">
                             <div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
                             Currency
