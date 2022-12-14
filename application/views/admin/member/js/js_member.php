@@ -67,7 +67,7 @@ $(function() {
                 "data": "status"
             },
             {
-                "data": "last_accessed"
+                "data": "last_login"
             },
         ],
     });
@@ -140,7 +140,7 @@ $(function() {
                 "data": "status"
             },
             {
-                "data": "last_accessed"
+                "data": "last_login"
             },
         ],
     });
