@@ -37,27 +37,28 @@
                             </select>
                         </div>
                     </div>
-                    <?php if ($_GET['status'] == 'active') { ?>
-                    <table id="memberactive" class="table table-hover table-bordered">
-                        <?php } ?>
-                        <?php if ($_GET['status'] == 'disabled') { ?>
-                        <table id="memberdisabled" class="table table-hover table-bordered">
-                            <?php } ?>
-
-                            <thead class="table-dark">
-                                <tr class="align-middle">
-                                    <th>No.</th>
-                                    <th>Email</th>
-                                    <th>Unique Code</th>
-                                    <th>Referral Code</th>
-                                    <th>Status</th>
-                                    <th>Last Login</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody style="border-top: 0;">
-                            </tbody>
-                        </table>
+                    <?php
+                    if ($_GET['status'] == 'active') {
+                        $status_member = "memberactive";
+                    } elseif ($_GET['status'] == 'disabled') {
+                        $status_member = "memberdisabled";
+                    }
+                    ?>
+                    <table id="<?= $status_member ?>" class="table table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr class="align-middle">
+                                <th>No.</th>
+                                <th>Email</th>
+                                <th>Unique Code</th>
+                                <th>Referral Code</th>
+                                <th>Status</th>
+                                <th>Last Login</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody style="border-top: 0;">
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
