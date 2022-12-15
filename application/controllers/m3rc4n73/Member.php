@@ -26,42 +26,72 @@ class Member extends CI_Controller
 
     public function get_all()
     {
+        // if ($_POST["bank_id"] == "all") {
+        //     if ($_GET['status'] == 'active') {
+        //         $mdata = array(
+        //             "status" => "active",
+        //             "timezone"  => $_SESSION["time_location"]
+        //         );
+        //     }
+        //     if ($_GET['status'] == 'disabled') {
+        //         $mdata = array(
+        //             "status" => "disabled",
+        //             "timezone"  => $_SESSION["time_location"]
+        //         );
+        //     }
+        // } else {
+        //     if ($_GET['status'] == 'active') {
+        //         $mdata = array(
+        //             "bank_id"   => $_POST["bank_id"],
+        //             "status" => "active",
+        //             "timezone"  => $_SESSION["time_location"]
+        //         );
+        //     }
+        //     if ($_GET['status'] == 'disabled') {
+        //         $mdata = array(
+        //             "bank_id"   => $_POST["bank_id"],
+        //             "status" => "disabled",
+        //             "timezone"  => $_SESSION["time_location"]
+        //         );
+        //     }
+        // }
+
         if ($_POST["bank_id"] == "all") {
-            if ($_GET['status'] == 'active') {
-                $mdata = array(
-                    "status" => "active",
-                    "timezone"  => $_SESSION["time_location"]
-                );
-            }
-            if ($_GET['status'] == 'disabled') {
-                $mdata = array(
-                    "status" => "disabled",
-                    "timezone"  => $_SESSION["time_location"]
-                );
-            }
+            $mdata = array(
+                "timezone"  => $_SESSION["time_location"]
+            );
         } else {
-            if ($_GET['status'] == 'active') {
-                $mdata = array(
-                    "bank_id"   => $_POST["bank_id"],
-                    "status" => "active",
-                    "timezone"  => $_SESSION["time_location"]
-                );
-            }
-            if ($_GET['status'] == 'disabled') {
-                $mdata = array(
-                    "bank_id"   => $_POST["bank_id"],
-                    "status" => "disabled",
-                    "timezone"  => $_SESSION["time_location"]
-                );
-            }
+            $mdata = array(
+                "bank_id"   => $_POST["bank_id"],
+                "timezone"  => $_SESSION["time_location"]
+            );
         }
+
         $result = apitrackless(URLAPI . "/v1/trackless/user/getAll", json_encode($mdata));
-        $data["token"] = $this->security->get_csrf_hash();
         if (@$result->code == 200) {
-            $data["member"] = $result->message;
+            $dt_disabled_filter = array();
+            $dt_active_filter = array();
+            foreach ($result->message as $key) {
+                if ($key->status == 'active' || $key->status == 'new') {
+                    $dt_active_filter[] = $key;
+                }
+                if ($key->status == 'disabled') {
+                    $dt_disabled_filter[] = $key;
+                }
+            }
+
+            if ($_GET['status'] == 'active') {
+                $data["member"] = $dt_active_filter;
+            } elseif ($_GET['status'] == 'disabled') {
+                $data["member"] = $dt_disabled_filter;
+            } else {
+                $data["member"] = $dt_active_filter;
+            }
         } else {
             $data["member"] = NULL;
         }
+
+        $data["token"] = $this->security->get_csrf_hash();
         echo json_encode($data);
     }
 
@@ -71,10 +101,10 @@ class Member extends CI_Controller
         $result = apitrackless(URLAPI . "/v1/trackless/user/setMember?status=activate&userid=" . $id);
         if ($result->code != 200) {
             $this->session->set_flashdata("failed", $result->message);
-            redirect('m3rc4n73/member');
+            redirect('m3rc4n73/member?status=active');
         } else {
             $this->session->set_flashdata("success", $result->message);
-            redirect('m3rc4n73/member');
+            redirect('m3rc4n73/member?status=active');
         }
     }
 
@@ -84,10 +114,10 @@ class Member extends CI_Controller
         $result = apitrackless(URLAPI . "/v1/trackless/user/setMember?status=enabled&userid=" . $id);
         if ($result->code != 200) {
             $this->session->set_flashdata("failed", $result->message);
-            redirect('m3rc4n73/member');
+            redirect('m3rc4n73/member?status=disabled');
         } else {
             $this->session->set_flashdata("success", $result->message);
-            redirect('m3rc4n73/member');
+            redirect('m3rc4n73/member?status=disabled');
         }
     }
 
@@ -97,10 +127,10 @@ class Member extends CI_Controller
         $result = apitrackless(URLAPI . "/v1/trackless/user/setMember?status=disabled&userid=" . $id);
         if ($result->code != 200) {
             $this->session->set_flashdata("failed", $result->message);
-            redirect('m3rc4n73/member');
+            redirect('m3rc4n73/member?status=active');
         } else {
             $this->session->set_flashdata("success", $result->message);
-            redirect('m3rc4n73/member');
+            redirect('m3rc4n73/member?status=active');
         }
     }
 
