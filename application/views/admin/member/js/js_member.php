@@ -1,6 +1,7 @@
 <script>
 var i = 1;
-$(function() {
+
+var tblactive =
     $('#memberactive').DataTable({
         "scrollX": true,
         "responsive": true,
@@ -71,9 +72,9 @@ $(function() {
             },
         ],
     });
-})
 
-$(function() {
+
+var tbldisable =
     $('#memberdisabled').DataTable({
         "scrollX": true,
         "responsive": true,
@@ -144,5 +145,12 @@ $(function() {
             },
         ],
     });
-})
+
+
+$('#bank').on("change", function(e) {
+    e.preventDefault();
+    i = 1;
+    tblactive.ajax.reload();
+    tbldisable.ajax.reload();
+});
 </script>
