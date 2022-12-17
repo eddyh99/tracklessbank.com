@@ -16,11 +16,12 @@
                         <div class="collapse" id="Member" aria-labelledby="headingTwo"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<?= base_url() ?>m3rc4n73/member?status=active">Member
+                                <a class="nav-link" href="<?= base_url() ?>m3rc4n73/member/member?status=active2">Member
                                     Active</a>
                             </nav>
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<?= base_url() ?>m3rc4n73/member?status=disabled">Member
+                                <a class="nav-link"
+                                    href="<?= base_url() ?>m3rc4n73/member/member?status=disabled2">Member
                                     Disable</a>
                             </nav>
                         </div>
