@@ -12659,7 +12659,7 @@ footer a:focus {
 }
 
 .text-green {
-  color: #00DD9C;
+  color: #00DD9C !important;
 }
 
 .text-green-trackless--header {

@@ -2408,8 +2408,31 @@ section {
 
 
 /* Freedy */
-.text-blue-freedy {
-  color: #2E43F7 !important;
+.text-green-trackless {
+  color: #00DD9C !important;
+}
+
+.border-green-tranckless tr>th,
+.border-green-tranckless tr>td {
+  border: 2px solid #00DD9C;
+  background-color: #000;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.border-green-tranckless tr>th {
+  color: #00DD9C;
+}
+
+.border-green-tranckless tr>td {
+  color: #FFF;
+}
+
+.border-green-tranckless tr>td.title {
+  border: 2px solid #fff;
+  background-color: #00DD9C;
+  color: #000;
 }
 
 .p-r {
@@ -4032,6 +4055,12 @@ section {
   }
 
   /* App */
+
+  /* Link Landingpage */
+  .currency-img-list img {
+    height: 35px;
+    /* 35px */
+  }
 }
 
 @media (min-width: 375px) {
@@ -5688,6 +5717,11 @@ section {
   }
 
   /* App */
+  /* Link Landingpage */
+  .currency-img-list img {
+    height: 35px;
+    /* 35px */
+  }
 
 }
 
@@ -7284,6 +7318,12 @@ section {
   }
 
   /* App */
+
+  /* Link Landingpage */
+  .currency-img-list img {
+    height: 35px;
+    /* 35px */
+  }
 }
 
 @media (min-width: 992px) {
@@ -9111,6 +9151,12 @@ section {
   }
 
   /* App */
+
+  /* LINK Landingpage */
+  .currency-img-list img {
+    height: 50px;
+    /* 35px */
+  }
 }
 
 @media (min-width: 1400px) {
