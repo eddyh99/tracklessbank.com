@@ -42,6 +42,10 @@
                         $status_member = "memberactive";
                     } elseif ($_GET['status'] == 'disabled') {
                         $status_member = "memberdisabled";
+                    } elseif ($_GET['status'] == 'active2') {
+                        $status_member = "memberactive2";
+                    } elseif ($_GET['status'] == 'disabled2') {
+                        $status_member = "memberdisabled2";
                     }
                     ?>
                     <table id="<?= $status_member ?>" class="table table-hover table-bordered">

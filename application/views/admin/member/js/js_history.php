@@ -1,4 +1,6 @@
 <script>
+var i = 1;
+// History member
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
 ];
@@ -26,14 +28,12 @@ $('#tgl').daterangepicker({
     }
 });
 
-
-var i = 1;
 var tblhistory =
-    $('#tbl_history').DataTable({
+    $('#tbl_history_member').DataTable({
         "scrollX": true,
         "responsive": true,
         "ajax": {
-            "url": "<?= base_url() ?>m3rc4n73/mwallet/get_history",
+            "url": "<?= base_url() ?>m3rc4n73/member/get_history_user/<?= $user_id ?>",
             "type": "POST",
             "data": function(d) {
                 d.csrf_freedy = $("#token").val();
@@ -41,8 +41,8 @@ var tblhistory =
             },
             "dataSrc": function(data) {
                 $("#token").val(data["token"]);
-                console.log(data["history"]);
-                return data["history"];
+                console.log(data["history"].slice(1));
+                return data["history"].slice(1);
             },
         },
         order: [
@@ -57,13 +57,22 @@ var tblhistory =
                 "data": "ket"
             },
             {
-                "data": "amount"
+                "data": "debit"
+            },
+            {
+                "data": "credit"
+            },
+            {
+                "data": "fee"
             },
             {
                 "data": "cost"
             },
             {
                 "data": "comission"
+            },
+            {
+                "data": "balance"
             },
             {
                 "data": "date_created"

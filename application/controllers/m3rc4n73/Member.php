@@ -21,41 +21,58 @@ class Member extends CI_Controller
             "extra"     => "admin/member/js/js_member"
         );
 
+        $this->load->view('admin_template/wrapper2', $data);
+    }
+
+    public function member()
+    {
+        $data = array(
+            "title"     => "TracklessBank - Member",
+            "content"   => "admin/member/member",
+            "bank"      => apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
+            "mn_member" => "active",
+            "extra"     => "admin/member/js/js_member"
+        );
+
         $this->load->view('admin_template/wrapper', $data);
+    }
+
+    public function history($id)
+    {
+        $data = array(
+            "title"     => "TracklessBank - Member History",
+            "content"   => "admin/member/member-history",
+            "user_id"      => $id,
+            "mn_member" => "active",
+            "extra"     => "admin/member/js/js_history"
+        );
+
+        $this->load->view('admin_template/wrapper2', $data);
+    }
+
+    public function get_history_user($id)
+    {
+        $input = $this->input;
+        $user_id = $id;
+        $tgl = explode("-", $this->security->xss_clean($input->post("tgl")));
+        $awal = date_format(date_create($tgl[0]), "Y-m-d");
+        $akhir = date_format(date_create($tgl[1]), "Y-m-d");
+
+        $mdata = array(
+            "userid" => $user_id,
+            "date_start" => $awal,
+            "date_end"  => $akhir,
+            "currency"  => $_SESSION["currency"],
+            "timezone"  => $_SESSION["time_location"]
+        );
+        $result = apitrackless(URLAPI . "/v1/trackless/user/getHistory", json_encode($mdata));
+        $data["token"] = $this->security->get_csrf_hash();
+        $data["history"] = $result->message;
+        echo json_encode($data);
     }
 
     public function get_all()
     {
-        // if ($_POST["bank_id"] == "all") {
-        //     if ($_GET['status'] == 'active') {
-        //         $mdata = array(
-        //             "status" => "active",
-        //             "timezone"  => $_SESSION["time_location"]
-        //         );
-        //     }
-        //     if ($_GET['status'] == 'disabled') {
-        //         $mdata = array(
-        //             "status" => "disabled",
-        //             "timezone"  => $_SESSION["time_location"]
-        //         );
-        //     }
-        // } else {
-        //     if ($_GET['status'] == 'active') {
-        //         $mdata = array(
-        //             "bank_id"   => $_POST["bank_id"],
-        //             "status" => "active",
-        //             "timezone"  => $_SESSION["time_location"]
-        //         );
-        //     }
-        //     if ($_GET['status'] == 'disabled') {
-        //         $mdata = array(
-        //             "bank_id"   => $_POST["bank_id"],
-        //             "status" => "disabled",
-        //             "timezone"  => $_SESSION["time_location"]
-        //         );
-        //     }
-        // }
-
         if ($_POST["bank_id"] == "all") {
             $mdata = array(
                 "timezone"  => $_SESSION["time_location"]
@@ -197,7 +214,7 @@ class Member extends CI_Controller
         );
 
 
-        $this->load->view('admin_template/wrapper', $data);
+        $this->load->view('admin_template/wrapper2', $data);
     }
 
     public function sendmail_proses()

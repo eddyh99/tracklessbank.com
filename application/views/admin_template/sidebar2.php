@@ -7,17 +7,30 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
-                    <a class="nav-link <?= @$mn_mwallet ?>"
-                        href="<?= base_url() ?>m3rc4n73/mwallet?cur=<?= $_SESSION["currency"] ?>">
+                    <a class="nav-link <?= @$mn_mwallet ?>" href="<?= base_url() ?>m3rc4n73/mwallet?cur=<?= $_SESSION["currency"] ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-wallet"></i></div>
                         Master Wallet
                     </a>
+                    <a class="nav-link collapsed <?= @$mn_member ?>" href="#" data-bs-toggle="collapse" data-bs-target="#Member" aria-expanded="false" aria-controls="Member">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                        Member
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="Member" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="<?= base_url() ?>m3rc4n73/member?status=active">Member
+                                Active</a>
+                        </nav>
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="<?= base_url() ?>m3rc4n73/member?status=disabled">Member
+                                Disable</a>
+                        </nav>
+                    </div>
                     <a class="nav-link <?= @$mn_bank ?>" href="<?= base_url() ?>m3rc4n73/bank">
                         <div class="sb-nav-link-icon"><i class="fas fa-bank"></i></div>
                         Bank
                     </a>
-                    <a class="nav-link collapsed <?= @$mn_tc ?>" href="#" data-bs-toggle="collapse"
-                        data-bs-target="#History" aria-expanded="false" aria-controls="History">
+                    <a class="nav-link collapsed <?= @$mn_tc ?>" href="#" data-bs-toggle="collapse" data-bs-target="#History" aria-expanded="false" aria-controls="History">
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                         History
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
