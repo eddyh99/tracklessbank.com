@@ -14,13 +14,10 @@
                     <table class="table table-hover table-bordered" id="tbl_history_member">
                         <thead class="table-dark">
                             <tr class="align-middle">
-                                <th>No.</th>
                                 <th>Description</th>
                                 <th>Debit</th>
                                 <th>Credit</th>
                                 <th>Fee</th>
-                                <th>Cost</th>
-                                <th>Comission</th>
                                 <th>Balance</th>
                                 <th>Date</th>
                             </tr>
