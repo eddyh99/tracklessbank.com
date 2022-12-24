@@ -11,21 +11,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-wallet"></i></div>
                         Master Wallet
                     </a>
-                    <a class="nav-link collapsed <?= @$mn_member ?>" href="#" data-bs-toggle="collapse" data-bs-target="#Member" aria-expanded="false" aria-controls="Member">
+                    <a class="nav-link collapsed <?= @$mn_member ?>" href="<?= base_url() ?>m3rc4n73/member?status=active">
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         Member
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse" id="Member" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="<?= base_url() ?>m3rc4n73/member?status=active">Member
-                                Active</a>
-                        </nav>
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="<?= base_url() ?>m3rc4n73/member?status=disabled">Member
-                                Disable</a>
-                        </nav>
-                    </div>
                     <a class="nav-link <?= @$mn_bank ?>" href="<?= base_url() ?>m3rc4n73/bank">
                         <div class="sb-nav-link-icon"><i class="fas fa-bank"></i></div>
                         Bank

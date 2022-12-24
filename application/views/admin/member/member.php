@@ -40,8 +40,6 @@
                     <?php
                     if ($_GET['status'] == 'active') {
                         $status_member = "memberactive";
-                    } elseif ($_GET['status'] == 'disabled') {
-                        $status_member = "memberdisabled";
                     } elseif ($_GET['status'] == 'active2') {
                         $status_member = "memberactive2";
                     } elseif ($_GET['status'] == 'disabled2') {
@@ -53,8 +51,8 @@
                             <tr class="align-middle">
                                 <th>No.</th>
                                 <th>Email</th>
-                                <th>Unique Code</th>
-                                <th>Referral Code</th>
+                                <th>UCode</th>
+                                <th>Referral</th>
                                 <th>Status</th>
                                 <th>Last Login</th>
                                 <th>Action</th>

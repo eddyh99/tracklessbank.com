@@ -26,9 +26,7 @@
                             <thead style="border: 2px solid #00DD9C;">
                                 <tr>
                                     <th></th>
-                                    <th>TOTAL</th>
-                                    <th>BANK<br> SYSTEM COST</th>
-                                    <th>PBS</th>
+                                    <th>Price</th>
                                 </tr>
                             </thead>
                             <tbody style="border: 2px solid #00DD9C;">
@@ -36,48 +34,34 @@
                                     <td class="title">DOMESTIC<br> TOP UP</td>
                                     <td><?= number_format(($cost['topup_circuit_fxd'] + $wcost['topup_circuit_fxd']), 2, ".", ",") ?>
                                     </td>
-                                    <td><?= number_format(($cost['topup_circuit_fxd']), 2, ".", ",") ?></td>
-                                    <td><?= number_format(($wcost['topup_circuit_fxd']), 2, ".", ",") ?></td>
                                 </tr>
                                 <tr>
                                     <td class="title">INTERNATIONAL<br> TOP UP</td>
                                     <td><?= number_format(($cost['topup_outside_fxd'] + $wcost['topup_outside_fxd']), 2, ".", ",") ?>
                                     </td>
-                                    <td><?= number_format(($cost['topup_outside_fxd']), 2, ".", ",") ?></td>
-                                    <td><?= number_format(($wcost['topup_outside_fxd']), 2, ".", ",") ?></td>
                                 </tr>
                                 <tr>
                                     <td class="title">WALLET<br> TO WALLET SEND</td>
                                     <td><?= number_format(($cost['wallet_sender_fxd'] + $wcost['wallet_sender_fxd']), 2, ".", ",") ?>
                                     </td>
-                                    <td><?= number_format(($cost['wallet_sender_fxd']), 2, ".", ",") ?></td>
-                                    <td><?= number_format((0), 2, ".", ",") ?></td>
                                 </tr>
                                 <tr>
                                     <td class="title">WALLET<br> TO WALLET RECEIVE</td>
                                     <td><?= number_format(($cost['wallet_receiver_fxd'] + $wcost['wallet_receiver_fxd']), 2, ".", ",") ?>
                                     </td>
-                                    <td><?= number_format(($cost['wallet_receiver_fxd']), 2, ".", ",") ?></td>
-                                    <td><?= number_format((0), 2, ".", ",") ?></td>
                                 </tr>
                                 <tr>
                                     <td class="title">DOMESTIC<br> WITHDRAWAL</td>
                                     <td><?= number_format(($cost['walletbank_circuit_fxd'] + $wcost['transfer_circuit_fxd']), 2, ".", ",") ?>
                                     </td>
-                                    <td><?= number_format(($cost['walletbank_circuit_fxd']), 2, ".", ",") ?></td>
-                                    <td><?= number_format(($wcost['transfer_circuit_fxd']), 2, ".", ",") ?></td>
                                 </tr>
                                 <tr>
                                     <td class="title">INTERNATIONAL<br> WITHDRAWAL</td>
                                     <td><?= number_format(($cost['walletbank_outside_fxd'] + $wcost['transfer_outside_fxd']), 2, ".", ",") ?>
                                     </td>
-                                    <td><?= number_format(($cost['walletbank_outside_fxd']), 2, ".", ",") ?></td>
-                                    <td><?= number_format(($wcost['transfer_outside_fxd']), 2, ".", ",") ?></td>
                                 </tr>
                                 <tr>
                                     <td class="title">SWAP<br> CURRENCY</td>
-                                    <td><?= number_format(($cost['swap_fxd']), 2, ".", ",") ?></td>
-                                    <td><?= number_format(($cost['swap_fxd']), 2, ".", ",") ?></td>
                                     <td><?= number_format(($cost['swap_fxd']), 2, ".", ",") ?></td>
                                 </tr>
                             </tbody>

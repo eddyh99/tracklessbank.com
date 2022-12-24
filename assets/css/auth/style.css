@@ -2459,6 +2459,63 @@ section {
   font-family: 'Public Sans', sans-serif !important;
 }
 
+
+
+.h2-form-bank {
+  font-weight: 500;
+  font-size: 85px !important;
+  line-height: 110%;
+
+  background: linear-gradient(148.17deg, #FFFFFF 1.58%, rgba(255, 255, 255, 0.85) 101.16%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-fill-color: transparent !important;
+}
+
+.box-form-bank {
+  background: #3F3F3F;
+  border-radius: 10px;
+  color: #fff;
+  text-align: start;
+}
+
+.box-form-bank h2 {
+  font-weight: 700;
+  font-size: 36px !important;
+  line-height: 110%;
+  color: #FFF !important;
+}
+
+.box-form-bank a {
+  font-weight: 500;
+  font-size: 16px !important;
+  line-height: 110%;
+
+  text-decoration: none;
+  color: #00DD9C !important;
+}
+
+.box-form-bank .form-tracklesscrypto label {
+  font-size: 16px;
+}
+
+.box-form-bank .form-tracklesscrypto input {
+
+  background: #505050;
+  border-radius: 5px;
+  border: none;
+  padding: .75rem 1rem;
+  font-size: 16px;
+}
+
+.box-form-bank .btn-tracklesscrypto {
+  background: #1AA37A !important;
+  box-shadow: 0px 10px 40px rgba(157, 255, 179, 0.2);
+  border-radius: 40px;
+  color: #fff !important;
+}
+
 @media (max-width: 575px) {
   .nav-link.navbar-freedy {
     background: none;
@@ -4060,6 +4117,10 @@ section {
   .currency-img-list img {
     height: 35px;
     /* 35px */
+  }
+
+  .h2-form-bank {
+    font-size: 46px !important;
   }
 }
 
@@ -5723,6 +5784,10 @@ section {
     /* 35px */
   }
 
+  .h2-form-bank {
+    font-size: 46px !important;
+  }
+
 }
 
 @media (min-width: 768px) {
@@ -7323,6 +7388,10 @@ section {
   .currency-img-list img {
     height: 35px;
     /* 35px */
+  }
+
+  .h2-form-bank {
+    font-size: 46px !important;
   }
 }
 
@@ -9156,6 +9225,10 @@ section {
   .currency-img-list img {
     height: 50px;
     /* 35px */
+  }
+
+  .h2-form-bank {
+    font-size: 85px !important;
   }
 }
 

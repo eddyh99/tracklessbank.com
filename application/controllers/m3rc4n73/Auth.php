@@ -158,7 +158,7 @@ class Auth extends CI_Controller
 
                   Thanks for reading.";
 
-			$this->sendmail($email, $subject, $message);
+			mail_auth($this->phpmailer_lib->load(), $email, $subject, $message);
 
 			$this->session->set_flashdata('failed', "<p style='color:black'>Your password has been reset, please check your email to complete the process</p>");
 			redirect(base_url() . "auth/login");
@@ -208,31 +208,5 @@ class Auth extends CI_Controller
 
 		$this->session->set_flashdata('success', 'You Have been logged out');
 		redirect('m3rc4n73');
-	}
-
-	public function sendmail($email, $subject, $message)
-	{
-		$mail = $this->phpmailer_lib->load();
-
-		$mail->isSMTP();
-		$mail->Host         = 'mail.freedybank.com';
-		$mail->SMTPAuth     = true;
-		$mail->Username     = 'no-reply@freedybank.com';
-		$mail->Password     = '_v2!~h;x4o$G';
-		$mail->SMTPAutoTLS	= false;
-		$mail->SMTPSecure	= false;
-		$mail->Port			= 587;
-
-		$mail->setFrom('no-reply@freedybank.com', 'FreedyBank');
-		$mail->isHTML(true);
-
-		$mail->ClearAllRecipients();
-
-
-		$mail->Subject = $subject;
-		$mail->AddAddress($email);
-
-		$mail->msgHTML($message);
-		$mail->send();
 	}
 }

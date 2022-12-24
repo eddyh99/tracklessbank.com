@@ -1,5 +1,4 @@
 <script>
-var i = 1;
 // History member
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -41,38 +40,33 @@ var tblhistory =
             },
             "dataSrc": function(data) {
                 $("#token").val(data["token"]);
-                console.log(data["history"].slice(1));
-                return data["history"].slice(1);
+                return data["history"];
             },
         },
         order: [
-            [0, 'asc']
+            [5, 'DESC']
         ],
         "pageLength": 100,
+        "columnDefs": [
+            { "width": "12%", "targets": 1 },
+            { "width": "12%", "targets": 2 },
+            { "width": "12%", "targets": 3 },
+            { "width": "12%", "targets": 4 },
+        ],
         "columns": [{
-                "mRender": function(data, type, full, meta) {
-                    return i++;
-                }
-            }, {
                 "data": "ket"
             },
             {
-                "data": "debit"
+                "data": "debit", "render": $.fn.dataTable.render.number(',', '.', 4, '') 
             },
             {
-                "data": "credit"
+                "data": "credit", "render": $.fn.dataTable.render.number(',', '.', 4, '')
             },
             {
-                "data": "fee"
+                "data": "fee", "render": $.fn.dataTable.render.number(',', '.', 4, '')
             },
             {
-                "data": "cost"
-            },
-            {
-                "data": "comission"
-            },
-            {
-                "data": "balance"
+                "data": "balance", "render": $.fn.dataTable.render.number(',', '.', 4, '')
             },
             {
                 "data": "date_created"
@@ -81,7 +75,6 @@ var tblhistory =
     });
 
 $('#tgl').on("change", function(e) {
-    i = 1;
     e.preventDefault();
     tblhistory.ajax.reload();
 });

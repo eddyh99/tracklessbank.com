@@ -26,27 +26,10 @@ var tblactive =
             "aTargets": [6],
             "mData": "email",
             "mRender": function(data, type, full, meta) {
-                var button = '<a href="<?= base_url() ?>m3rc4n73/member/changepass/' + full
-                    .id +
-                    '" class="m-1 btn btn-secondary btn-sm">Change Password</a> ';
-                if (full.status == 'active') {
-                    button = button +
-                        '<a href="<?= base_url() ?>m3rc4n73/member/disabled/' +
-                        full.id +
-                        '" class="m-1 btn btn-danger btn-sm">Disable</a> ';
-                } else if (full.status == 'new') {
-                    button = '<a href="<?= base_url() ?>m3rc4n73/member/activate/' + full
-                        .id +
-                        '" class="m-1 btn btn-dark btn-sm">Activate</a> ';
-                } else if (full.status = 'disabled') {
-                    button = button + '<a href="<?= base_url() ?>m3rc4n73/member/enabled/' +
-                        full.id +
-                        '" class="m-1 btn btn-warning btn-sm">Enable</a> ';
-                }
-                button = button + '<a href="<?= base_url() ?>m3rc4n73/member/history/' +
+                var button = '<a href="<?= base_url() ?>m3rc4n73/member/history/' +
                     full
                     .id +
-                    '" class="m-1 btn btn-piggy btn-sm">View History</a>';
+                    '" class="m-1 btn btn-success btn-sm">View History</a>';
                 return button;
             }
         }],

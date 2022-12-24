@@ -234,39 +234,12 @@ class Member extends CI_Controller
                 $temp["email"] = $dt->email;
                 array_push($member, $temp);
             }
-            $this->send_email($member, $subject, $message);
+            mail_member($this->phpmailer_lib->load(), $member, $subject, $message);
         } else {
-            $this->send_email($email, $subject, $message);
+            mail_member($this->phpmailer_lib->load(), $email, $subject, $message);
         }
         $this->session->set_flashdata('success', "<p style='color:black'>Email is successfully schedule to send</p>");
         redirect(base_url() . "m3rc4n73/member/sendmail");
         return;
-    }
-
-    public function send_email($email, $subject, $message)
-    {
-        $mail = $this->phpmailer_lib->load();
-
-        $mail->isSMTP();
-        $mail->Host         = 'mail.tracklessbank.com';
-        $mail->SMTPAuth     = true;
-        $mail->Username     = 'no-reply@tracklessbank.com';
-        $mail->Password     = 'NaBbrvu[*Tn^';
-        $mail->SMTPAutoTLS    = false;
-        $mail->SMTPSecure    = false;
-        $mail->Port            = 587;
-
-        $mail->setFrom('no-reply@tracklessbank.com', 'TracklessBank');
-        $mail->isHTML(true);
-
-        $mail->ClearAllRecipients();
-
-        $mail->Subject = $subject;
-        foreach ($email as $dt) {
-            $mail->AddAddress($dt);
-        }
-
-        $mail->msgHTML($message);
-        $mail->send();
     }
 }

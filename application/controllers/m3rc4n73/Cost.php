@@ -488,41 +488,8 @@ class Cost extends CI_Controller
 				There's a new currency " . $_GET['currency'] . " has been activated and ready to used, please update your fee immediately.<br>
 				<br>
 				Thank you";
-			$this->send_email($email, $subject, $message);
+			mail_cost($this->phpmailer_lib->load(), $email, $subject, $message);
 		}
 		echo json_encode('Success');
-	}
-
-	public function send_email($email, $subject, $message)
-	{
-		$mail = $this->phpmailer_lib->load();
-
-		$mail->isSMTP();
-		$mail->Host         = 'mail.tracklessbank.com';
-		$mail->SMTPAuth     = true;
-		$mail->Username     = 'no-reply@tracklessbank.com';
-		$mail->Password     = 'NaBbrvu[*Tn^';
-		// $mail->SMTPDebug    = 2;
-		$mail->SMTPAutoTLS	= true;
-		$mail->SMTPSecure	= "tls";
-		$mail->Port			= 587;
-		$mail->SMTPOptions = array(
-			'ssl' => array(
-				'verify_peer' => false,
-				'verify_peer_name' => false,
-				'allow_self_signed' => true
-			)
-		);
-
-		$mail->setFrom('no-reply@tracklessbank.com', 'TracklessBank');
-		$mail->isHTML(true);
-
-		$mail->ClearAllRecipients();
-
-		$mail->Subject = $subject;
-		$mail->AddAddress($email);
-
-		$mail->msgHTML($message);
-		$mail->send();
 	}
 }
