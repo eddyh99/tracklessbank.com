@@ -95,3 +95,4 @@ sandbox server
     "https://sandbox.tracklessbank.com"
 */
 define('URLAPI', "https://sandbox.tracklessbank.com");
+define('PASS_EMAIL', "");

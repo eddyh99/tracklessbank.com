@@ -367,7 +367,7 @@
                     </h2>
                     <p class="f-poppins">Your online bank will be host by our servers,
                         you just need to choose your own domain.</p>
-                    <a href="#" class="btn btn-learn text-white">Apply now</a>
+                    <a href="<?= base_url() ?>link/form_bank" class="btn btn-learn text-white">Apply now</a>
                 </div>
                 <div class="col-12 mt-5 mb-3 my-lg-5 powered">
                     <span class="text-white f-monserat">Powered by</span>&nbsp;
