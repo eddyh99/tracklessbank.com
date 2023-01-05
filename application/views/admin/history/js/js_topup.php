@@ -34,11 +34,12 @@ var tblhistory =
         "scrollX": true,
         "responsive": true,
         "ajax": {
-            "url": "<?= base_url() ?>m3rc4n73/transactions/historytopup?bank=" + readbank,
+            "url": "<?= base_url() ?>m3rc4n73/transactions/historytopup",
             "type": "POST",
             "data": function(d) {
                 d.csrf_freedy = $("#token").val();
-                d.tgl = $("#tgl").val()
+                d.tgl = $("#tgl").val(),
+                d.bank = $("#bank").val()
             },
             "dataSrc": function(data) {
                 $("#token").val(data["token"]);
@@ -78,7 +79,7 @@ $('#tgl').on("change", function(e) {
     tblhistory.ajax.reload();
 });
 
-$("#bank").on("change", function() {
+$("#bank").on("change", function(e) {
     e.preventDefault();
     tblhistory.ajax.reload();
 })
