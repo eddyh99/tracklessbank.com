@@ -371,7 +371,7 @@
                 </div>
                 <div class="col-12 mt-5 mb-3 my-lg-5 powered">
                     <span class="text-white f-monserat">Powered by</span>&nbsp;
-                    <img src="<?= base_url() ?>assets/images/tracklessbankonly.png" alt="">
+                    <img src="<?= base_url() ?>assets/images/tracklessproject.png" alt="">
                 </div>
                 <div class="col-12">
                     <div class="row d-flex justify-content-center">
