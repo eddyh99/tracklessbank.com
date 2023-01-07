@@ -27,7 +27,6 @@ $('#tgl').daterangepicker({
 });
 
 
-var readbank = $("#bank").val();
 var i = 1;
 var tblhistory =
     $('#tbl_history').DataTable({
@@ -38,7 +37,8 @@ var tblhistory =
             "type": "POST",
             "data": function(d) {
                 d.csrf_freedy = $("#token").val();
-                d.tgl = $("#tgl").val()
+                d.tgl = $("#tgl").val(),
+                d.bank = $("#bank").val()
             },
             "dataSrc": function(data) {
                 $("#token").val(data["token"]);

@@ -29,7 +29,7 @@ class Transactions extends CI_Controller
     {
         $input = $this->input;
         $tgl = explode("-", $this->security->xss_clean($input->post("tgl")));
-        $bank = $_GET['bank'];
+        $bank = $this->security->xss_clean($input->post("bank"));
         $awal = date_format(date_create($tgl[0]), "Y-m-d");
         $akhir = date_format(date_create($tgl[1]), "Y-m-d");
 
@@ -65,7 +65,7 @@ class Transactions extends CI_Controller
         $tgl = explode("-", $this->security->xss_clean($input->post("tgl")));
         $awal = date_format(date_create($tgl[0]), "Y-m-d");
         $akhir = date_format(date_create($tgl[1]), "Y-m-d");
-        $bank = $_GET['bank'];
+        $bank = $this->security->xss_clean($input->post("bank"));
 
         $mdata = array(
             "bank_id"    => $bank,
@@ -99,7 +99,7 @@ class Transactions extends CI_Controller
         $tgl = explode("-", $this->security->xss_clean($input->post("tgl")));
         $awal = date_format(date_create($tgl[0]), "Y-m-d");
         $akhir = date_format(date_create($tgl[1]), "Y-m-d");
-        $bank = $_GET['bank'];
+        $bank = $this->security->xss_clean($input->post("bank"));
 
         $mdata = array(
             "bank_id"    => $bank,

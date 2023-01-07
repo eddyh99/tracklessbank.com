@@ -13083,7 +13083,8 @@ footer a:focus {
 }
 
 .box-powered img {
-  height: 200px;
+  height: auto;
+  width: 100%;
 }
 
 .circle-1 {
@@ -14533,7 +14534,8 @@ footer a:focus {
   }
 
   .box-powered img {
-    height: 200px;
+    height: auto;
+    width: 100%;
   }
 
   .circle-1 {

@@ -13084,6 +13084,8 @@ footer a:focus {
 
 .box-powered img {
   height: 200px;
+  width: 100%;
+  object-fit: contain;
 }
 
 .circle-1 {
@@ -13233,6 +13235,8 @@ footer a:focus {
 
   .box-powered img {
     height: 75px;
+    width: 100%;
+    object-fit: contain;
   }
 
   /* Bank */
@@ -13561,6 +13565,8 @@ footer a:focus {
 
   .box-powered img {
     height: 75px;
+    width: 100%;
+    object-fit: contain;
   }
 
   /* Bank */
@@ -13872,6 +13878,8 @@ footer a:focus {
 
   .box-powered img {
     height: 75px;
+    width: 100%;
+    object-fit: contain;
   }
 
   /* Bank */
@@ -14201,6 +14209,8 @@ footer a:focus {
 
   .box-powered img {
     height: 100px;
+    width: 100%;
+    object-fit: contain;
   }
 
   /* Bank */
@@ -14534,6 +14544,8 @@ footer a:focus {
 
   .box-powered img {
     height: 200px;
+    width: 100%;
+    object-fit: contain;
   }
 
   .circle-1 {
