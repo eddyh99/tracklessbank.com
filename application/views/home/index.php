@@ -371,14 +371,14 @@
                 </div>
                 <div class="col-12 mt-5 mb-3 my-lg-5 powered">
                     <span class="text-white f-monserat">Powered by</span>&nbsp;
-                    <img src="<?= base_url() ?>assets/images/tracklessproject.png" alt="">
+                    <img src="<?= base_url() ?>assets/images/tracklessbankonly.png" alt="">
                 </div>
                 <div class="col-12">
                     <div class="row d-flex justify-content-center">
                         <div class="col-12 col-sm-6 col-md-4 col-lg-4 p-3">
                             <a href="#" class="cs-powered text-center" style="color: #fff;text-decoration: none;">
                                 <div class="box-powered text-center">
-                                    <img src="<?= base_url() ?>assets/images/moneyport.png" alt="">
+                                    <img src="<?= base_url() ?>assets/images/magnify.png" alt="">
                                 </div>
                                 <span class="mt-3 d-block">Coming soon</span>
                             </a>
@@ -443,11 +443,7 @@
                 <div class="col-4">&nbsp;</div>
                 <div class="col-4 footer-contact">
                     <h2>Contact us</h2>
-                    <span>
-                        <a href="mailto:tracklessbank@tracklessmail.com" class="text-decoration-none">
-                            tracklessbank@tracklessmail.com
-                        </a>
-                    </span>
+                    <span>Telegramchanel</span>
                 </div>
             </div>
         </div>
