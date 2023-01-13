@@ -53,7 +53,8 @@ function bcost() {
                 $("#transfer_outside_pct_div").hide()
             }
             if ((readcurrency == "USD") ||
-                (readcurrency == "EUR")) {
+                (readcurrency == "EUR") ||
+                (readcurrency == "GBP")) {
                 $("#topup_outside_fxd_div").show()
                 $("#topup_outside_pct_div").show()
                 $("#topup_circuit_fxd_div").show()
@@ -133,7 +134,8 @@ function dcost() {
                 $("#walletbank_outside_pct_div").hide()
             }
             if ((readcurrency == "USD") ||
-                (readcurrency == "EUR")) {
+                (readcurrency == "EUR") ||
+                (readcurrency == "GBP")) {
                 $("#topup_outside_fxd_div").show()
                 $("#topup_outside_pct_div").show()
                 $("#topup_circuit_fxd_div").show()

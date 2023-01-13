@@ -123,7 +123,8 @@
 
                         <?php
                         if (($curr == "USD") ||
-                            ($curr == "EUR")
+                            ($curr == "EUR") ||
+                            ($curr == "GBP")
                         ) {
                         ?>
                         <div class="mb-3" id="walletbank_outside_fxd_div">

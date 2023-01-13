@@ -371,16 +371,16 @@
                 </div>
                 <div class="col-12 mt-5 mb-3 my-lg-5 powered">
                     <span class="text-white f-monserat">Powered by</span>&nbsp;
-                    <img src="<?= base_url() ?>assets/images/tracklessproject.png" alt="">
+                    <img src="<?= base_url() ?>assets/images/tracklessbankonly.png" alt="">
                 </div>
                 <div class="col-12">
                     <div class="row d-flex justify-content-center">
                         <div class="col-12 col-sm-6 col-md-4 col-lg-4 p-3">
-                            <a href="#" class="cs-powered text-center" style="color: #fff;text-decoration: none;">
+                            <a href="https://freedybank.com/" class="cs-powered text-center"
+                                style="color: #fff;text-decoration: none;">
                                 <div class="box-powered text-center">
-                                    <img src="<?= base_url() ?>assets/images/moneyport.png" alt="">
+                                    <img src="<?= base_url() ?>assets/images/freedylogo.png" alt="">
                                 </div>
-                                <span class="mt-3 d-block">Coming soon</span>
                             </a>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-4 p-3">
@@ -392,11 +392,19 @@
                             </a>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-4 p-3">
-                            <a href="https://freedybank.com/" class="cs-powered text-center"
-                                style="color: #fff;text-decoration: none;">
+                            <a href="#" class="cs-powered text-center" style="color: #fff;text-decoration: none;">
                                 <div class="box-powered text-center">
-                                    <img src="<?= base_url() ?>assets/images/freedylogo.png" alt="">
+                                    <img src="<?= base_url() ?>assets/images/moneyport.png" alt="">
                                 </div>
+                                <span class="mt-3 d-block">Coming soon</span>
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4 p-3">
+                            <a href="#" class="cs-powered text-center" style="color: #fff;text-decoration: none;">
+                                <div class="box-powered text-center">
+                                    <img src="<?= base_url() ?>assets/images/exchangetailor.png" alt="">
+                                </div>
+                                <span class="mt-3 d-block">Coming soon</span>
                             </a>
                         </div>
                     </div>
