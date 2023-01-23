@@ -57,13 +57,16 @@ var tblhistory =
                 "data": "ket"
             },
             {
-                "data": "amount"
+                "data": "amount",
+                render: $.fn.dataTable.render.number(',', '.', 2, '<?= $_SESSION['symbol']?> ')
             },
             {
-                "data": "cost"
+                "data": "cost",
+                render: $.fn.dataTable.render.number(',', '.', 2, '<?= $_SESSION['symbol']?> ')
             },
             {
-                "data": "comission"
+                "data": "comission",
+                render: $.fn.dataTable.render.number(',', '.', 2, '<?= $_SESSION['symbol']?> ')
             },
             {
                 "data": "date_created"

@@ -27,10 +27,26 @@
                         <input type="hidden" name="transfer_type" value="circuit">
                         <input type="hidden" name="currencycode" id="currencycode" value="<?= $currencycode ?>">
 
+                        <input type="hidden" name="url" value="wdlocal">
+
+                        <div class="mb-3">
+                            <input class="form-control" type="text" name="amount" placeholder="Amount"
+                                oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="text" name="accountHolderName"
+                                placeholder="Recipient Name">
+                        </div>
+
                         <?php
                         $data['type'] = "wdlocal";
                         $this->load->view('admin/mwallet/currency/' . @$_SESSION['currency'], $data);
                         ?>
+
+                        <div class="mb-3">
+                            <input class="form-control" type="text" name="causal" placeholder="Causal">
+                        </div>
+
                         <div class="col-12 mb-3">
                             <a href="<?= base_url() ?>m3rc4n73/mwallet/withdraw"
                                 class="btn btn-freedy-white px-4 py-2 me-2 shadow-none">Cancel</a>

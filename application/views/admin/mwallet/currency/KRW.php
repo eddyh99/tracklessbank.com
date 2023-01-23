@@ -1,22 +1,12 @@
-<input type="hidden" name="url" value="<?= $type ?>">
-<div class="mb-3">
-    <input class="form-control" type="text" name="amount" placeholder="Amount">
+<div class="d-flex flex-row align-items-center my-3">
+    <input class="form-control me-2" type="text" name="accountNumber" placeholder="Account Number">
 </div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="accountHolderName" placeholder="Recipient Name">
+<div class="d-flex flex-row align-items-center my-3">
+    <input class="form-control me-2" type="text" name="bankCode" placeholder="Bank Code">
 </div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="accountNumber" placeholder="Account Number">
+<div class="d-flex flex-row align-items-center my-3">
+    <input class="form-control me-2" type="date" name="dateOfBirth" placeholder="Date Of Birth">
 </div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="bankCode" placeholder="Bank Code">
-</div>
-<div class="mb-3">
-    <input class="form-control" type="date" name="dateOfBirth" placeholder="Date Of Birth">
-</div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="email" placeholder="Email">
-</div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="causal" placeholder="Causal">
+<div class="d-flex flex-row align-items-center my-3">
+    <input class="form-control me-2" type="text" name="email" placeholder="Email">
 </div>

@@ -94,5 +94,9 @@ live server:
 sandbox server
     "https://sandbox.tracklessbank.com"
 */
-define('URLAPI', "https://sandbox.tracklessbank.com");
-define('PASS_EMAIL', "");
+define('URLAPI', "https://api.tracklessbank.com");
+
+/*email config*/
+define('HOST_EMAIL', "mail.tracklessbank.com");
+define('USERNAME_EMAIL', "no-reply@tracklessbank.com");
+define('PASS_EMAIL', 'DLgV4o?L1B]m');

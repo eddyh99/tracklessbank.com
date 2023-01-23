@@ -47,26 +47,41 @@ var tblhistory =
             [5, 'DESC']
         ],
         "pageLength": 100,
-        "columnDefs": [
-            { "width": "12%", "targets": 1 },
-            { "width": "12%", "targets": 2 },
-            { "width": "12%", "targets": 3 },
-            { "width": "12%", "targets": 4 },
+        "columnDefs": [{
+                "width": "12%",
+                "targets": 1
+            },
+            {
+                "width": "12%",
+                "targets": 2
+            },
+            {
+                "width": "12%",
+                "targets": 3
+            },
+            {
+                "width": "12%",
+                "targets": 4
+            },
         ],
         "columns": [{
                 "data": "ket"
             },
             {
-                "data": "debit", "render": $.fn.dataTable.render.number(',', '.', 4, '') 
+                "data": "debit",
+                "render": $.fn.dataTable.render.number(',', '.', 4, '<?= $_SESSION['symbol']?> ')
             },
             {
-                "data": "credit", "render": $.fn.dataTable.render.number(',', '.', 4, '')
+                "data": "credit",
+                "render": $.fn.dataTable.render.number(',', '.', 4, '<?= $_SESSION['symbol']?> ')
             },
             {
-                "data": "fee", "render": $.fn.dataTable.render.number(',', '.', 4, '')
+                "data": "fee",
+                "render": $.fn.dataTable.render.number(',', '.', 4, '<?= $_SESSION['symbol']?> ')
             },
             {
-                "data": "balance", "render": $.fn.dataTable.render.number(',', '.', 4, '')
+                "data": "balance",
+                "render": $.fn.dataTable.render.number(',', '.', 4, '<?= $_SESSION['symbol']?> ')
             },
             {
                 "data": "date_created"

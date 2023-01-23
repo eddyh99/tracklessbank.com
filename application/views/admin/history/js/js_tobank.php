@@ -38,7 +38,7 @@ var tblhistory =
             "data": function(d) {
                 d.csrf_freedy = $("#token").val();
                 d.tgl = $("#tgl").val(),
-                d.bank = $("#bank").val()
+                    d.bank = $("#bank").val()
             },
             "dataSrc": function(data) {
                 $("#token").val(data["token"]);
@@ -54,17 +54,20 @@ var tblhistory =
                 "mRender": function(data, type, full, meta) {
                     return i++;
                 }
-            },{
+            }, {
                 "data": "ket"
             },
             {
-                "data": "amount"
+                "data": "amount",
+                render: $.fn.dataTable.render.number(',', '.', 2, '<?= $_SESSION['symbol']?> ')
             },
             {
-                "data": "cost"
+                "data": "cost",
+                render: $.fn.dataTable.render.number(',', '.', 2, '<?= $_SESSION['symbol']?> ')
             },
             {
-                "data": "comission"
+                "data": "comission",
+                render: $.fn.dataTable.render.number(',', '.', 2, '<?= $_SESSION['symbol']?> ')
             },
             {
                 "data": "date_created"
@@ -74,11 +77,12 @@ var tblhistory =
 
 $('#tgl').on("change", function(e) {
     e.preventDefault();
+    i = 1;
     tblhistory.ajax.reload();
 });
 
 $("#bank").on("change", function() {
-    e.preventDefault();
+    i = 1;
     tblhistory.ajax.reload();
 })
 </script>

@@ -109,7 +109,52 @@ class Cost extends CI_Controller
 	{
 		$input = $this->input;
 		$curr = $this->security->xss_clean($input->post("currency"));
+		
+		$topup_circuit_fxd = $this->security->xss_clean($input->post("topup_circuit_fxd"));
+		$topup_circuit_pct = $this->security->xss_clean($input->post("topup_circuit_pct"));
+		$topup_outside_fxd = $this->security->xss_clean($input->post("topup_outside_fxd"));
+		$topup_outside_pct = $this->security->xss_clean($input->post("topup_outside_pct"));
+		$wallet_sender_fxd = $this->security->xss_clean($input->post("wallet_sender_fxd"));
+		$wallet_sender_pct = $this->security->xss_clean($input->post("wallet_sender_pct"));
+		$wallet_receiver_fxd = $this->security->xss_clean($input->post("wallet_receiver_fxd"));
+		$wallet_receiver_pct = $this->security->xss_clean($input->post("wallet_receiver_pct"));
+		$walletbank_circuit_fxd = $this->security->xss_clean($input->post("walletbank_circuit_fxd"));
+		$walletbank_circuit_pct = $this->security->xss_clean($input->post("walletbank_circuit_pct"));
+		$walletbank_outside_fxd = $this->security->xss_clean($input->post("walletbank_outside_fxd"));
+		$walletbank_outside_pct = $this->security->xss_clean($input->post("walletbank_outside_pct"));
+		$swap = $this->security->xss_clean($input->post("swap"));
+		$swap_fxd = $this->security->xss_clean($input->post("swap_fxd"));
 
+        $new_topup_circuit_fxd = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $topup_circuit_fxd);
+        $new_topup_circuit_pct = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $topup_circuit_pct);
+        $new_topup_outside_fxd = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $topup_outside_fxd);
+        $new_topup_outside_pct = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $topup_outside_pct);
+        $new_wallet_sender_fxd = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $wallet_sender_fxd);
+        $new_wallet_sender_pct = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $wallet_sender_pct);
+        $new_wallet_receiver_fxd = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $wallet_receiver_fxd);
+        $new_wallet_receiver_pct = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $wallet_receiver_pct);
+        $new_walletbank_circuit_fxd = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $walletbank_circuit_fxd);
+        $new_walletbank_circuit_pct = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $walletbank_circuit_pct);
+        $new_walletbank_outside_fxd = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $walletbank_outside_fxd);
+        $new_walletbank_outside_pct = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $walletbank_outside_pct);
+        $new_swap = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $swap);
+        $new_swap_fxd = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $swap_fxd);
+
+        $_POST["topup_circuit_fxd"]=$new_topup_circuit_fxd;
+        $_POST["topup_circuit_pct"]=$new_topup_circuit_pct;
+        $_POST["topup_outside_fxd"]=$new_topup_outside_fxd;
+        $_POST["topup_outside_pct"]=$new_topup_outside_pct;
+        $_POST["wallet_sender_fxd"]=$new_wallet_sender_fxd;
+        $_POST["wallet_sender_pct"]=$new_wallet_sender_pct;
+        $_POST["wallet_receiver_fxd"]=$new_wallet_receiver_fxd;
+        $_POST["wallet_receiver_pct"]=$new_wallet_receiver_pct;
+        $_POST["walletbank_circuit_fxd"]=$new_walletbank_circuit_fxd;
+        $_POST["walletbank_circuit_pct"]=$new_walletbank_circuit_pct;
+        $_POST["walletbank_outside_fxd"]=$new_walletbank_outside_fxd;
+        $_POST["walletbank_outside_pct"]=$new_walletbank_outside_pct;
+        $_POST["swap"]=$new_swap;
+        $_POST["swap_fxd"]=$new_swap_fxd;
+        
 		if (($curr == "USD") ||
 			($curr == "EUR") ||
 			($curr == "AUD") ||
@@ -303,6 +348,33 @@ class Cost extends CI_Controller
 
 		$input = $this->input;
 		$curr = $this->security->xss_clean($input->post("currency"));
+		
+		$transfer_circuit_fxd = $this->security->xss_clean($input->post("transfer_circuit_fxd"));
+		$transfer_circuit_pct = $this->security->xss_clean($input->post("transfer_circuit_pct"));
+		$transfer_outside_fxd = $this->security->xss_clean($input->post("transfer_outside_fxd"));
+		$transfer_outside_pct = $this->security->xss_clean($input->post("transfer_outside_pct"));
+		$topup_circuit_fxd = $this->security->xss_clean($input->post("topup_circuit_fxd"));
+		$topup_circuit_pct = $this->security->xss_clean($input->post("topup_circuit_pct"));
+		$topup_outside_fxd = $this->security->xss_clean($input->post("topup_outside_fxd"));
+		$topup_outside_pct = $this->security->xss_clean($input->post("topup_outside_pct"));
+
+        $new_transfer_circuit_fxd = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $transfer_circuit_fxd);
+        $new_transfer_circuit_pct = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $transfer_circuit_pct);
+        $new_transfer_outside_fxd = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $transfer_outside_fxd);
+        $new_transfer_outside_pct = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $transfer_outside_pct);
+        $new_topup_circuit_fxd = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $topup_circuit_fxd);
+        $new_topup_circuit_pct = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $topup_circuit_pct);
+        $new_topup_outside_fxd = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $topup_outside_fxd);
+        $new_topup_outside_pct = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $topup_outside_pct);
+
+        $_POST["transfer_circuit_fxd"]=$new_transfer_circuit_fxd;
+        $_POST["transfer_circuit_pct"]=$new_transfer_circuit_pct;
+        $_POST["transfer_outside_fxd"]=$new_transfer_outside_fxd;
+        $_POST["transfer_outside_pct"]=$new_transfer_outside_pct;
+        $_POST["topup_circuit_fxd"]=$new_topup_circuit_fxd;
+        $_POST["topup_circuit_pct"]=$new_topup_circuit_pct;
+        $_POST["topup_outside_fxd"]=$new_topup_outside_fxd;
+        $_POST["topup_outside_pct"]=$new_topup_outside_pct;
 
 		if (($curr == "USD") ||
 			($curr == "EUR") ||

@@ -1,32 +1,22 @@
-<input type="hidden" name="url" value="<?= $type ?>">
-<div class="mb-3">
-    <input class="form-control" type="text" name="amount" placeholder="Amount">
+<div class="d-flex flex-row align-items-center my-3">
+    <input class="form-control me-2" type="text" name="accountNumber" placeholder="Account Number">
 </div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="accountHolderName" placeholder="Recipient Name">
-</div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="accountNumber" placeholder="Account Number">
-</div>
-<div class="mb-3">
-    <select name="accountType" class="form-select" id="accountType">
+<div class="d-flex flex-row align-items-center my-3">
+    <select name="accountType" class="form-control me-2" id="accountType">
         <option value="CURRENT">Current</option>
         <option value="SAVINGS">Saving</option>
         <option value="CHECKING">Checking</option>
     </select>
 </div>
 
-<div class="mb-3">
-    <select name="bankCode" class="form-select" id="bankCode">
+<div class="d-flex flex-row align-items-center my-3">
+    <select name="bankCode" class="form-control me-2" id="bankCode">
         <?php foreach ($codecur as $dt) { ?>
         <option value="<?= $dt->code ?>"><?= $dt->title ?></option>
         <?php } ?>
     </select>
 </div>
-<div class="mb-3">
-    <select name="branchCode" class="form-select" id="branchCode">
+<div class="d-flex flex-row align-items-center my-3">
+    <select name="branchCode" class="form-control me-2" id="branchCode">
     </select>
-</div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="causal" placeholder="Causal">
 </div>

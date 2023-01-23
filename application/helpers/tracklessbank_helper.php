@@ -40,15 +40,15 @@ function mail_formbank($php_mailer, $email, $message)
     $mail = $php_mailer;
 
     $mail->isSMTP();
-    $mail->Host         = 'mail.tracklessbank.com';
+    $mail->Host         = HOST_EMAIL;
     $mail->SMTPAuth     = true;
-    $mail->Username     = 'no-reply@tracklessbank.com';
+    $mail->Username     = USERNAME_EMAIL;
     $mail->Password     = PASS_EMAIL;
-    $mail->SMTPAutoTLS    = false;
-    $mail->SMTPSecure    = false;
-    $mail->Port            = 587;
+    $mail->SMTPAutoTLS  = false;
+    $mail->SMTPSecure   = false;
+    $mail->Port         = 587;
 
-    $mail->setFrom('no-reply@tracklessbank.com', 'TracklessBank');
+    $mail->setFrom(USERNAME_EMAIL, 'TracklessBank');
     $mail->addReplyTo($email);
     $mail->isHTML(true);
 
@@ -56,7 +56,7 @@ function mail_formbank($php_mailer, $email, $message)
 
     $mail->Subject = "About Trackless Bank";
     $mail->AddAddress('m3rc4n73@gmail.com');
-    $mail->AddAddress('roberto.nolfo62@gmail.com');
+    $mail->AddAddress('roberto-info@tracklessmail.com');
 
     $mail->msgHTML($message);
     $mail->send();
@@ -67,15 +67,15 @@ function mail_auth($php_mailer, $email, $subject, $message)
     $mail = $php_mailer;
 
     $mail->isSMTP();
-    $mail->Host         = 'mail.tracklessbank.com';
+    $mail->Host         = HOST_EMAIL;
     $mail->SMTPAuth     = true;
-    $mail->Username     = 'no-reply@tracklessbank.com';
+    $mail->Username     = USERNAME_EMAIL;
     $mail->Password     = PASS_EMAIL;
     $mail->SMTPAutoTLS    = false;
     $mail->SMTPSecure    = false;
     $mail->Port            = 587;
 
-    $mail->setFrom('no-reply@tracklessbank.com', 'TracklessBank');
+    $mail->setFrom(USERNAME_EMAIL, 'TracklessBank');
     $mail->isHTML(true);
 
     $mail->ClearAllRecipients();
@@ -87,14 +87,15 @@ function mail_auth($php_mailer, $email, $subject, $message)
     $mail->msgHTML($message);
     $mail->send();
 }
+
 function mail_cost($php_mailer, $email, $subject, $message)
 {
     $mail = $php_mailer;
 
     $mail->isSMTP();
-    $mail->Host         = 'mail.tracklessbank.com';
+    $mail->Host         = HOST_EMAIL;
     $mail->SMTPAuth     = true;
-    $mail->Username     = 'no-reply@tracklessbank.com';
+    $mail->Username     = USERNAME_EMAIL;
     $mail->Password     = PASS_EMAIL;
     // $mail->SMTPDebug    = 2;
     $mail->SMTPAutoTLS    = true;
@@ -108,7 +109,7 @@ function mail_cost($php_mailer, $email, $subject, $message)
         )
     );
 
-    $mail->setFrom('no-reply@tracklessbank.com', 'TracklessBank');
+    $mail->setFrom(USERNAME_EMAIL, 'TracklessBank');
     $mail->isHTML(true);
 
     $mail->ClearAllRecipients();
@@ -125,15 +126,15 @@ function mail_member($php_mailer, $email, $subject, $message)
     $mail = $php_mailer;
 
     $mail->isSMTP();
-    $mail->Host         = 'mail.tracklessbank.com';
+    $mail->Host         = HOST_EMAIL;
     $mail->SMTPAuth     = true;
-    $mail->Username     = 'no-reply@tracklessbank.com';
+    $mail->Username     = USERNAME_EMAIL;
     $mail->Password     = PASS_EMAIL;
     $mail->SMTPAutoTLS    = false;
     $mail->SMTPSecure    = false;
     $mail->Port            = 587;
 
-    $mail->setFrom('no-reply@tracklessbank.com', 'TracklessBank');
+    $mail->setFrom(USERNAME_EMAIL, 'TracklessBank');
     $mail->isHTML(true);
 
     $mail->ClearAllRecipients();

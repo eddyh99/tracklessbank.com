@@ -4,7 +4,7 @@ $(function() {
 })
 
 function calculate() {
-    if ($("#amount").val() > 0) {
+    if ($("#amount").val().replace(/,/g, '') > 0) {
         $.ajax({
             url: "<?= base_url() ?>m3rc4n73/swap/swapcalculate",
             method: "post",

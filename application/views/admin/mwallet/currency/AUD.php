@@ -1,31 +1,21 @@
-<input type="hidden" name="url" value="<?= $type ?>">
-<div class="mb-3">
-    <input class="form-control" type="text" name="amount" placeholder="Amount">
+<div class="d-flex flex-row align-items-center my-3">
+    <input class="form-control me-2" type="text" name="accountNumber" placeholder="accountNumber">
 </div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="accountHolderName" placeholder="Recipient Name">
+<div class="d-flex flex-row align-items-center my-3">
+    <input class="form-control me-2" type="text" name="city" placeholder="City">
 </div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="accountNumber" placeholder="accountNumber">
+<div class="d-flex flex-row align-items-center my-3">
+    <input class="form-control me-2" type="text" name="postCode" placeholder="Post Code">
 </div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="city" placeholder="City">
+<div class="d-flex flex-row align-items-center my-3">
+    <input class="form-control me-2" type="text" name="firstLine" placeholder="FirstLine">
 </div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="postCode" placeholder="Post Code">
+<div class="d-flex flex-row align-items-center my-3">
+    <input class="form-control me-2" type="text" name="countryCode" placeholder="Country initial">
 </div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="firstLine" placeholder="FirstLine">
+<div class="d-flex flex-row align-items-center my-3">
+    <input class="form-control me-2" type="text" name="state" placeholder="State">
 </div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="countryCode" placeholder="Country initial">
-</div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="state" placeholder="State">
-</div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="bsbCode" placeholder="BSB Code">
-</div>
-<div class="mb-3">
-    <input class="form-control" type="text" name="causal" placeholder="Causal">
+<div class="d-flex flex-row align-items-center my-3">
+    <input class="form-control me-2" type="text" name="bsbCode" placeholder="BSB Code">
 </div>
