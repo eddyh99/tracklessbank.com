@@ -115,7 +115,7 @@ class Swap extends CI_Controller
             "amount"    => $this->security->xss_clean($input->post("amount")),
             "quoteid"   => $this->security->xss_clean($input->post("quoteid")),
             "amountget" => $this->security->xss_clean($input->post("amountget")),
-            "symbol"    => apitrackless(URLAPI . "/v1/admin/currency/getsymbol?currency=" . $target)->message
+            "symbol"    => apitrackless(URLAPI . "/v1/trackless/currency/getsymbol?currency=" . $target)->message
         );
 
 
@@ -164,7 +164,7 @@ class Swap extends CI_Controller
             $datatc = array(
                 "amount"    => $amount,
                 "amountget" => $result->message->receive,
-                "symbol"    => apitrackless(URLAPI . "/v1/admin/currency/getsymbol?currency=" . $target)->message
+                "symbol"    => apitrackless(URLAPI . "/v1/trackless/currency/getsymbol?currency=" . $target)->message
             );
 
             $data = array(

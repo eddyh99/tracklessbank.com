@@ -400,11 +400,11 @@
                             </a>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-4 p-3">
-                            <a href="#" class="cs-powered text-center" style="color: #fff;text-decoration: none;">
+                            <a href="https://exchangetailor.com/" class="cs-powered text-center"
+                                style="color: #fff;text-decoration: none;">
                                 <div class="box-powered text-center">
                                     <img src="<?= base_url() ?>assets/images/exchangetailor.png" alt="">
                                 </div>
-                                <span class="mt-3 d-block">Coming soon</span>
                             </a>
                         </div>
                     </div>
