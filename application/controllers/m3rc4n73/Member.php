@@ -21,7 +21,7 @@ class Member extends CI_Controller
             "extra"     => "admin/member/js/js_member"
         );
 
-        $this->load->view('admin_template/wrapper2', $data);
+        $this->load->view('admin_template/wrapper', $data);
     }
 
     public function member()
@@ -214,7 +214,7 @@ class Member extends CI_Controller
         );
 
 
-        $this->load->view('admin_template/wrapper2', $data);
+        $this->load->view('admin_template/wrapper', $data);
     }
 
     public function sendmail_proses()

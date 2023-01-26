@@ -16,7 +16,7 @@ class Swap extends CI_Controller
         $mdata = array(
             "userid" => $_SESSION["user_id"]
         );
-        $url = URLAPI . "/v1/admin/currency/getAllCurrency";
+        $url = URLAPI . "/v1/trackless/currency/getAllCurrency";
         $body["currency"]   = apitrackless($url, json_encode($mdata))->message;
 
         $data = array(
@@ -148,7 +148,7 @@ class Swap extends CI_Controller
 
         if ($amount > 0) {
             $mdata = array(
-                "userid"    => 1,
+                "userid"    => $_SESSION["user_id"],
                 "source"    => $_SESSION["currency"],
                 "target"    => $target,
                 "amount"    => $amount,
