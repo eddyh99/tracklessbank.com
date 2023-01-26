@@ -148,7 +148,7 @@ class Swap extends CI_Controller
 
         if ($amount > 0) {
             $mdata = array(
-                "userid"    => 1,
+                "userid"    => $_SESSION["user_id"],
                 "source"    => $_SESSION["currency"],
                 "target"    => $target,
                 "amount"    => $amount,
