@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://tracklessbank.com/';
+$config['base_url'] = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://'.$_SERVER['HTTP_HOST'].'/' : 'http://'.$_SERVER['HTTP_HOST'].'/';
 date_default_timezone_set('Asia/Singapore');
 
 /*
