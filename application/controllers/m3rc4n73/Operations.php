@@ -44,8 +44,8 @@ class Operations extends CI_Controller
 					$i++;
 					if ($i == 1) continue;
 					//$xx=explode(",",$dt[0]);
-					if (substr($dt[0], 0, 8) == "TRANSFER") {
-						if (!empty($dt[5]) && substr($dt[5], 0, 5) == "Topup" && substr($dt[4], 0, 8) == "Received") {
+					if (strtolower(substr($dt[0], 0, 8)) == strtolower("TRANSFER")) {
+						if (!empty($dt[5]) && strtolower(substr($dt[5], 0, 5)) == strtolower("Topup") && strtolower(substr($dt[4], 0, 8)) == strtolower("Received")) {
 							$temp["admin_id"] = $_SESSION["user_id"];
 							$temp["ucode"] = explode(" ", $dt[5])[1];
 							$temp["currency"] = $dt[3];

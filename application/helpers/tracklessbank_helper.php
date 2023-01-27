@@ -27,10 +27,10 @@ function balance($userid, $currency)
     return $balance;
 }
 
-function balanceadmin($currency)
+function balanceadmin($userid,$currency)
 {
     $balance = apitrackless(
-        URLAPI . "/v1/trackless/wallet/balance_ByCurrency?currency=" . $currency
+        URLAPI . "/v1/trackless/wallet/balance_ByCurrency?currency=" . $currency . "&userid=" . $userid
     )->message->balance;
     return $balance;
 }

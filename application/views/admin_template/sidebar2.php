@@ -7,19 +7,37 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
-                    <a class="nav-link <?= @$mn_mwallet ?>" href="<?= base_url() ?>m3rc4n73/mwallet?cur=<?= $_SESSION["currency"] ?>">
+                    <a class="nav-link <?= @$mn_mwallet ?>"
+                        href="<?= base_url() ?>m3rc4n73/mwallet?cur=<?= $_SESSION["currency"] ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-wallet"></i></div>
                         Master Wallet
                     </a>
-                    <a class="nav-link collapsed <?= @$mn_member ?>" href="<?= base_url() ?>m3rc4n73/member?status=active">
+                    <a class="nav-link collapsed <?= @$mn_member ?>"
+                        href="<?= base_url() ?>m3rc4n73/member?status=active">
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         Member
                     </a>
+
+                    <?php
+                    if (
+                        ($_SESSION["currency"] == "USD") ||
+                        ($_SESSION["currency"] == "EUR") ||
+                        ($_SESSION["currency"] == "AUD") ||
+                        ($_SESSION["currency"] == "NZD") ||
+                        ($_SESSION["currency"] == "CAD") ||
+                        ($_SESSION["currency"] == "HUF") ||
+                        ($_SESSION["currency"] == "SGD") ||
+                        ($_SESSION["currency"] == "TRY") ||
+                        ($_SESSION["currency"] == "GBP") ||
+                        ($_SESSION["currency"] == "RON")
+                    ) { ?>
                     <a class="nav-link <?= @$mn_bank ?>" href="<?= base_url() ?>m3rc4n73/bank">
                         <div class="sb-nav-link-icon"><i class="fas fa-bank"></i></div>
                         Bank
                     </a>
-                    <a class="nav-link collapsed <?= @$mn_tc ?>" href="#" data-bs-toggle="collapse" data-bs-target="#History" aria-expanded="false" aria-controls="History">
+                    <?php }?>
+                    <a class="nav-link collapsed <?= @$mn_tc ?>" href="#" data-bs-toggle="collapse"
+                        data-bs-target="#History" aria-expanded="false" aria-controls="History">
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                         History
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>

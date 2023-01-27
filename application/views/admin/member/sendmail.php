@@ -29,15 +29,26 @@
                                     aria-label="Close"></button>
                             </div>
                             <?php } ?>
+
+                            <div class=" my-3 row">
+                                <label for="bank" class="col-sm-2 col-form-label">Bank</label>
+                                <div class="col-sm-10">
+                                    <select name="bank" id="bank" class="form-select">
+                                        <option value="all">All Bank</option>
+                                        <?php foreach ($bank as $dt) { ?>
+                                        <option value="<?= $dt->id ?>"><?= $dt->bank_name ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="mb-2">
                                 <label class="form-label" for="tujuan">
                                     Email
                                 </label>
                                 <select class="form-control" id="tujuan" name="tujuan[]" multiple
                                     data-placeholder="Select an Email" required>
-                                    <?php foreach ($member as $dt) { ?>
-                                    <option value="<?= $dt->email ?>"><?= $dt->email ?></option>
-                                    <?php } ?>
+
                                 </select>
                             </div>
                             <div class="mb-3">

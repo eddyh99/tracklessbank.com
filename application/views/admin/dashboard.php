@@ -18,7 +18,7 @@
                         <a href="<?= base_url() ?>m3rc4n73/mwallet?cur=<?= $dt->currency ?>">
                             <div class="box-list fw-bold d-flex flex-row py-4 px-4">
                                 <span class="me-auto"><?= $dt->currency ?></span>
-                                <span><?= $dt->symbol ?> <?= substr($dt->amount,0,-2) ?></span>
+                                <span><?= $dt->symbol ?> <?= substr(number_format($dt->amount,4),0,-2) ?></span>
                             </div>
                         </a>
                     </div>
@@ -32,7 +32,7 @@
                         <a href="<?= base_url() ?>m3rc4n73/mwallet?cur=<?= $dt->currency ?>">
                             <div class="box-list fw-bold d-flex flex-row py-4 px-4">
                                 <span class="me-auto"><?= $dt->currency ?></span>
-                                <span><?= $dt->symbol ?> <?= substr($dt->amount,0,-2)?></span>
+                                <span><?= $dt->symbol ?> <?= substr(number_format($dt->amount,4),0,-2)?></span>
                             </div>
                         </a>
                     </div>
@@ -46,7 +46,7 @@
                         <a href="<?= base_url() ?>m3rc4n73/mwallet?cur=<?= $dt->currency ?>">
                             <div class="box-list fw-bold d-flex flex-row py-4 px-4">
                                 <span class="me-auto"><?= $dt->currency ?></span>
-                                <span><?= $dt->symbol ?> <?= substr($dt->amount,0,-2) ?></span>
+                                <span><?= $dt->symbol ?> <?= substr(number_format($dt->amount,4),0,-2) ?></span>
                             </div>
                         </a>
                     </div>
