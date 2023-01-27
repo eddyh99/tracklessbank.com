@@ -22,8 +22,8 @@
                                 <th>No.</th>
                                 <th>Description</th>
                                 <th>Amount</th>
-                                <th>Cost</th>
-                                <th>Comission</th>
+                                <th>Bank Cost</th>
+                                <th>Trackless Commission</th>
                                 <th>Date</th>
                             </tr>
                         </thead>

@@ -49,4 +49,22 @@ function validate() {
     $("#btnconfirm").attr("disabled", true);
     $("#form_submit").submit();
 }
+
+listmember();
+
+function listmember() {
+    var readbank = $("#bank").val();
+    $.ajax({
+        url: "<?= base_url() ?>m3rc4n73/member/sendmail_listmember?bank=" + readbank,
+        dataType: 'json',
+        success: function(result) {
+            $("#tujuan").html(result.message);
+            console.log(result);
+        }
+    });
+}
+
+$('#bank').on("change", function() {
+    listmember();
+});
 </script>

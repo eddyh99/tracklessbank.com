@@ -18,10 +18,11 @@ class Member extends CI_Controller
             "content"   => "admin/member/member",
             "bank"      => apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
             "mn_member" => "active",
+            "sendmail" => "sendmail_cur",
             "extra"     => "admin/member/js/js_member"
         );
 
-        $this->load->view('admin_template/wrapper', $data);
+        $this->load->view('admin_template/wrapper2', $data);
     }
 
     public function member()
@@ -31,6 +32,7 @@ class Member extends CI_Controller
             "content"   => "admin/member/member",
             "bank"      => apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
             "mn_member" => "active",
+            "sendmail" => "sendmail",
             "extra"     => "admin/member/js/js_member"
         );
 
@@ -193,26 +195,57 @@ class Member extends CI_Controller
     {
     }
 
-
-    public function sendmail()
+    public function sendmail_listmember()
     {
-        $mdata = array(
-            "timezone"  => $_SESSION["time_location"]
-        );
+        if ($_GET["bank"] == "all") {
+            $mdata = array(
+                "timezone"  => $_SESSION["time_location"]
+            );
+        } else {
+            $mdata = array(
+                "bank_id"   => $_GET["bank"],
+                "timezone"  => $_SESSION["time_location"]
+            );
+        }
+
         $result = apitrackless(URLAPI . "/v1/trackless/user/getAll", json_encode($mdata));
         if (@$result->code == 200) {
-            $member = $result->message;
+            $data['member'] = $result->message;
+            $data['bank'] = $_GET["bank"];
         } else {
-            $member = NULL;
+            $data['member'] = NULL;
+            $data['bank'] = $_GET["bank"];
         }
+        
+        $response = array(
+            "message"   => utf8_encode($this->load->view('admin/member/list-member', $data, TRUE))
+        );
+        echo json_encode($response);
+    }
+
+    public function sendmail_cur()
+    {
         $data = array(
             "title"     => "Freedybank - Send Email",
             "content"   => "admin/member/sendmail",
-            "member"   => $member,
+            "bank"      => apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
             "mn_member" => "active",
             "extra"     => "admin/member/js/js_email"
         );
 
+        $this->load->view('admin_template/wrapper2', $data);
+    }
+    
+    public function sendmail()
+    {
+        $data = array(
+            "title"     => "Freedybank - Send Email",
+            "content"   => "admin/member/sendmail",
+            "bank"      => apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
+            "mn_member" => "active",
+            "sendmail" => "sendmail",
+            "extra"     => "admin/member/js/js_email"
+        );
 
         $this->load->view('admin_template/wrapper', $data);
     }

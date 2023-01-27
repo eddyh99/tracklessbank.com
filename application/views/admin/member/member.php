@@ -17,13 +17,14 @@
         <?php } ?>
         <div class="container-fluid px-4">
             <div class="col-12 my-4">
-                <a href="<?= base_url() ?>m3rc4n73/member/sendmail" class="btn btn-freedy-blue fw-bold px-5 py-3">Send
+                <a href="<?= base_url() ?>m3rc4n73/member/<?= $sendmail ?>"
+                    class="btn btn-freedy-blue fw-bold px-5 py-3">Send
                     Email</a>
             </div>
             <div class="col-12 card mb-5">
                 <div class="card-header fw-bold text-capitalize">
                     <i class="fas fa-list me-1"></i>
-                    List Member <?= $_GET['status'] ?>
+                    List Member
                 </div>
                 <div class="card-body">
                     <div class=" my-3 row">
