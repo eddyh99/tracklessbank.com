@@ -99,11 +99,25 @@ class Mwallet extends CI_Controller
             $url = URLAPI . "/v1/member/wallet/getBankCode?country=" . $currencyCode[$_SESSION['currency']];
             $codecur   = apitrackless($url)->message->values;
         }
+        
+        $bankcost = apitrackless(URLAPI . "/v1/trackless/cost/getWiseCost?currency=" . $_SESSION['currency']);
+
+        $fee = (balanceadmin($_SESSION["currency"]) * $bankcost->message->transfer_circuit_pct) + $bankcost->message->transfer_circuit_fxd;
+
+        if ((balanceadmin($_SESSION["currency"])*100) <= 0) {
+            $fee = 0;
+        }
+        
+        if ((balanceadmin($_SESSION["currency"])*100) < ($fee*100)) {
+            $fee = balanceadmin($_SESSION["currency"]);
+        }
+
         $data = array(
             "title"     => "TracklessBank - Withdraw Local",
             "content"   => "admin/mwallet/withdraw-local",
             "extra"     => "admin/mwallet/currency/js/js_form_currency",
             "codecur"   => $codecur,
+            "bankcost"   => $fee,
             'currencycode' => $currencyCode[$_SESSION['currency']],
         );
 
@@ -142,11 +156,25 @@ class Mwallet extends CI_Controller
             $url = URLAPI . "/v1/member/wallet/getBankCode?country=" . $currencyCode[$_SESSION['currency']];
             $codecur   = apitrackless($url)->message->values;
         }
+        
+        $bankcost = apitrackless(URLAPI . "/v1/trackless/cost/getWiseCost?currency=" . $_SESSION['currency']);
+
+        $fee = (balanceadmin($_SESSION["currency"]) * $bankcost->message->transfer_outside_pct) + $bankcost->message->transfer_outside_fxd;
+        
+        if ((balanceadmin($_SESSION["currency"])*100) <= 0) {
+            $fee = 0;
+        }
+        
+        if ((balanceadmin($_SESSION["currency"])*100) < ($fee*100)) {
+            $fee = balanceadmin($_SESSION["currency"]);
+        }
+        
         $data = array(
             "title"     => "TracklessBank - Withdraw International",
             "content"   => "admin/mwallet/withdraw-inter",
             "extra"     => "admin/mwallet/currency/js/js_form_currency",
             "codecur"   => $codecur,
+            "bankcost"   => $fee,
             'currencycode' => $currencyCode[$_SESSION['currency']],
         );
 
@@ -155,6 +183,12 @@ class Mwallet extends CI_Controller
 
     public function wdconfirm()
     {
+        $amount = $this->security->xss_clean($this->input->post("amount"));
+
+        $a = $this->input->post("amount");
+        $b = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $a);
+        $_POST["amount"]=$b;
+        
         $input    = $this->input;
         $this->form_validation->set_rules('amount', 'Amount', 'trim|required|greater_than[0]');
         $this->form_validation->set_rules('causal', 'Causal', 'trim|required');
@@ -443,16 +477,18 @@ class Mwallet extends CI_Controller
         }
 
         $mdata = array(
-            "userid"            => $_SESSION["user_id"],
+            // "userid"            => $_SESSION["user_id"],
             "currency"          => $_SESSION["currency"],
             "amount"            => $this->security->xss_clean($input->post("amount")),
             "transfer_type"     => $this->security->xss_clean($input->post("transfer_type")),
         );
+        $result = apitrackless(URLAPI . "/v1/trackless/withdraw/WDTrackless_Summary", json_encode($mdata));
 
-        $result = apitrackless(URLAPI . "/v1/member/wallet/bankSummary", json_encode($mdata));
+        // print_r($result);
+        // die;
 
         if (@$result->code != 200) {
-            $this->session->set_flashdata("failed", "Insuffisient Fund");
+            $this->session->set_flashdata("failed", $result->message);
             redirect(base_url() . "m3rc4n73/mwallet/withdraw");
         }
 
@@ -1889,12 +1925,12 @@ class Mwallet extends CI_Controller
                 )
             );
         }
-
-        $result = apitrackless(URLAPI . "/v1/member/wallet/bankTransfer", json_encode($mdata));
+        
+        $result = apitrackless(URLAPI . "/v1/trackless/withdraw/WDTrackless_Transfer", json_encode($mdata));
 
         if (@$result->code != 200) {
             if (@$result->code == 5055) {
-                $this->session->set_flashdata("failed", "Something wrong, please try again later!");
+                $this->session->set_flashdata("failed", $result->message);
                 redirect(base_url() . "m3rc4n73/mwallet/withdraw");
             }
             $this->session->set_flashdata("failed", $result->message);

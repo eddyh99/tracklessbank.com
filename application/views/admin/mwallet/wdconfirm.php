@@ -88,23 +88,23 @@
                         <?php } ?>
                         <div class="mb-3">
                             <span class="form-label">Amount</span>
-                            <span
-                                class="form-control border-0 px-0"><?= number_format($data["amount"], 2, ".", ",") ?></span>
+                            <span class="form-control border-0 px-0"><?= $_SESSION['symbol'] ?>
+                                <?= number_format($data["amount"], 2, ".", ",") ?></span>
                         </div>
                         <div class="mb-3">
                             <span class="form-label">Transaction fee</span>
-                            <span
-                                class="form-control border-0 px-0"><?= number_format($data["fee"], 2, ".", ",") ?></span>
+                            <span class="form-control border-0 px-0"><?= $_SESSION['symbol'] ?>
+                                <?= number_format($data["fee"], 2, ".", ",") ?></span>
                         </div>
                         <div class="mb-3">
                             <span class="form-label">Total Deducted</span>
-                            <span
-                                class="form-control border-0 px-0"><?= number_format($data["deduct"], 2, ".", ",") ?></span>
+                            <span class="form-control border-0 px-0"><?= $_SESSION['symbol'] ?>
+                                <?= number_format($data["deduct"], 2, ".", ",") ?></span>
                         </div>
                         <div class="mb-3">
                             <span class="form-label">New Balance</span>
-                            <span
-                                class="form-control border-0 px-0"><?= number_format(balanceadmin($_SESSION["currency"]) - $data["deduct"], 2, ".", ",") ?></span>
+                            <span class="form-control border-0 px-0"><?= $_SESSION['symbol'] ?>
+                                <?= number_format(balanceadmin($_SESSION["currency"]) - $data["deduct"], 2, ".", ",") ?></span>
                         </div>
                         <div class="mb-3">
                             <a href="<?= base_url() ?>m3rc4n73/mwallet/withdraw"

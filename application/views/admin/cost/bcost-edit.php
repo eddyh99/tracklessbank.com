@@ -54,15 +54,13 @@
                         ) { ?>
                         <div class="mb-3" id="topup_circuit_fxd_div">
                             <label class="form-label">Topup Circuit (Fixed)</label>
-                            <input type="text" id="topup_circuit_fxd" name="topup_circuit_fxd" class="form-control"
-                                value="<?= $bcost['topup_circuit_fxd']; ?>"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                            <input type="text" id="topup_circuit_fxd" name="topup_circuit_fxd"
+                                class="form-control money-input" value="<?= $bcost['topup_circuit_fxd']; ?>">
                         </div>
                         <div class="mb-3" id="topup_circuit_pct_div">
                             <label class="form-label">Topup Circuit (%)</label>
-                            <input type="text" id="topup_circuit_pct" name="topup_circuit_pct" class="form-control"
-                                value="<?= $bcost['topup_circuit_pct']; ?>"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                            <input type="text" id="topup_circuit_pct" name="topup_circuit_pct"
+                                class="form-control money-input" value="<?= $bcost['topup_circuit_pct']; ?>">
                         </div>
                         <?php
                             if (($curr == "USD") ||
@@ -71,15 +69,13 @@
                             ) { ?>
                         <div class="mb-3" id="topup_outside_fxd_div">
                             <label class="form-label">Topup Outside (Fixed)</label>
-                            <input type="text" id="topup_outside_fxd" name="topup_outside_fxd" class="form-control"
-                                value="<?= $bcost['topup_outside_fxd']; ?>"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                            <input type="text" id="topup_outside_fxd" name="topup_outside_fxd"
+                                class="form-control money-input" value="<?= $bcost['topup_outside_fxd']; ?>">
                         </div>
                         <div class="mb-3" id="topup_outside_pct_div">
                             <label class="form-label">Topup Outside (%)</label>
-                            <input type="text" id="topup_outside_pct" name="topup_outside_pct" class="form-control"
-                                value="<?= $bcost['topup_outside_pct']; ?>"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                            <input type="text" id="topup_outside_pct" name="topup_outside_pct"
+                                class="form-control money-input" value="<?= $bcost['topup_outside_pct']; ?>">
                         </div>
                         <?php }
                         } ?>
@@ -87,14 +83,12 @@
                         <div class="mb-3" id="transfer_circuit_fxd_div">
                             <label class="form-label">Walletbank Circuit (Fixed)</label>
                             <input type="text" id="transfer_circuit_fxd" name="transfer_circuit_fxd"
-                                class="form-control" value="<?= $bcost['transfer_circuit_fxd']; ?>"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                                class="form-control money-input" value="<?= $bcost['transfer_circuit_fxd']; ?>">
                         </div>
                         <div class="mb-3" id="transfer_circuit_pct_div">
                             <label class="form-label">Walletbank Circuit (%)</label>
                             <input type="text" id="transfer_circuit_pct" name="transfer_circuit_pct"
-                                class="form-control" value="<?= $bcost['transfer_circuit_pct']; ?>"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                                class="form-control money-input" value="<?= $bcost['transfer_circuit_pct']; ?>">
                         </div>
 
                         <?php
@@ -106,14 +100,12 @@
                         <div class="mb-3" id="transfer_outside_fxd_div">
                             <label class="form-label">Walletbank Outside (Fixed)</label>
                             <input type="text" id="transfer_outside_fxd" name="transfer_outside_fxd"
-                                class="form-control" value="<?= $bcost['transfer_outside_fxd']; ?>"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                                class="form-control money-input" value="<?= $bcost['transfer_outside_fxd']; ?>">
                         </div>
                         <div class="mb-3" id="transfer_outside_pct_div">
                             <label class="form-label">Walletbank Outside (%)</label>
                             <input type="text" id="transfer_outside_pct" name="transfer_outside_pct"
-                                class="form-control" value="<?= $bcost['transfer_outside_pct']; ?>"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                                class="form-control money-input" value="<?= $bcost['transfer_outside_pct']; ?>">
                         </div>
                         <?php } ?>
                         <div class="mb-3">
