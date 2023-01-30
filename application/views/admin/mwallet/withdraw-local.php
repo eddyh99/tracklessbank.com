@@ -1,4 +1,4 @@
-<?php $this->load->view("admin/mwallet/countries-list"); ?>
+<?php require_once("countries-list.php"); ?>
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
@@ -42,6 +42,7 @@
 
                         <?php
                         $data['type'] = "local";
+                        $data['countries_list'] = $countries_list;
                         $this->load->view('admin/mwallet/currency/' . @$_SESSION['currency'], $data);
                         ?>
 

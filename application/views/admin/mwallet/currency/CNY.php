@@ -20,7 +20,13 @@
     <input class="form-control me-2" type="text" name="city" placeholder="City">
 </div>
 <div class="d-flex flex-row align-items-center my-3">
-    <input class="form-control me-2" type="text" name="country" placeholder="country initial" maxlength="2">
+    <select name="country" class="form-select me-2" id="country">
+        <option value="">--Country Initial--</option>
+        <?php foreach ($countries_list as $cur) { ?>
+        <option value="<?= $cur['code'] ?>"><?= $cur['code'] . ' - ' . $cur['name'] ?></option>
+        <?php } ?>
+    </select>
+    <!-- <input class="form-control me-2" type="text" name="country" placeholder="country initial" maxlength="2"> -->
 </div>
 <div class="d-flex flex-row align-items-center my-3">
     <input class="form-control me-2" type="text" name="firstLine" placeholder="FirstLine">

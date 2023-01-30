@@ -42,6 +42,7 @@
 
                         <?php
                         $data['type'] = "inter";
+                        $data['countries_list'] = $countries_list;
                         $this->load->view('admin/mwallet/currency/' . @$_SESSION['currency'], $data);
                         ?>
 

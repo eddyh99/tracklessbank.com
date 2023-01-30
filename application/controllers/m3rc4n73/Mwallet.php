@@ -150,10 +150,10 @@ class Mwallet extends CI_Controller
             "VND" => "VN",
             "ZAR" => "ZA"
         );
-        if ($currencyCode[$_SESSION['currency']] == '') {
+        if (@$currencyCode[$_SESSION['currency']] == '') {
             $codecur = '';
         } else {
-            $url = URLAPI . "/v1/member/wallet/getBankCode?country=" . $currencyCode[$_SESSION['currency']];
+            $url = URLAPI . "/v1/member/wallet/getBankCode?country=" . @$currencyCode[$_SESSION['currency']];
             $codecur   = apitrackless($url)->message->values;
         }
         
