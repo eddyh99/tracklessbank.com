@@ -108,6 +108,20 @@
                             <label class="form-label">Swap (Fixed)</label>
                             <input type="text" id="swap_fxd" name="swap_fxd" class="form-control" readonly>
                         </div>
+                        <div class="mb-3" id="card_fxd_div">
+                            <label class="form-label">Card (Fixed)</label>
+                            <input type="text" id="card_fxd" name="card_fxd" class="form-control" readonly>
+                        </div>
+                        <div class="mb-3" id="card_ship_reg_div">
+                            <label class="form-label">Shipping Card Regular (fixed)</label>
+                            <input type="text" id="card_ship_reg" name="card_ship_reg"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="mb-3" id="card_ship_fast_div">
+                            <label class="form-label">Shipping Card Fast (fixed)</label>
+                            <input type="text" id="card_ship_fast" name="card_ship_fast"
+                                class="form-control" readonly>
+                        </div>
                         <div class="mb-3">
                             <button id="btnconfirm"
                                 class="btn btn-freedy-blue px-4 py-2 mx-auto shadow-none">Edit</button>

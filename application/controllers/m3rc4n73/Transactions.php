@@ -15,7 +15,7 @@ class Transactions extends CI_Controller
     {
 
         $data = array(
-            "title"     => "FreedyBank - History Transactions Topup",
+            "title"     => "TracklessBank - History Transactions Topup",
             "content"   => "admin/history/topup",
             "mn_tc" => "active",
             "bank"  => apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
@@ -49,7 +49,7 @@ class Transactions extends CI_Controller
     public function towallet()
     {
         $data = array(
-            "title"     => "FreedyBank - History Transactions Wallet",
+            "title"     => "TracklessBank - History Transactions Wallet",
             "content"   => "admin/history/towallet",
             "mn_tc" => "active",
             "bank"  => apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
@@ -83,7 +83,7 @@ class Transactions extends CI_Controller
     public function tobank()
     {
         $data = array(
-            "title"     => "FreedyBank - History Transactions Withdraw",
+            "title"     => "TracklessBank - History Transactions Withdraw",
             "content"   => "admin/history/tobank",
             "mn_tc" => "active",
             "bank"  => apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
@@ -92,6 +92,7 @@ class Transactions extends CI_Controller
 
         $this->load->view('admin_template/wrapper2', $data);
     }
+
 
     public function historybank()
     {
@@ -113,4 +114,39 @@ class Transactions extends CI_Controller
         $data["history"] = $result->message;
         echo json_encode($data);
     }
+    
+    public function masterwallet()
+    {
+        $data = array(
+            "title"     => "TracklessBank - History Transactions Master Wallet",
+            "content"   => "admin/history/masterwallet",
+            "mn_tc" => "active",
+            "bank"  => apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message,
+            "extra"     => "admin/history/js/js_masterwallet",
+        );
+
+        $this->load->view('admin_template/wrapper2', $data);
+    }
+    
+    public function historymw()
+    {
+        $input = $this->input;
+        $tgl = explode("-", $this->security->xss_clean($input->post("tgl")));
+        $awal = date_format(date_create($tgl[0]), "Y-m-d");
+        $akhir = date_format(date_create($tgl[1]), "Y-m-d");
+        $bank = $this->security->xss_clean($input->post("bank"));
+
+        $mdata = array(
+            "bank_id"    => $bank,
+            "date_start" => $awal,
+            "date_end"  => $akhir,
+            "currency"  => $_SESSION["currency"],
+            "timezone"  => $_SESSION["time_location"]
+        );
+        $result = apitrackless(URLAPI . "/v1/trackless/operations/gethistory_masterwallet", json_encode($mdata));
+        $data["token"] = $this->security->get_csrf_hash();
+        $data["history"] = $result->message;
+        echo json_encode($data);
+    }    
+    
 }

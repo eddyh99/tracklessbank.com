@@ -1,0 +1,96 @@
+<script>
+var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
+var currentMonth = moment().month();
+var currentYear = moment().year();
+
+var start = moment().subtract(29, 'days'); // Subtract 29 days from today
+var end = moment(); // Today
+
+var dateRange = {};
+dateRange["Today"] = [moment(), moment()];
+dateRange["Yesterday"] = [moment().subtract(1, 'days'), moment()];
+dateRange["Last 7 Days"] = [moment().subtract(7, 'days'), moment()];
+dateRange["Last 30 Days"] = [moment().subtract(29, 'days'), moment()];
+
+$('#tgl').daterangepicker({
+    startDate: end,
+    endDate: end,
+    ranges: dateRange,
+    minDate: moment().subtract(90, 'days'),
+    maxDate: moment(),
+    locale: {
+        format: 'MM/DD/YYYY'
+    }
+});
+
+
+var i = 1;
+var readbank = $("#bank").val();
+var urlParams = new URLSearchParams(window.location.search);
+var status = urlParams.get('status');
+var tblhistory =
+    $('#tbl_history').DataTable({
+        "scrollX": true,
+        "responsive": true,
+        "ajax": {
+            "url": "<?= base_url() ?>m3rc4n73/card/historycardtopup?status="+status,
+            "type": "POST",
+            "data": function(d) {
+                d.csrf_freedy = $("#token").val();
+                d.tgl = $("#tgl").val(),
+                    d.bank = $("#bank").val()
+            },
+            "dataSrc": function(data) {
+                $("#token").val(data["token"]);
+                console.log(data["history"]);
+                return data["history"];
+            },
+        },
+        order: [
+            [0, 'asc']
+        ],
+        "pageLength": 100,
+        "columns": [{
+                "mRender": function(data, type, full, meta) {
+                    return i++;
+                }
+            },
+            {
+                "data": "ket"
+            },
+            {
+                "data": "lastdigit"
+            },
+            {
+                "data": "amount",
+                render: $.fn.dataTable.render.number(',', '.', 2, '<?= $_SESSION['symbol']?> ')
+            },
+            {
+                "data": "date_created"
+            },
+            {
+                "mRender": function(data, type, full, meta) {
+                    if (full.proses=='yes'){
+                        return "";
+                    }else{
+                        return "<a href='<?=base_url()?>m3rc4n73/card/processtopup/"+btoa(full.id)+"' class='btn btn-success'>Proses</a>";
+                    }
+                }
+            },
+        ]
+    });
+
+$('#tgl').on("change", function(e) {
+    i = 1;
+    e.preventDefault();
+    tblhistory.ajax.reload();
+});
+
+$("#bank").on("change", function() {
+    i = 1;
+    tblhistory.ajax.reload();
+})
+</script>

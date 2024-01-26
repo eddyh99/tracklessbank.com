@@ -1,6 +1,3 @@
-<input type="hidden" id="token" name="<?php echo $this->security->get_csrf_token_name(); ?>"
-    value="<?php echo $this->security->get_csrf_hash(); ?>">
-
 <div id="layoutSidenav_content">
     <main>
         <?php if (@isset($_SESSION["failed"])) { ?>
@@ -39,29 +36,62 @@
                         </div>
                     </div>
                     <?php
+                        if ($_GET['status'] == 'active') {
+                    ?>
+                        <div class=" my-3 row">
+                            <label for="bank" class="col-sm-2 col-form-label">Total: <?=$_SESSION["symbol"]?> <span id="userbalance"></span></label>
+                        </div>
+                    <?php 
+                        }
+                        
                     if ($_GET['status'] == 'active') {
                         $status_member = "memberactive";
                     } elseif ($_GET['status'] == 'active2') {
                         $status_member = "memberactive2";
                     } elseif ($_GET['status'] == 'disabled2') {
                         $status_member = "memberdisabled2";
+                    } elseif ($_GET["status"] == 'new'){
+                        $status_member = "membernew";
                     }
                     ?>
-                    <table id="<?= $status_member ?>" class="table table-hover table-bordered">
-                        <thead class="table-dark">
-                            <tr class="align-middle">
-                                <th>No.</th>
-                                <th>Email</th>
-                                <th>UCode</th>
-                                <th>Referral</th>
-                                <th>Status</th>
-                                <th>Last Login</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody style="border-top: 0;">
-                        </tbody>
-                    </table>
+                    <form id="frm-activate" action="<?=base_url()?>m3rc4n73/member/bulk_activate" method="POST">
+                        <input type="hidden" id="token" name="<?php echo $this->security->get_csrf_token_name(); ?>"
+                            value="<?php echo $this->security->get_csrf_hash(); ?>">
+                        <table id="<?= $status_member ?>" class="table table-hover table-bordered">
+                            <thead class="table-dark">
+                                <tr class="align-middle">
+                                    <?php if($_GET['status'] != 'new'){ ?>
+                                        <th>No.</th>
+                                    <?php }else{ ?>
+                                        <th></th>
+                                    <?php } ?>
+                                    <th>Email</th>
+                                    <th>UCode</th>
+                                    <th>Referral</th>
+                                    <?php
+                                        if ($_GET['status'] == 'active') {
+                                    ?>
+                                        <th>Ending Card</th>
+                                        <th>Balance</th>
+                                    <?php }else{ ?>
+                                        <th>Status</th>
+                                        <th>Last Login</th>
+                                    <?php } ?>
+                                    <?php if($_GET['status'] != 'new'){ ?>
+                                        <th>Action</th>
+                                    <?php } ?>
+                                </tr>
+                            </thead>
+                            <tbody style="border-top: 0;">
+                            </tbody>
+                        </table>
+
+                        <?php if($_GET['status'] == 'new'){ ?>
+                            <button class="btn btn-freedy-blue">Activate All</button></p>
+                        <?php }?>
+                        </form>
+
+                    
                 </div>
             </div>
         </div>

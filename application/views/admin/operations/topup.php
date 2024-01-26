@@ -4,7 +4,7 @@
             <div class="col-6 card my-5">
                 <div class="card-header fw-bold">
                     <i class="fas fa-money-bill me-1"></i>
-                    Topup Process
+                    Topup Wallet Process
                 </div>
                 <div class="card-body">
                     <div class="col-12 mt-3">

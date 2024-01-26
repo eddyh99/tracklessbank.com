@@ -5,7 +5,7 @@
             <div class="col-12 card mt-3">
                 <div class="card-header fw-bold">
                     <i class="fas fa-money-bill-transfer me-1"></i>
-                    Withdraw International
+                    Withdraw International - <?= $_SESSION["currency"];?>
                 </div>
                 <div class="card-body">
                     <?php if (@isset($_SESSION["failed"])) { ?>
@@ -30,8 +30,10 @@
                         <input type="hidden" name="url" value="wdinter">
 
                         <div class="mb-3">
-                            <input class="form-control" type="text" name="amount" placeholder="Amount"
-                                oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1');input(this);">
+                            <input class="form-control money-input" type="text" name="amount" placeholder="Amount">
+                            <small class="text-danger">MAX
+                                : <?= $_SESSION["symbol"] ?>
+                                <?= number_format(balanceadmin($_SESSION["currency"]) - $bankcost,2) ?></small>
                         </div>
                         <div class="mb-3">
                             <input class="form-control" type="text" name="accountHolderName"
@@ -39,7 +41,8 @@
                         </div>
 
                         <?php
-                        $data['type'] = "wdinter";
+                        $data['type'] = "inter";
+                        $data['countries_list'] = $countries_list;
                         $this->load->view('admin/mwallet/currency/' . @$_SESSION['currency'], $data);
                         ?>
 

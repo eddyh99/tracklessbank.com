@@ -10,11 +10,14 @@ class Welcome extends CI_Controller
 
     public function index()
     {
-        $data = array(
-            'title'     => 'Trackless Bank',
-            'content'   => 'home/index',
-            'extra'     => 'home/js/js_index',
-        );
-        $this->load->view('layout/wrapper', $data);
+	    $banks=URLAPI . "/v1/member/wallet/getAllbank";
+		$data = array(
+			'title'     => 'Trackless Bank',
+			'content'   => 'home/index',
+			'banks'      => apitrackless($banks)->message,
+			'extra'     => 'home/js/js_index',
+		);
+		
+		$this->load->view('layout/wrapper', $data);
     }
 }

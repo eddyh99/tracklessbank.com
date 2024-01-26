@@ -14,6 +14,9 @@ function bcost() {
             $("#topup_circuit_pct").val(data.topup_circuit_pct)
             $("#topup_outside_fxd").val(data.topup_outside_fxd)
             $("#topup_outside_pct").val(data.topup_outside_pct)
+            $("#card_fxd").val(data.card_fxd)
+            $("#card_ship_reg").val(data.card_ship_reg)
+            $("#card_ship_fast").val(data.card_ship_fast)
 
             if ((readcurrency != "USD") &&
                 (readcurrency != "EUR") &&
@@ -62,6 +65,16 @@ function bcost() {
                 $("#transfer_outside_fxd_div").show()
                 $("#transfer_outside_pct_div").show()
             }
+            
+            if(readcurrency == "EUR"){
+                $("#card_fxd_div").show()
+                $("#card_fxd_div").show()
+                $("#card_fxd_div").show()
+            }else{
+                $("#card_fxd_div").hide()
+                $("#card_ship_reg_div").hide()
+                $("#card_ship_fast_div").hide()
+            }
         },
         error: function(response) {
             alert(response);
@@ -100,6 +113,9 @@ function dcost() {
             $("#topup_outside_pct").val(data.topup_outside_pct)
             $("#swap").val(data.swap)
             $("#swap_fxd").val(data.swap_fxd)
+            $("#card_fxd").val(data.card_fxd)
+            $("#card_ship_reg").val(data.card_ship_reg)
+            $("#card_ship_fast").val(data.card_ship_fast)
 
             if ((readcurrency != "USD") &&
                 (readcurrency != "EUR") &&
@@ -142,6 +158,15 @@ function dcost() {
                 $("#topup_circuit_pct_div").show()
                 $("#walletbank_outside_fxd_div").show()
                 $("#walletbank_outside_pct_div").show()
+            }
+            if(readcurrency == "EUR"){
+                $("#card_fxd_div").show()
+                $("#card_fxd_div").show()
+                $("#card_fxd_div").show()
+            }else{
+                $("#card_fxd_div").hide()
+                $("#card_ship_reg_div").hide()
+                $("#card_ship_fast_div").hide()
             }
 
         },

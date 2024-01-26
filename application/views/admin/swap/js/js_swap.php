@@ -31,6 +31,7 @@ function calculate() {
             }
         });
     } else {
+        $("#btnconfirm").attr("disabled", true);
         $("#receive").val("0.00");
         $("#amountget").val("0.00");
     }

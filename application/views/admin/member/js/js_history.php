@@ -20,7 +20,7 @@ $('#tgl').daterangepicker({
     startDate: end,
     endDate: end,
     ranges: dateRange,
-    minDate: moment().subtract(90, 'days'),
+    minDate: moment().subtract(365, 'days'),
     maxDate: moment(),
     locale: {
         format: 'MM/DD/YYYY'

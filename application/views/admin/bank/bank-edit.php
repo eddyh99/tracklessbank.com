@@ -180,6 +180,19 @@
                     ($_SESSION["currency"] == "GBP") ||
                     ($_SESSION["currency"] == "RON")
                 ) { ?>
+                <div class="col-12 card mt-3">
+                    <div class="card-header fw-bold">
+                        <i class="fas fa-bank me-1"></i>
+                        Others
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Min. Topup</label>
+                            <input class="form-control money-input" type="text" name="minimum"
+                                value="<?= @$bank->minimum ?>">
+                        </div>
+                    </div>
+                </div>                
                 <div class="col-12 my-3 mb-5 d-grid gap-2">
                     <button id="btnconfirm" class="btn btn-freedy-blue px-4 py-2 shadow-none">Confirm</button>
                 </div>

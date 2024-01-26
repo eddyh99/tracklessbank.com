@@ -157,20 +157,22 @@ class Bank extends CI_Controller
         $bic_outside = $this->security->xss_clean($input->post("bic_outside"));
         $bankname_outside = $this->security->xss_clean($input->post("bankname_outside"));
         $address_outside = $this->security->xss_clean($input->post("address_outside"));
+        $minimum = $this->security->xss_clean($input->post("minimum"));
 
         $dataUpdate = array(
-            "number_circuit" => $number_circuit,
-            "name_circuit" => $name_circuit,
-            "routing_circuit" => $routing_circuit,
-            "transit_circuit" => $transit_circuit,
-            "bankname_circuit" => $bankname_circuit,
-            "address_circuit" => $address_circuit,
-            "name_outside" => $name_outside,
-            "iban_outside" => $iban_outside,
-            "bic_outside" => $bic_outside,
-            "bankname_outside" => $bankname_outside,
-            "address_outside" => $address_outside,
-            "currency" => $_SESSION["currency"]
+            "number_circuit"    => $number_circuit,
+            "name_circuit"      => $name_circuit,
+            "routing_circuit"   => $routing_circuit,
+            "transit_circuit"   => $transit_circuit,
+            "bankname_circuit"  => $bankname_circuit,
+            "address_circuit"   => $address_circuit,
+            "name_outside"      => $name_outside,
+            "iban_outside"      => $iban_outside,
+            "bic_outside"       => $bic_outside,
+            "bankname_outside"  => $bankname_outside,
+            "address_outside"   => $address_outside,
+            "currency"          => $_SESSION["currency"],
+            "minimum"           => $minimum
         );
 
         $result = apitrackless(URLAPI . "/v1/trackless/bank/setBank", json_encode($dataUpdate));

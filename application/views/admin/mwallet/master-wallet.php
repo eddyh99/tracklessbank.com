@@ -20,7 +20,14 @@
                         <thead class="table-dark">
                             <tr class="align-middle">
                                 <th>No.</th>
-                                <th>Description</th>
+                                <th>
+                                    <select name="description" id="description" class="form-select">
+                                        <option value="">Description</option>
+                                        <option value="physical Card">Request Physical Card</option>
+                                        <option value="virtual Card">Request Virtual Card</option>
+                                        <option value="Topup Card">Request Topup Card</option>
+                                    </select>
+                                </th>
                                 <th>Amount</th>
                                 <th>Bank Cost</th>
                                 <th>Trackless Commission</th>

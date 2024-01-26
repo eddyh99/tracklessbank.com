@@ -77,25 +77,31 @@ class Member extends CI_Controller
     {
         if ($_POST["bank_id"] == "all") {
             $mdata = array(
-                "timezone"  => $_SESSION["time_location"]
+                "timezone"  => $_SESSION["time_location"],
+                "currency"  => $_SESSION["currency"],
             );
         } else {
             $mdata = array(
                 "bank_id"   => $_POST["bank_id"],
-                "timezone"  => $_SESSION["time_location"]
+                "timezone"  => $_SESSION["time_location"],
+                "currency"  => $_SESSION["currency"],
             );
         }
-
+        
         $result = apitrackless(URLAPI . "/v1/trackless/user/getAll", json_encode($mdata));
         if (@$result->code == 200) {
             $dt_disabled_filter = array();
-            $dt_active_filter = array();
+            $dt_active_filter   = array();
+            $dt_new_filter      = array();
             foreach ($result->message as $key) {
-                if ($key->status == 'active' || $key->status == 'new') {
+                if ($key->status == 'active') {
                     $dt_active_filter[] = $key;
                 }
                 if ($key->status == 'disabled') {
                     $dt_disabled_filter[] = $key;
+                }
+                if ($key->status == 'new'){
+                    $dt_new_filter[] = $key;
                 }
             }
 
@@ -103,6 +109,8 @@ class Member extends CI_Controller
                 $data["member"] = $dt_active_filter;
             } elseif ($_GET['status'] == 'disabled') {
                 $data["member"] = $dt_disabled_filter;
+            } elseif ($_GET['status'] == 'new') {
+                $data["member"] = $dt_new_filter;
             } else {
                 $data["member"] = $dt_active_filter;
             }
@@ -199,12 +207,14 @@ class Member extends CI_Controller
     {
         if ($_GET["bank"] == "all") {
             $mdata = array(
-                "timezone"  => $_SESSION["time_location"]
+                "timezone"  => $_SESSION["time_location"],
+                "currency"  => $_SESSION["currency"]
             );
         } else {
             $mdata = array(
                 "bank_id"   => $_GET["bank"],
-                "timezone"  => $_SESSION["time_location"]
+                "timezone"  => $_SESSION["time_location"],
+                "currency"  => $_SESSION["currency"]
             );
         }
 
@@ -259,20 +269,40 @@ class Member extends CI_Controller
         $subject    = $this->security->xss_clean($input->post("subject"));
         if ($all == "all") {
             $mdata = array(
-                "timezone"  => $_SESSION["time_location"]
+                "timezone"  => $_SESSION["time_location"],
+                "currency"  => $_SESSION["currency"]
             );
             $result = apitrackless(URLAPI . "/v1/trackless/user/getAll", json_encode($mdata));
             $member = array();
-            foreach ($result->message as $dt) {
-                $temp["email"] = $dt->email;
-                array_push($member, $temp);
+            foreach ($result->message as $key) {
+                if ($key->status == 'active' || $key->status == 'new') {
+                    $member[]=$key->email;
+                }
             }
-            mail_member($this->phpmailer_lib->load(), $member, $subject, $message);
+            
+            $member=array_unique($member);
+            foreach ($member as $dt){
+                mail_member($this->phpmailer_lib->load(), $dt, $subject, $message);
+            }
         } else {
-            mail_member($this->phpmailer_lib->load(), $email, $subject, $message);
+            foreach ($email as $dt){
+                mail_member($this->phpmailer_lib->load(), $dt, $subject, $message);
+            }
         }
         $this->session->set_flashdata('success', "<p style='color:black'>Email is successfully schedule to send</p>");
         redirect(base_url() . "m3rc4n73/member/sendmail");
         return;
+    }
+    
+    public function bulk_activate(){
+        $mdata=$_POST["id"];
+        $result = apitrackless(URLAPI . "/v1/trackless/user/bulk_activate", json_encode($mdata));
+         if ($result->code != 200) {
+            $this->session->set_flashdata("failed", $result->message);
+            redirect('m3rc4n73/member?status=new');
+        } else {
+            $this->session->set_flashdata("success", $result->message);
+            redirect('m3rc4n73/member?status=new');
+        }
     }
 }

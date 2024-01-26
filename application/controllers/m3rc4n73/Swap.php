@@ -92,11 +92,13 @@ class Swap extends CI_Controller
 
     public function confirm()
     {
-        $amount = $this->security->xss_clean($this->input->post("amount"));
+        $amount = $this->input->post("amount");
+        $new_amount = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $amount);
+        $_POST["amount"]=$new_amount;
 
-        $a = $this->input->post("amount");
-        $b = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $a);
-        $_POST["amount"]=$b;
+        $amountget = $this->input->post("amountget");
+        $new_amountget = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $amountget);
+        $_POST["amountget"]=$new_amountget;
         
         $this->form_validation->set_rules('toswap', 'Currency Target', 'trim|required|max_length[3]|min_length[3]');
         $this->form_validation->set_rules('amount', 'Amount', 'trim|required|greater_than[0]');
@@ -190,9 +192,6 @@ class Swap extends CI_Controller
 
 
             $result = apitrackless(URLAPI . "/v1/trackless/swap/swaptracklessProcess", json_encode($mdata));
-            
-            print_r($result);
-            die;
             if (@$result->code != 200) {
                 $this->session->set_flashdata("failed", $result->message);
                 redirect('m3rc4n73/swap');

@@ -54,7 +54,8 @@ var tblhistory =
                     return i++;
                 }
             }, {
-                "data": "ket"
+                "data": "ket",
+                "orderable": false
             },
             {
                 "data": "amount",
@@ -79,4 +80,12 @@ $('#tgl').on("change", function(e) {
     e.preventDefault();
     tblhistory.ajax.reload();
 });
+
+$("#description").on("change", function (e){
+    tblhistory
+        .column( 1 )
+        .search( this.value )
+        .draw();
+})
+
 </script>
