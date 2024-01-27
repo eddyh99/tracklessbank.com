@@ -54,6 +54,7 @@ class Cost extends CI_Controller
 
 		$url = apitrackless(URLAPI . "/v1/trackless/cost/getCost?currency=" . $curr);
 
+
 		$mdata = array();
 		if (@$url->code == 200) {
 			$mdata = array(
@@ -74,6 +75,7 @@ class Cost extends CI_Controller
 				"card_fxd" => number_format($url->message->card_fxd, 2, ".", ","),
 				"card_ship_reg"     => number_format($url->message->card_ship_reg, 2, ".", ","),
 				"card_ship_fast"    => number_format($url->message->card_ship_fast, 2, ".", ","),
+				"card_topup_fxd" => number_format($url->message->card_topup_fxd, 2, ".", ","),
 			);
 		} else {
 			$mdata = array(
@@ -94,8 +96,10 @@ class Cost extends CI_Controller
 				"card_fxd" => number_format(0, 2, ".", ","),
 				"card_ship_reg"     => number_format(0, 2, ".", ","),
 				"card_ship_fast"    => number_format(0, 2, ".", ","),
+				"card_topup_fxd"    => number_format(0, 2, ".", ","),
 			);
 		}
+
 
 		$data = array(
 			"title"     => "TracklessBank - Default Cost",
@@ -131,6 +135,7 @@ class Cost extends CI_Controller
 		$swap = $this->security->xss_clean($input->post("swap"));
 		$swap_fxd = $this->security->xss_clean($input->post("swap_fxd"));
 		$card_fxd = $this->security->xss_clean($input->post("card_fxd"));
+		$card_topup_fxd = $this->security->xss_clean($input->post("card_topup_fxd"));
 		$card_ship_fast = $this->security->xss_clean($input->post("card_ship_fast"));
 		$card_ship_reg  = $this->security->xss_clean($input->post("card_ship_reg"));
 
@@ -149,6 +154,7 @@ class Cost extends CI_Controller
         $new_swap = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $swap);
         $new_swap_fxd           = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $swap_fxd);
         $new_card_fxd           = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $card_fxd);
+        $new_card_topup_fxd           = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $card_topup_fxd);
         $new_card_ship_reg      = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $card_ship_reg);
         $new_card_ship_fast     = preg_replace('/,(?=[\d,]*\.\d{2}\b)/', '', $card_ship_fast);
 
@@ -167,6 +173,7 @@ class Cost extends CI_Controller
         $_POST["swap"]                  = $new_swap;
         $_POST["swap_fxd"]              = $new_swap_fxd;
         $_POST["card_fxd"]              = $new_card_fxd;
+        $_POST["card_topup_fxd"]        = $new_card_topup_fxd;
         $_POST["card_ship_fast"]        = $new_card_ship_fast;
         $_POST["card_ship_reg"]         = $new_card_ship_reg;
         
@@ -199,7 +206,8 @@ class Cost extends CI_Controller
 			}
 			
 			if ($curr == "EUR"){
-				$this->form_validation->set_rules('card_fxd', 'Card (Fixed)', 'trim|required|greater_than_equal_to[0]');
+				$this->form_validation->set_rules('card_fxd', 'Card Order (Fixed)', 'trim|required|greater_than_equal_to[0]');
+				$this->form_validation->set_rules('card_topup_fxd', 'Card Topup (Fixed)', 'trim|required|greater_than_equal_to[0]');
         		$this->form_validation->set_rules('card_ship_fast', 'Card Ship Fast (Fixed)', 'trim|required|greater_than_equal_to[0]');
         		$this->form_validation->set_rules('card_ship_reg', 'Card Ship Reg (Fixed)', 'trim|required|greater_than_equal_to[0]');
 			}
@@ -237,6 +245,7 @@ class Cost extends CI_Controller
 		$swap = $this->security->xss_clean($input->post("swap"));
 		$swap_fxd = $this->security->xss_clean($input->post("swap_fxd"));
 		$card_fxd = $this->security->xss_clean($input->post("card_fxd"));
+		$card_topup_fxd = $this->security->xss_clean($input->post("card_topup_fxd"));
 		$card_ship_fast = $this->security->xss_clean($input->post("card_ship_fast"));
 		$card_ship_reg = $this->security->xss_clean($input->post("card_ship_reg"));
 
@@ -285,6 +294,9 @@ class Cost extends CI_Controller
 		if ($card_fxd == '') {
 			$card_fxd = 0;
 		}
+		if ($card_topup_fxd == '') {
+			$card_topup_fxd = 0;
+		}
 		if ($card_ship_fast == '') {
 			$card_ship_fast = 0;
 		}
@@ -308,10 +320,12 @@ class Cost extends CI_Controller
 			"swap"              => $swap / 100,
 			"swap_fxd"          => $swap_fxd,
 			"card_fxd"          => $card_fxd,
+			"card_topup_fxd"    => $card_topup_fxd,
 			"card_ship_reg"     => $card_ship_reg,
 			"card_ship_fast"    => $card_ship_fast,
 			"currency"          => $curr,
 		);
+
 
 		$result = apitrackless(URLAPI . "/v1/trackless/cost/setBankcost", json_encode($dataUpdate));
 
@@ -604,6 +618,7 @@ class Cost extends CI_Controller
 				"swap" => number_format($mfee->message->swap * 100, 2, ".", ","),
 				"swap_fxd" => number_format($mfee->message->swap_fxd, 2, ".", ","),
 				"card_fxd" => number_format($mfee->message->card_fxd, 2, ".", ","),
+				"card_topup_fxd" => number_format($mfee->message->card_topup_fxd, 2, ".", ","),
 				"card_ship_reg"     => number_format($mfee->message->card_ship_reg, 2, ".", ","),
 				"card_ship_fast"    => number_format($mfee->message->card_ship_fast, 2, ".", ","),
 			);
@@ -624,6 +639,7 @@ class Cost extends CI_Controller
 				"swap" => number_format(0, 2, ".", ","),
 				"swap_fxd" => number_format(0, 2, ".", ","),
 				"card_fxd" => number_format(0, 2, ".", ","),
+				"card_topup_fxd" => number_format(0, 2, ".", ","),
 				"card_ship_reg"     => number_format(0, 2, ".", ","),
 				"card_ship_fast"    => number_format(0, 2, ".", ","),
 			);

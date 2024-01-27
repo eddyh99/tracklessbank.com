@@ -68,8 +68,8 @@ function bcost() {
             
             if(readcurrency == "EUR"){
                 $("#card_fxd_div").show()
-                $("#card_fxd_div").show()
-                $("#card_fxd_div").show()
+                $("#card_ship_reg_div").show()
+                $("#card_ship_fast_div").show()
             }else{
                 $("#card_fxd_div").hide()
                 $("#card_ship_reg_div").hide()
@@ -114,6 +114,7 @@ function dcost() {
             $("#swap").val(data.swap)
             $("#swap_fxd").val(data.swap_fxd)
             $("#card_fxd").val(data.card_fxd)
+            $("#card_topup_fxd").val(data.card_topup_fxd)
             $("#card_ship_reg").val(data.card_ship_reg)
             $("#card_ship_fast").val(data.card_ship_fast)
 
@@ -161,10 +162,12 @@ function dcost() {
             }
             if(readcurrency == "EUR"){
                 $("#card_fxd_div").show()
-                $("#card_fxd_div").show()
-                $("#card_fxd_div").show()
+                $("#card_topup_fxd_div").show()
+                $("#card_ship_reg_div").show()
+                $("#card_ship_fast_div").show()
             }else{
                 $("#card_fxd_div").hide()
+                $("#card_topup_fxd_div").hide()
                 $("#card_ship_reg_div").hide()
                 $("#card_ship_fast_div").hide()
             }

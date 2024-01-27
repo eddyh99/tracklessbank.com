@@ -142,9 +142,14 @@
                         </div>
                         <?php if ($curr=="EUR"){?>
                         <div class="mb-3" id="card_fxd_div">
-                            <label class="form-label">Card (Fixed)</label>
+                            <label class="form-label">Card Order (Fixed)</label>
                             <input type="text" id="card_fxd" name="card_fxd" class="form-control money-input"
                                 value="<?= $dcost['card_fxd'] ?>">
+                        </div>
+                        <div class="mb-3" id="card_topup_fxd_div">
+                            <label class="form-label">Card Topup (Fixed)</label>
+                            <input type="text" id="card_topup_fxd" name="card_topup_fxd" class="form-control money-input"
+                                value="<?= $dcost['card_topup_fxd'] ?>">
                         </div>
                         <div class="mb-3" id="card_ship_reg_div">
                             <label class="form-label">Shipping Card Regular (fixed)</label>

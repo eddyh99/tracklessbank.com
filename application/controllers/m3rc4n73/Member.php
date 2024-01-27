@@ -248,6 +248,11 @@ class Member extends CI_Controller
     
     public function sendmail()
     {
+        $bank = apitrackless(URLAPI . "/v1/trackless/member/getAll_bank")->message;
+
+        // echo '<pre>'.print_r($bank,true).'</pre>';
+        // die;
+
         $data = array(
             "title"     => "Freedybank - Send Email",
             "content"   => "admin/member/sendmail",
